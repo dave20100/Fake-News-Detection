@@ -18,8 +18,8 @@ def basicPreparation(fileName):
 def wordVectorizationPreparation():
     print("h")
 
-def ngramVectorizationPreparation():
-    print("h")
+def ngramVectorizationPreparation(articles):
+    print("ds")
 
 def NgramVectorization():
     print("s")
@@ -32,19 +32,20 @@ def WordVectorization():
 
 
 #Vectorize data
-bagOfWordsVectorizer = CountVectorizer(analyzer="word", max_features=30)
+bagOfWordsVectorizer = CountVectorizer(analyzer="word")
+
 tfidfVectorizer = TfidfVectorizer()
 
 features = tfidfVectorizer.fit_transform(text)
 
-print(tfidfVectorizer.get_feature_names())
+print(len(tfidfVectorizer.get_feature_names()))
 
 #Train data
-X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.50, random_state=42)
+# X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.50, random_state=42)
 
-clf = svm.SVC()
-clf.fit(X_train, y_train)
-print(clf.score(X_test, y_test))
+# clf = svm.SVC()
+# clf.fit(X_train, y_train)
+# print(clf.score(X_test, y_test))
 
 
 #Save trained models
@@ -52,13 +53,13 @@ print(clf.score(X_test, y_test))
 
 #Plot data
 
-x = [1, 2, 3]
-y = [2, 4, 1]
+x = [xaxis*xaxis for xaxis in range(200)]
+y = [xaxis for xaxis in range(200)]
 
-plt.plot(x, y)
+plt.plot(y, x)
 
 plt.xlabel('x - axis')
 plt.ylabel('y - axis')
 
 plt.title('My first graph!')
-plt.show()
+plt.savefig('./plots/file.png')

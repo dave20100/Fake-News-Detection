@@ -2,28 +2,26 @@ import pandas as pd
 from enum import Enum
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import HashingVectorizer
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn import svm
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
 import copy
+import time
 
 
 datasplit = {
-    "ngram": [],
+    "char": [],
     "word": []
 }
 
 extractedData = {
     "bagOfWords": copy.deepcopy(datasplit),
-    "tfidf": copy.deepcopy(datasplit),
-    # "hashing": copy.deepcopy(datasplit)
-}
-
-info = {
-    "vectorizer": {},
-    "features": {},
-    "classificator": {}
+    "tfidf": copy.deepcopy(datasplit)
 }
 
 #Prepares data by removing not needed columns and encoding labels
@@ -55,39 +53,41 @@ wordsText = wordVectorizationPreparation(text)
 #Vectorize data
 
 
+start = time.time()
 
+for size in range(1, 4):
+    extractedData["bagOfWords"]["char"].append({"vectorizer": CountVectorizer(analyzer="char", ngram_range=(size, size))})
+    extractedData["tfidf"]["char"].append({"vectorizer": TfidfVectorizer(analyzer="char", ngram_range=(size, size))})
 
-for size in range(1, 2):
-    extractedData["bagOfWords"]["ngram"].append({"vectorizer": CountVectorizer(analyzer="char", ngram_range=(size, size))})
-    extractedData["bagOfWords"]["word"].append({"vectorizer": CountVectorizer(analyzer="word", ngram_range=(size, size))})
-    extractedData["tfidf"]["ngram"].append({"vectorizer": TfidfVectorizer(analyzer="char", ngram_range=(size, size))})
-    extractedData["tfidf"]["word"].append({"vectorizer": TfidfVectorizer(analyzer="word", ngram_range=(size, size))})
+extractedData["bagOfWords"]["word"].append({"vectorizer": CountVectorizer(
+    analyzer="word", ngram_range=(1, 1))})
+extractedData["tfidf"]["word"].append({"vectorizer": TfidfVectorizer(
+    analyzer="word", ngram_range=(1, 1))})
 
 for method in extractedData.keys():
     for wordType in extractedData[method].keys():
         for size in range(len(extractedData[method][wordType])):
-            extractedData[method][wordType][size]["classificator"] = {}
-            extractedData[method][wordType][size]["features"] = extractedData[method][wordType][size]["vectorizer"].fit_transform(text)
-            X_train, X_test, y_train, y_test = train_test_split(extractedData[method][wordType][size]["features"], labels, test_size=0.60, random_state=42)
-            extractedData[method][wordType][size]["classificator"]["SVC"] = svm.SVC()
-            extractedData[method][wordType][size]["classificator"]["SVC"].fit(X_train, y_train)
-            print(method, wordType, size, extractedData[method][wordType][0]["classificator"]["SVC"].score(X_test, y_test), "% correct")
+            extractedData[method][wordType][size]["classificator"] = {
+                "SVC": svm.SVC(),
+                "KNN": KNeighborsClassifier(n_neighbors=5),
+                "RandomForest": RandomForestClassifier()
+            }
+            for classifier in extractedData[method][wordType][size]["classificator"].keys():
+                extractedData[method][wordType][size]["features"] = extractedData[method][wordType][size]["vectorizer"].fit_transform(text)
+                X_train, X_test, y_train, y_test = train_test_split(extractedData[method][wordType][size]["features"], labels, test_size=0.60, random_state=42)
+                extractedData[method][wordType][size]["classificator"][classifier].fit(X_train, y_train)
+                print(method, wordType, size+1, classifier, round(extractedData[method][wordType][size]["classificator"][classifier].score(X_test, y_test), 2), "% correct")
+
+end = time.time() / 60
+
+print(end - start)
 # print(extractedData)
-# extractedData["bagOfWords"]["word"][0]["features"] = extractedData["bagOfWords"]["word"][0]["vectorizer"].fit_transform(text)
 
 # print(len(tfidfVectorizer.get_feature_names()))
 
 #Train data
-# X_train, X_test, y_train, y_test = train_test_split(extractedData["bagOfWords"]["word"][0]["features"], labels, test_size=0.50, random_state=42)
-
-
-# clf = svm.SVC()
-# clf.fit(X_train, y_train)
-# print(clf.score(X_test, y_test))
-
 
 #Save trained models
-
 
 #Plot data
 

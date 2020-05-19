@@ -1,3 +1,4 @@
+from sklearn.decomposition import PCA
 import copy
 import re
 import string
@@ -84,13 +85,15 @@ for method in extractedData.keys():
                 "MLP": MLPClassifier(max_iter=1000)
             }
             for classifier in extractedData[method][wordType][size]["classificator"].keys():
-                extractedData[method][wordType][size]["features"] = extractedData[method][wordType][size]["vectorizer"].fit_transform(text)
-                X_train, X_test, y_train, y_test = train_test_split(extractedData[method][wordType][size]["features"], labels, test_size=0.60, random_state=42)
+                X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.60, random_state=42)
+                extractedData[method][wordType][size]["vectorizer"].fit(X_train)
+                trainingFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_train)
+                testFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_test)
                 start = time.time()
-                extractedData[method][wordType][size]["classificator"][classifier].fit(X_train, y_train)
+                extractedData[method][wordType][size]["classificator"][classifier].fit(trainingFeatures, y_train)
                 end = time.time() 
                 print('{:>18}  {:>18}  {:>18} {:>18} {:>18} {:>22}'.format(method, wordType, size+1, classifier,
-                        str(round(extractedData[method][wordType][size]["classificator"][classifier].score(X_test, y_test), 2)) + "%",
+                        str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test), 2)) + "%",
                         str(round(end-start, 2)) + "s"))
 
 

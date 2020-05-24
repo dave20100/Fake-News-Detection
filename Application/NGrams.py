@@ -17,15 +17,17 @@ from sklearn.feature_extraction.text import (CountVectorizer,
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import SGDClassifier
 
 #Set a range of Ngram length that will be tested
-NgramSizeRange = range(1,2)
+NgramSizeRange = range(1,3)
 
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
-# print(stopwords)
+
 datasplit = {
-    "char": [],
+    "ngram": [],
     "word": []
 }
 
@@ -61,38 +63,47 @@ def plotData():
 (text, labels) = basicPreparation("news.csv") 
 (text, labels) = dataPreprocessing(text, labels)
 
-# Extract information from data
-
 
 for size in NgramSizeRange:
-    extractedData["bagOfWords"]["char"].append({"vectorizer": CountVectorizer(analyzer="char", ngram_range=(size, size))})
-    extractedData["tfidf"]["char"].append({"vectorizer": TfidfVectorizer(analyzer="char", ngram_range=(size, size))})
+    extractedData["bagOfWords"]["Ngram"].append({"vectorizer": CountVectorizer(analyzer="char", ngram_range=(size, size))})
+    extractedData["tfidf"]["Ngram"].append({"vectorizer": TfidfVectorizer(analyzer="char", ngram_range=(size, size))})
 
-extractedData["bagOfWords"]["word"].append({"vectorizer": CountVectorizer(
+extractedData["bagOfWords"]["Word"].append({"vectorizer": CountVectorizer(
     analyzer="word", ngram_range=(1, 1))})
-extractedData["tfidf"]["word"].append({"vectorizer": TfidfVectorizer(
+extractedData["tfidf"]["Word"].append({"vectorizer": TfidfVectorizer(
     analyzer="word", ngram_range=(1, 1))})
 
-print('{:>18}  {:>18}  {:>18} {:>18} {:>18} {:>22}'.format(
-    "method", "wordType", "size", "classifier", "score", "time"))
+print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(
+    "Vectorization", "Word type", "Size", "Classifier", "Score", "Time"))
+
 for method in extractedData.keys():
     for wordType in extractedData[method].keys():
         for size in range(len(extractedData[method][wordType])):
             extractedData[method][wordType][size]["classificator"] = {
-                "SVC": svm.SVC(),
+                "SVC": svm.SVC(cache_size=500),
                 "KNN": KNeighborsClassifier(n_neighbors=7),
                 "RandomForest": RandomForestClassifier(),
-                "MLP": MLPClassifier(max_iter=1000)
+                "MLP": MLPClassifier(max_iter=1000),
+                "SGD": SGDClassifier()
             }
             for classifier in extractedData[method][wordType][size]["classificator"].keys():
-                X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.60, random_state=42)
+                X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.40, random_state=42)
+
                 extractedData[method][wordType][size]["vectorizer"].fit(X_train)
+                
                 trainingFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_train)
                 testFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_test)
+
+                scalerTrain = StandardScaler(with_mean=False)
+                scalerTest = StandardScaler(with_mean=False)
+                trainingFeatures = scalerTrain.fit_transform(trainingFeatures)
+                testFeatures = scalerTest.fit_transform(testFeatures)
+
                 start = time.time()
                 extractedData[method][wordType][size]["classificator"][classifier].fit(trainingFeatures, y_train)
                 end = time.time() 
-                print('{:>18}  {:>18}  {:>18} {:>18} {:>18} {:>22}'.format(method, wordType, size+1, classifier,
+
+                print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(method, wordType, size+1, classifier,
                         str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test), 2)) + "%",
                         str(round(end-start, 2)) + "s"))
 

@@ -4,7 +4,7 @@ import re
 import string
 import time
 from enum import Enum
-
+import csv
 import matplotlib.pyplot as plt
 import nltk
 import pandas as pd
@@ -27,8 +27,8 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
 datasplit = {
-    "ngram": [],
-    "word": []
+    "Ngram": [],
+    "Word": []
 }
 
 extractedData = {
@@ -76,36 +76,41 @@ extractedData["tfidf"]["Word"].append({"vectorizer": TfidfVectorizer(
 print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(
     "Vectorization", "Word type", "Size", "Classifier", "Score", "Time"))
 
-for method in extractedData.keys():
-    for wordType in extractedData[method].keys():
-        for size in range(len(extractedData[method][wordType])):
-            extractedData[method][wordType][size]["classificator"] = {
-                "SVC": svm.SVC(cache_size=500),
-                "KNN": KNeighborsClassifier(n_neighbors=7),
-                "RandomForest": RandomForestClassifier(),
-                "MLP": MLPClassifier(max_iter=1000),
-                "SGD": SGDClassifier()
-            }
-            for classifier in extractedData[method][wordType][size]["classificator"].keys():
-                X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.40, random_state=42)
+with open('scores.csv', mode='w', newline='') as score_file:
+    csv_writer = csv.writer(score_file)
+    csv_writer.writerow(["Vectorization", "Word Type", "Size", "Classifier", "Score", "Time"])
+    for method in extractedData.keys():
+        for wordType in extractedData[method].keys():
+            for size in range(len(extractedData[method][wordType])):
+                extractedData[method][wordType][size]["classificator"] = {
+                    "SVC": svm.SVC(cache_size=500),
+                    "KNN": KNeighborsClassifier(n_neighbors=7),
+                    "RandomForest": RandomForestClassifier(),
+                    "MLP": MLPClassifier(max_iter=1000),
+                    "SGD": SGDClassifier()
+                }
+                for classifier in extractedData[method][wordType][size]["classificator"].keys():
+                    X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.40, random_state=42)
 
-                extractedData[method][wordType][size]["vectorizer"].fit(X_train)
-                
-                trainingFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_train)
-                testFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_test)
+                    extractedData[method][wordType][size]["vectorizer"].fit(X_train)
+                    
+                    trainingFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_train)
+                    testFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_test)
 
-                scalerTrain = StandardScaler(with_mean=False)
-                scalerTest = StandardScaler(with_mean=False)
-                trainingFeatures = scalerTrain.fit_transform(trainingFeatures)
-                testFeatures = scalerTest.fit_transform(testFeatures)
+                    scalerTrain = StandardScaler(with_mean=False)
+                    scalerTest = StandardScaler(with_mean=False)
+                    trainingFeatures = scalerTrain.fit_transform(trainingFeatures)
+                    testFeatures = scalerTest.fit_transform(testFeatures)
 
-                start = time.time()
-                extractedData[method][wordType][size]["classificator"][classifier].fit(trainingFeatures, y_train)
-                end = time.time() 
-
-                print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(method, wordType, size+1, classifier,
-                        str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test), 2)) + "%",
-                        str(round(end-start, 2)) + "s"))
+                    start = time.time()
+                    extractedData[method][wordType][size]["classificator"][classifier].fit(trainingFeatures, y_train)
+                    end = time.time() 
+                    csv_writer.writerow([method, wordType, size+1, classifier, 
+                                         str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test), 2)) + "%", 
+                                         str(round(end-start, 2))])
+                    print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(method, wordType, size+1, classifier, 
+                            str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test), 2)) + "%",
+                            str(round(end-start, 2)) + "s"))
 
 
 #Save trained models

@@ -387,7 +387,7 @@
 
 \def\maketitle{%
   \pagestyle{empty}%
-%%\garamond 
+% \garamond 
 	\fontfamily{\ebgaramond@family}\selectfont % na stronie tytułowej czcionka garamond
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 %% Poniżej, w otoczniu picture, wstawiono tytuł i autora. 
@@ -457,7 +457,7 @@ SPECJALNOŚĆ: & \@specjalnosc\\
 \makeatother
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
 
 
 
@@ -514,14 +514,12 @@ SPECJALNOŚĆ: & \@specjalnosc\\
 % \mbox{}\pdfbookmark[0]{Spis rysunków}{spisRysunkow.1}
 % \addcontentsline{toc}{chapter}{Spis rysunków}
 % \listoffigures*
-\begin{flushleft}
-
-\end{flushleft}
-%{%
-%\let\oldnumberline\numberline%
-%\renewcommand{\numberline}{\figurename~\oldnumberline}%
-%\listoffigures%
-%}
+{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\figurename~\oldnumberline}%
+\listoffigures%
+}
+\newpage
 
 
 % \newpage
@@ -529,9 +527,9 @@ SPECJALNOŚĆ: & \@specjalnosc\\
 \addcontentsline{toc}{chapter}{Spis tabel}
 \listoftables*
 
-\include{skroty} %skróty można sobie pominąć
-\include{streszczenie}
+% \include{skroty} %skróty można sobie pominąć
 \chapterstyle{default}
+\include{streszczenie}
 \include{rozdzial01}
 \include{rozdzial02}
 \include{rozdzial03}

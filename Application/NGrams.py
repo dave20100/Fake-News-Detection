@@ -84,7 +84,7 @@ with open('scores.csv', mode='w', newline='') as score_file:
             for size in range(len(extractedData[method][wordType])):
                 extractedData[method][wordType][size]["classificator"] = {
                     "SVC": svm.SVC(cache_size=500),
-                    "KNN": KNeighborsClassifier(n_neighbors=7),
+                    "KNN": KNeighborsClassifier(),
                     "RandomForest": RandomForestClassifier(),
                     "MLP": MLPClassifier(max_iter=1000),
                     "SGD": SGDClassifier()

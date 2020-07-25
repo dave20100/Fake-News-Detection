@@ -24,7 +24,9 @@ Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zale�
     Ważnym zagadnieniem w przypadku uczenia nadzorowanego jest tak zwany Overfitting polegający 
     na przeuczeniu programu jednym zestawem treningowym przez co traci on umiejętność generalizacji problemu
     i nie jest w stanie poprawnie podejmować predykcji danych niewystarczająco podobnych
-    do treningowych. Algorytmy tego typu można podzielić na dwa rodzaje:
+    do treningowych.
+
+    Przykładowe zastosowanie:
     \begin{itemize}
         \item Klasyfikacja - przewidywanie kategorii
         \begin{itemize}
@@ -33,15 +35,27 @@ Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zale�
         \end{itemize}
         \item Regresja - przewidywanie liczb
         \begin{itemize}
-            \item przewidywanie trendów finansowych lub ekonomicznych
+            \item przewidywanie trendów finansowych lub ekonomicznych,
             \item prognozowanie pogody
         \end{itemize}
     \end{itemize}
     \item \textbf{Uczenie nienadzorowane}
     W przeciwieństwie do uczenia nadzorowanego uczenie nienadzorowane opiera się na braku
     nauczyciela a zadaniem maszyny jest znalezienie wzorców i zależności między analizowanymi
-    obiektami samodzielnie. Wykorzystanie tego typu algorytmów pozwala na badanie danych nieoznaczonych,
-    które są znacznie częsciej spotykane niż dane oznaczone. 
+    obiektami samodzielnie. Dwie metody które są najczęściej wykorzystywane w uczeniu nienadzorowanym
+    to:
+    \begin{enumerate}
+        \item \textbf{Analiza składowych głownych} - Polega na zmniejszaniu wymiarowości danych poprzez
+        odnajdywanie a następnie odrzucanie cech, które niosą ze sobą najmniejszą ilość informacji,
+        \item \textbf{Analiza skupień (Klasteryzacja)} - Pozwala na identyfikację oraz grupowanie danych
+        podobnych, które nie są w żaden sposób oznaczone. Może także pomóc w odnalezieniu anomalii
+        nie pasujących do żadnej z wydzielonych grup.
+        
+    \end{enumerate} 
+    Wykorzystanie tego typu algorytmów pozwala na badanie danych nieoznaczonych,
+    które są znacznie częsciej spotykane niż dane oznaczone.
+    
+    Przykładowe zastosowanie:
     \begin{itemize}
         \item Redukcja wymiarów
         \begin{itemize}
@@ -61,6 +75,8 @@ Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zale�
     mieć całkowicie inne działanie w zależności od rozwiązywanego problemu. 
     Ponieważ algorytmy uczenia ze wzmocnieniem dążą do zebrania jak największej
     ilości ``nagrody'' nie zawsze odnajdują one optymalne rozwiązanie.
+    
+    Przykładowe zastosowanie:
     \begin{itemize}
         \item Tworzenie programów grających w gry
         \item Samojezdne samochody
@@ -68,12 +84,50 @@ Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zale�
 \end{enumerate} 
 
 \section{Algorytmy klasyfikacji}
-
+Z problemem klasyfikacji można się spotkać wszędzie tam, gdzie wykorzystując
+zbiór zmiennych objaśniających należy wskazać wartość przyjmowaną przez zmienną
+modelowaną. W problemach klasyfikacji zmienna modelowana może przyjmować wartości
+binarne (\textbf{klasyfikacja dwuklasowa}) lub jedną z wielu etykiet (\textbf{klasyfikacja wieloklasowa}).
+Aby wybrać odpowiedni do rozwiązywanego problemu algorytm klasyfikacji należy wziąć 
+pod uwagę 4 czynniki:
+\begin{itemize}
+    \item Złożoność czasowa -
+    \item Interpretowalność - 
+    \item Skalowalność - jak dużą ilość zasobów zużywa dany algorytm 
+    \item Czynnik ludzki - Aby poprawnie ustawić parametry algorytmu potrzebna
+    jest wiedza na temat jego działania. Ponieważ poprawne ich ustawienie może 
+    mieć większe znaczenie dla efektywności niż dobór najlepszego algorytmu często
+    lepiej jest wykorzystać algorytm znany a nie optymalny.
+\end{itemize}
 \subsection{KNN}
-\subsection{SVC}
+Algorytm KNN
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Img/KNN.png}
+    \caption{Graficzne przedstawienie algorytmu KNN Źródło: Własne}
+\end{figure}
+\subsection{SVM}
+Algorytm SVM
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Img/SVM.png}
+    \caption{Wizualizacja algorytmu SVM Źródło: Własne}
+\end{figure}
 \subsection{MLP}
+Algorytm MLP
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Img/MLP.png}
+    \caption{Graficzne przedstawienie perceptronu wielowarstwowego Źródło: Własne}
+\end{figure}
 \subsection{Binary trees}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Img/BinaryTree.png}
+    \caption{Przykładowe drzewo decyzyjne podejmujące decyzję czy wyjść na zewnątrz Źródło: Własne}
+\end{figure}
 \subsection{Naive Bayes}
+Algorytm Naive Bayes
 
 \section{Wykorzystanie}
 

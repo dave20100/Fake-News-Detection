@@ -5,7 +5,6 @@ import string
 import time
 from enum import Enum
 import csv
-import matplotlib.pyplot as plt
 import nltk
 import pandas as pd
 from nltk.corpus import stopwords
@@ -19,9 +18,10 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import SGDClassifier
+from datetime import datetime
 
 #Set a range of Ngram length that will be tested
-NgramSizeRange = range(1,3)
+NgramSizeRange = range(1,10)
 
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
@@ -76,7 +76,7 @@ extractedData["tfidf"]["Word"].append({"vectorizer": TfidfVectorizer(
 print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(
     "Vectorization", "Word type", "Size", "Classifier", "Score", "Time"))
 
-with open('scores.csv', mode='w', newline='') as score_file:
+with open(str(datetime.now().strftime("%d%m%Y%H%M%S")) + '.csv', mode='w', newline='') as score_file:
     csv_writer = csv.writer(score_file)
     csv_writer.writerow(["Vectorization", "Word Type", "Size", "Classifier", "Score", "Time"])
     for method in extractedData.keys():

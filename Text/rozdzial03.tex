@@ -7,7 +7,7 @@ wykrywanie twarzy na zdjęciach oraz nagraniach a przyszłości może pomóc w s
 samojezdne samochody. Sam termin został spopularyzowany przez informatyka Arhura Samuela w roku 1959, był on autorem pierwszego działającego 
 systemu tego typu, jego program automatycznie grał w warcaby i uczył się na podstawie poprzednich potyczek.
 \section{Rodzaje}
-\begin{figure}[h!]
+\begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{./Img/typesofLearning.png}
     \caption{Rodzaje uczenia maszynowego Źródło: Własne}
@@ -91,43 +91,202 @@ binarne (\textbf{klasyfikacja dwuklasowa}) lub jedną z wielu etykiet (\textbf{k
 Aby wybrać odpowiedni do rozwiązywanego problemu algorytm klasyfikacji należy wziąć 
 pod uwagę 4 czynniki:
 \begin{itemize}
-    \item Złożoność czasowa -
-    \item Interpretowalność - 
-    \item Skalowalność - jak dużą ilość zasobów zużywa dany algorytm 
+    \item Złożoność czasowa - jak długo trwa uczenie oraz predykcja nowych danych,
+    \item Interpretowalność - jak łatwo można wytłumaczyć decyzję podjętą przez 
+    system,
+    \item Skalowalność - jak dużą ilość zasobów zużywa dany algorytm,
     \item Czynnik ludzki - Aby poprawnie ustawić parametry algorytmu potrzebna
     jest wiedza na temat jego działania. Ponieważ poprawne ich ustawienie może 
     mieć większe znaczenie dla efektywności niż dobór najlepszego algorytmu często
     lepiej jest wykorzystać algorytm znany a nie optymalny.
 \end{itemize}
+
 \subsection{KNN}
-Algorytm KNN
-\begin{figure}[H]
+
+Algorytm K najbliższych sąsiadów (\textbf{K nearest neighbours}) jest algorytmem
+stosowanym zarówno w problemach regresyjnych jak i klasyfikacji. Kroki jego działania
+można opisać w następujący sposób:
+\begin{enumerate}
+    \item Umieszczenie wszystkich obiektów posiadających N cech jako punkty w N-wymiarowej przestrzeni
+    \item Obliczenie odległości między obiektem którego etykieta będzie przewidywana a każdym innym
+    obiektem
+    \item Przypisanie do obiektu etykiety, którą posiada większość z K najbliższych obiektów. 
+\end{enumerate}
+Faza uczenia w KNN polega wyłącznie na wczytaniu danych treningowych do pamięci przez co jest 
+ona bardzo szybka.
+
+Najważniejszą kwestią w poprawnym implementowaniu algorytmu KNN jest odpowiednie wybranie liczby
+K, której optymalna wartość będzie się różnić w zależności od danych. W problemach 
+klasyfikacji często wybiera się K o wartości nieparzystej aby uniknąć problemu remisu
+podczas zliczania sąsiadów. W przypadku problemów regresyjnych zamiast wykonywać głosowanie
+predykcję wykonuje się na podstawie średniej wartości K najbliższych sąsiadów.
+
+\begin{table}[h]
+    \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
+    \toprule
+    \hfil\bfseries Zalety
+    &
+    \hfil\bfseries Wady
+    \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
+    
+    %% PROS, seperated by empty line or \par
+    Prosty do zrozumienia i interpretacji\par
+    Szybkość fazy uczenia\par
+    Uniwersalność można go wykorzystać zarówno w problemach regresyjnych jak i klasyfikcyjnych\par
+    Nie wykonuje generalizacji danych przez co jest efektywny w przypadku danych nieliniowych\par
+    &
+    
+    %% CONS, seperated by empty line or \par
+    Przechowuje wszystkie dane treningowe w pamięci co skutkuje wysoką złożonością pamięciową\par
+    Wrażliwy na ilość danych i nieistotne cechy\par
+    Kosztowny obliczeniowo\par
+    \\\bottomrule
+    \end{tabularx}
+    \caption{Wady i zalety KNN}
+\end{table}
+    
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{./Img/KNN.png}
     \caption{Graficzne przedstawienie algorytmu KNN Źródło: Własne}
 \end{figure}
+
 \subsection{SVM}
-Algorytm SVM
-\begin{figure}[H]
+
+Algorytm SVM (\textbf{Support vector machines}) również można wykorzystywać zarówno 
+w problemach regresyjnych i klasyfikcyjnych. Jego działanie można opisać jako następujące
+kroki:
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+\begin{table}[h]
+    \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
+    \toprule
+    \hfil\bfseries Zalety
+    &
+    \hfil\bfseries Wady
+    \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
+    
+    %% PROS, seperated by empty line or \par
+    Efektywny w wielowymiarowych przestrzeniach\par
+    Działa nawet w przypadku gdzie liczba danych treningowych jest mniejsza od
+    ilości ich cech\par
+    Przechowuje w pamięci tylko niewielką ilość danych treningowych\par
+    
+    &
+    
+    %% CONS, seperated by empty line or \par
+    Nie jest on przystosowany do dużej ilości danych treningowych\par
+    Nie radzi sobie dobrze jeżeli obiekty różnych klas nachodzą na siebie\par
+    Trudne do zinterpretowania wyniki predykcji
+    
+    \\\bottomrule
+    \end{tabularx}
+    \caption{Wady i zalety SVM}
+\end{table}
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{./Img/SVM.png}
     \caption{Wizualizacja algorytmu SVM Źródło: Własne}
 \end{figure}
+
 \subsection{MLP}
-Algorytm MLP
-\begin{figure}[H]
+
+Algorytm MLP (\textbf{Multi layered perceptron})
+
+\begin{table}[h]
+    \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
+    \toprule
+    \hfil\bfseries Zalety
+    &
+    \hfil\bfseries Wady
+    \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
+    
+    %% PROS, seperated by empty line or \par
+    Szybkie wykonywanie predykcji po nauczeniu modelu\par
+    Efektywny dla nieliniowych danych posiadających wiele cech takich jak zdjęcia\par
+    Działają najlepiej dla dużej ilości danych treningowych\par
+    &
+    
+    %% CONS, seperated by empty line or \par
+    Brak możliwości interpretacji wyniku predykcji\par
+    Uczenie bardzo złożone obliczeniowo co skutkuje długim czasem uczenia\par
+    Użytkownik ma niewielki wpływ na działanie sieci\par
+    \\\bottomrule
+    \end{tabularx}
+    \caption{Wady i zalety MLP}
+\end{table}
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{./Img/MLP.png}
     \caption{Graficzne przedstawienie perceptronu wielowarstwowego Źródło: Własne}
 \end{figure}
-\subsection{Binary trees}
-\begin{figure}[H]
+
+\subsection{Decision trees}
+
+Algorytm Decision trees 
+
+\begin{table}[h]
+    \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
+    \toprule
+    \hfil\bfseries Zalety
+    &
+    \hfil\bfseries Wady
+    \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
+    
+    %% PROS, seperated by empty line or \par
+    \par
+    \par
+    
+    &
+    
+    %% CONS, seperated by empty line or \par
+    \par
+    \par
+    
+    \\\bottomrule
+    \end{tabularx}
+    \caption{Wady i zalety Drzew decyzyjnych}
+\end{table}
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{./Img/BinaryTree.png}
     \caption{Przykładowe drzewo decyzyjne podejmujące decyzję czy wyjść na zewnątrz Źródło: Własne}
 \end{figure}
-\subsection{Naive Bayes}
-Algorytm Naive Bayes
+
+
+\subsection{SGD}
+
+Algorytm SGD (\textbf{Stochastic gradient descent})
+
+\begin{table}[h]
+    \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
+    \toprule
+    \hfil\bfseries Zalety
+    &
+    \hfil\bfseries Wady
+    \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
+    
+    %% PROS, seperated by empty line or \par
+    \par
+    \par
+    
+    &
+    
+    %% CONS, seperated by empty line or \par
+    \par
+    \par
+    
+    \\\bottomrule
+    \end{tabularx}
+    \caption{Wady i zalety SGD}
+\end{table}
 
 \section{Wykorzystanie}
 

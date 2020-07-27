@@ -21,7 +21,10 @@ from sklearn.linear_model import SGDClassifier
 from datetime import datetime
 
 #Set a range of Ngram length that will be tested
-NgramSizeRange = range(1,10)
+minNgram = 1
+maxNgram = 9
+
+NgramSizeRange = range(minNgram, maxNgram)
 
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
@@ -76,21 +79,21 @@ extractedData["tfidf"]["Word"].append({"vectorizer": TfidfVectorizer(
 print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(
     "Vectorization", "Word type", "Size", "Classifier", "Score", "Time"))
 
-with open(str(datetime.now().strftime("%d%m%Y%H%M%S")) + '.csv', mode='w', newline='') as score_file:
+with open('./Wyniki/' + str(datetime.now().strftime("%d%m%Y%H%M%S")) + str(minNgram) + 'to' + str(maxNgram) + '.csv', mode='w', newline='') as score_file:
     csv_writer = csv.writer(score_file)
     csv_writer.writerow(["Vectorization", "Word Type", "Size", "Classifier", "Score", "Time"])
     for method in extractedData.keys():
         for wordType in extractedData[method].keys():
             for size in range(len(extractedData[method][wordType])):
                 extractedData[method][wordType][size]["classificator"] = {
-                    "SVC": svm.SVC(cache_size=500),
+                    "SVC": svm.SVC(),
                     "KNN": KNeighborsClassifier(),
                     "RandomForest": RandomForestClassifier(),
-                    "MLP": MLPClassifier(max_iter=1000),
+                    "MLP": MLPClassifier(),
                     "SGD": SGDClassifier()
                 }
                 for classifier in extractedData[method][wordType][size]["classificator"].keys():
-                    X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.40, random_state=42)
+                    X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.40)
 
                     extractedData[method][wordType][size]["vectorizer"].fit(X_train)
                     

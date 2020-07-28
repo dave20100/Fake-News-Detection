@@ -22,7 +22,7 @@ from datetime import datetime
 
 #Set a range of Ngram length that will be tested
 minNgram = 1
-maxNgram = 9
+maxNgram = 2
 
 NgramSizeRange = range(minNgram, maxNgram)
 
@@ -108,12 +108,12 @@ with open('./Wyniki/' + str(datetime.now().strftime("%d%m%Y%H%M%S")) + str(minNg
                     start = time.time()
                     extractedData[method][wordType][size]["classificator"][classifier].fit(trainingFeatures, y_train)
                     end = time.time() 
-                    csv_writer.writerow([method, wordType, size+1, classifier, 
-                                         str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test), 2)) + "%", 
-                                         str(round(end-start, 2))])
-                    print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(method, wordType, size+1, classifier, 
-                            str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test), 2)) + "%",
-                            str(round(end-start, 2)) + "s"))
+                    csv_writer.writerow([method, wordType, minNgram+size, classifier, 
+                                         str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test)*100, 2)) + "%", 
+                                         str(round(end-start, 3))])
+                    print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(method, wordType, minNgram+size, classifier, 
+                            str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test)*100, 2)) + "%",
+                            str(round(end-start, 3)) + "s"))
 
 
 #Save trained models

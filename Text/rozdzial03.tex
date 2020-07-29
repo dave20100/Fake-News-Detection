@@ -154,13 +154,20 @@ predykcję wykonuje się na podstawie średniej wartości K najbliższych sąsia
 
 \subsection{SVM}
 
-Algorytm SVM (\textbf{Support vector machines}) również można wykorzystywać zarówno 
-w problemach regresyjnych i klasyfikcyjnych. Jego działanie można opisać jako następujące
-kroki:
-
+Klasyfikator SVM (\textbf{Support vector machines}) również można wykorzystywać zarówno 
+w problemach regresyjnych i klasyfikcyjnych. Służą one do klasyfikacji binarnej, co 
+oznacza że obiekty należy podzielić na dokładnie dwie klasy. SVM polega na znalezieniu
+takiej prostej lub płaszczyzny (w zależności od liczby cech), która w jak najlepszy sposób
+dzieli obiekty dwóch klas. Czasami idealny podział jest niemożliwy z czym klasyfikator 
+ten radzi sobie w jeden z dwóch sposobów:
 \begin{enumerate}
-    \item 
+    \item Ignorowanie punktów które uniemożliwiają podział,
+    \item Wykorzystanie tak zwanych kernel trick, które przekształcają dane do wyższego 
+    wymiaru w którym podział jest możliwy.
 \end{enumerate}
+Aby odnaleźć optymalne rozwiązanie SVM skupiają się na punktach jak najbardziej skrajnych
+obu klas są one nazywane \textbf{wektorami nośnymi} zmiana ich położenia lub usunięcie
+całkowicie zmienia położenie płaszczyzny.
 
 \begin{table}[h]
     \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
@@ -196,7 +203,36 @@ kroki:
 
 \subsection{MLP}
 
-Algorytm MLP (\textbf{Multi layered perceptron})
+Działanie algorytmu Perceptronu wielowarstwowego (\textbf{Multi layered perceptron}) 
+opiera się na wykorzystaniu modelu sztucznego neuronu, który na podstawie określonej
+funkcji aktywacji oblicza na wyjściu pewną wartość na podstawie ważonych sum danych
+wejściowych. 
+
+Funkcje aktywacji dzieli się na:
+\begin{itemize}
+    \item \textbf{Funkcje progowe} z wyjściem binarnym
+    \item \textbf{Funkcje liniowe} z wyjściem ciągłym
+    \item \textbf{Funkcje nieliniowe} z wyjściem ciągłym
+\end{itemize}
+W sieciach wielowarstwowych najczęściej wykorzystuje się funkcje nieliniowe poniważ 
+wykazują one najwieksze zdolności do nauki.
+
+Perceptron wielowarstwowy składa się z trzech warstw sztucznych neuronów: 
+\begin{enumerate}
+    \item \textbf{Warstwy wejściowej} - są to neurony zapewniające całej sieci
+    informacje czyli zazwyczaj dane treningowe nie wykonują one żadnych obliczeń
+    a jedynie przekazują informacje do kolejnych warstw.
+    \item \textbf{Warstwy ukrytej} - wykonują one odpowiednie obliczenia zmieniając 
+    i przekazując informacje z warstwy wejściowej do wyjściowej. Sieć może składać
+    się z dowolnej liczby warstw ukrytych.
+    \item \textbf{Warstwy wyjsćiowej} - wykonują one ostatnie obliczenia na danych 
+    a następnie zwracają wynik.
+\end{enumerate}
+
+Uczenie takiej sieci polega na takiej modyfikacji wag na wejściu neuronów aby poprawić
+wyniki klasyfikacji. Podczas gdy perceptron jednowarstwowy czyli nieposiadający żadnej warstwy ukrytej może 
+nauczyć się wyłącznie funkcji liniowych perceptron wielowarstwowy pozwala na nauczenie
+się skomplikowanych funkcji nieliniowych.
 
 \begin{table}[h]
     \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}

@@ -332,11 +332,11 @@ wystąpienia róznych klas na podstawie czego algorytm wykonuje predykcję.
     \label{eq:bayes}
     P(A|B) = \frac{P(A|B)P(A)}{P(B)}
 \end{equation}
-gdzie P(A) i P(B) prawdopodobieństwa wystąpienia zdarzeń A i B, P(A|B) prawdopodieństwo wystąpienia
+gdzie P(A) i P(B) prawdopodobieństwa wystąpienia zdarzeń A i B, P(A|B) prawdopodobieństwo wystąpienia
 zdarzenia A pod warunkiem wystąpienia zdarzenia B.
 
-Algorytm ten jest często wykorzystywany w systemach czasu rzeczywistego, ponieważ działa bardzo szybko 
-kosztem efektywności.
+Algorytm ten jest często wykorzystywany w systemach czasu rzeczywistego, ponieważ działa bardzo szybko jednak
+jego efektywność w porównaniu do bardziej skomplikowanych algorytmów jest mniejsza.
 \begin{table}[h]
     \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
     \toprule
@@ -346,7 +346,7 @@ kosztem efektywności.
     \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
     
     %% PROS, seperated by empty line or \par
-    Bardzo szybki nawet w przypadku przewidywania wieloklasowego\par
+    - Bardzo szybki nawet w przypadku przewidywania wieloklasowego\par
     Działa nawet dla małej ilości danych\par
     Dobra efektywność w przypadku klasyfikacji danych wielowymiarowych
     jak na przykład w przypadku klasyfikacji tekstu\par
@@ -365,3 +365,30 @@ kosztem efektywności.
 \end{table}
 
 \section{Zagrożenia}
+Ogromny rozwój uczenia maszynowego i sztucznej inteligencji spowodował że znalazły one 
+wiele zastosowań w różnych dziedzinach życia codziennego. Powoduje to, że wiele osób skupia się 
+na pozytywach związanych
+z tymi technologiami, jednakże niektórzy dostrzegają ogromne zagrożenia płynące z niewłaściwego 
+wykorzystania ich i katastrofalne skutki, do których mogą doprowadzić. 
+Wśród takich osób znajdują się naukowcy tacy jak jak Stephen Hawking, Elon Musk, Steve Wozniak i Bill Gates. 
+Według Elona Muska sztuczna inteligencja niesie ze sobą większe zagrożenie niż bomby atomowe. 
+
+Dwa głowne sposoby w jaki sztuczna inteligencja może powodować zagrożenie to:
+\begin{enumerate}
+    \item \textbf{AI zaprogramowane do czynienia krzywdy} czyli na przykład wykorzystanie uczenia maszynowego
+    w takich narzędziach jak broń, która w niewłaściwych rękach stanowiłaby zagrożenie dla całej ludzkości.
+    \item \textbf{AI zaprogramowane w dobrych celach, jednak odnajdujące krzywdzący innych optymalny
+    sposób osiągnięcia sukcesu} może to być związane ze złym przekazaniem celu jaki maszyna ma osiągnąć przez 
+    programistę. Przykładowo mogłby to być samojezdny samochód, który podczas jazdy zwraca uwagę tylko i wyłącznie 
+    na to by jak najszybciej dojechać do celu podróży. Samochód taki nie przestrzegał by istniejących praw drogowych
+    ponieważ ograniczałyby one jego prędkość.
+\end{enumerate}
+Przykłady te pokazują że zagrożenie nie płynie z sytuacji gdzie maszyny odwracają się przeciwko ludzkości, a 
+z sytuacji w której maszyny wykonują poświęcone im zadania za dobrze i nie w sposób przewidziany przez 
+stwórcę systemu.
+
+Istotnym problemem jest także bezrobocie będące skutkiem zastępowania ludzi maszynami,
+ponieważ są one znacznie tańsze w utrzymaniu niż pracownicy a z wykorzystaniem uczenia
+maszynowego mogą one opanować niektóre zadania lepiej od ludzi.
+Rozwiązaniem na takie problemy mogłyby być obowiązkowo przestrzegane zasaady bezpiecznego korzystania
+ze sztucznej inteligencji, których złamanie wiązałoby się z odpowiedzialnością karną.

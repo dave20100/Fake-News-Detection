@@ -265,8 +265,28 @@ się skomplikowanych funkcji nieliniowych.
 
 \subsection{Decision trees}
 
-Algorytm Decision trees 
-
+Algorytm Decision trees polega na stworzeniu drzewa decyzyjnego w którym korzeń i węzły
+są poszczególnymi cechami zbioru danych a liście odpowiadają klasom, które tym danym 
+należy przypisać, ostatnim elementem są krawędzie którymi reprezentuje się wartości cech. 
+Kroki algorytmu są następujące:
+\begin{enumerate}
+    \item Wybranie najlepszej cechy
+    \item Dodanie gałęzi odpowiadającym poszeczególnym wartościom wybranej cechy
+    \item Podział zbioru danych na podzbiory zgodnie z wartościami cechy
+    \item Jeżeli wszystkie elementy pozdzbiorów należą do tej samej klasy 
+    zakończenie gałęzi liściem. W przeciwnym wypadku powtórzenie kroków 
+    od 1 do 4 dla każdego podzbioru
+\end{enumerate}
+Aby dokonać optymalnego podziału algorytm musi wybrać cechy powodujące jak najlepsze
+podzielenie różnych klas a więc niosące ze sobą największą ilośc informacji,
+wykorzystuje się w tym celu entropię, której wartość pozwala określić średnią ilość 
+informacji niesioną przez poszczególne cechy.
+\begin{equation}
+    H(x)=-\sum_{i=1}^n p(x_i) \log_2 p(x_i).
+    \label{eq-entropy}
+\end{equation}
+Wzór na entropię ~\ref{eq-entropy}, gdzie \textit{p(x\textsubscript{i})} jest prawdopodobieństwem
+wybrania klasy \textit{x\textsubscript{i}}
 \begin{table}[h]
     \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
     \toprule
@@ -298,10 +318,25 @@ Algorytm Decision trees
 \end{figure}
 
 
-\subsection{SGD}
+\subsection{Naive Bayes}
 
-Algorytm SGD (\textbf{Stochastic gradient descent})
+Naiwny klasyfikator Bayesowski (\textbf{Naive Bayes}) jest probabilistycznym klasyfikatorem, który
+zakłada wzajemną niezależność wszystkich cech stąd naiwność algorytmu. Stworzony przez niego model
+opiera się na obliczeniu prawdopodobieństw wystąpienia poszczególnych cech pod warunkiem że 
+występują one w danej klasie. Pozwala to przy użyciu twierdzenia Bayesa ~\ref{eq:bayes} obliczyć prawdopodobieństwa 
+warunkowe określające z jak duża pewnością występująca kombinacja cech prowadzi do 
+wystąpienia róznych klas na podstawie czego algorytm wykonuje predykcję. 
 
+
+\begin{equation}
+    \label{eq:bayes}
+    P(A|B) = \frac{P(A|B)P(A)}{P(B)}
+\end{equation}
+gdzie P(A) i P(B) prawdopodobieństwa wystąpienia zdarzeń A i B, P(A|B) prawdopodieństwo wystąpienia
+zdarzenia A pod warunkiem wystąpienia zdarzenia B.
+
+Algorytm ten jest często wykorzystywany w systemach czasu rzeczywistego, ponieważ działa bardzo szybko 
+kosztem efektywności.
 \begin{table}[h]
     \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
     \toprule
@@ -311,20 +346,23 @@ Algorytm SGD (\textbf{Stochastic gradient descent})
     \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
     
     %% PROS, seperated by empty line or \par
-    \par
-    \par
+    Bardzo szybki nawet w przypadku przewidywania wieloklasowego\par
+    Działa nawet dla małej ilości danych\par
+    Dobra efektywność w przypadku klasyfikacji danych wielowymiarowych
+    jak na przykład w przypadku klasyfikacji tekstu\par
     
     &
     
     %% CONS, seperated by empty line or \par
-    \par
-    \par
+    Jeżeli pewna cecha nie pojawi się w danych treningowych a istnieje w danych 
+    testowych algorytm nie będzie w stanie wykonać jego predykcji\par
+    Przyjmuje niezależność cech co w rzeczywistości jest prawie niespotykane\par
+    Mniejsza efektywność w porównaniu z bardziej skomplikowanymi algorytmami\par
     
     \\\bottomrule
     \end{tabularx}
-    \caption{Wady i zalety SGD}
+    \caption{Wady i zalety Naive Bayes}
 \end{table}
-
 \section{Wykorzystanie}
 
 \section{Zagrożenia}

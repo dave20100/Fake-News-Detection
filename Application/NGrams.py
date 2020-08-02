@@ -17,12 +17,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import SGDClassifier
+from sklearn.naive_bayes import MultinomialNB
 from datetime import datetime
 
 #Set a range of Ngram length that will be tested
 minNgram = 1
-maxNgram = 2
+maxNgram = 10
 
 NgramSizeRange = range(minNgram, maxNgram)
 
@@ -90,7 +90,7 @@ with open('./Wyniki/' + str(datetime.now().strftime("%d%m%Y%H%M%S")) + str(minNg
                     "KNN": KNeighborsClassifier(),
                     "RandomForest": RandomForestClassifier(),
                     "MLP": MLPClassifier(),
-                    "SGD": SGDClassifier()
+                    "Naive Bayes": GaussianNB()
                 }
                 for classifier in extractedData[method][wordType][size]["classificator"].keys():
                     X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.40)
@@ -116,6 +116,5 @@ with open('./Wyniki/' + str(datetime.now().strftime("%d%m%Y%H%M%S")) + str(minNg
                             str(round(end-start, 3)) + "s"))
 
 
-#Save trained models
 
 #Plot data

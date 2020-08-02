@@ -90,7 +90,7 @@ with open('./Wyniki/' + str(datetime.now().strftime("%d%m%Y%H%M%S")) + str(minNg
                     "KNN": KNeighborsClassifier(),
                     "RandomForest": RandomForestClassifier(),
                     "MLP": MLPClassifier(),
-                    "Naive Bayes": GaussianNB()
+                    "Naive Bayes": MultinomialNB()
                 }
                 for classifier in extractedData[method][wordType][size]["classificator"].keys():
                     X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.40)

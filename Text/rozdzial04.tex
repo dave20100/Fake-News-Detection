@@ -35,13 +35,50 @@ Najczęściej wykorzystywanymi tego typu operacjami są:
     tekstu może to być podział na zdania a w przypadku zdań podział na słowa itd..
     \item Lematyzacja - oznacza ona sprowadzenie grupy wyrazów stanowiących odmianę danego zwrotu do wspólnej postaci,
     pozwala to na traktowanie ich jako to samo słowo.
-    \item Stemming - jest to proces usunięcia końcówki fleksyjnej pozostawiając tylko temat wyrazu czyli nośnika znaczenia 
+    \item Stemming - jest to proces usunięcia końcówki fleksyjnej pozostawiając tylko tematu czyli nośnika znaczenia 
     wyrazu.
 \end{itemize}
 Wykonanie wybranych operacji na tekscie daje na wyjściu skrócone dane tekstowe, które można następnie przeanalizować lub 
 wykonać na nich wektoryzację co pozwala na wykorzystanie ich w różnych algorytmach uczenia maszynowego. 
 \section{Wektoryzacja}
+Ponieważ algorytmy sztucznej inteligencji potrafią uczyć się tylko z danych przedstawionych w formie numerycznej, aby móc 
+wykorzystać je w kombinacji z NLP potrzebny jest pewien sposób zamiany formy tekstowej na liczbową, tak by straciły ona jak najmniej
+swoich najważniejszych cech a zarazem były czytelne dla maszyny. 
 
-\subsection{Bag of words}
+Operacje takie nazywa się wektoryzacją tekstu, ponieważ 
+reprezentacja liczbowa będąca wynikiem ich to najczęściej wektory. 
+Wybór poprawnego sposobu zamiany tekstu może mieć ogromne znaczenie dla efektywności nauczonego modelu.
 
-\subsection{TfIDF}
+Jedne z najpopularniejszych metod wektoryzacji to:
+\begin{itemize}
+    \item \textbf{Bag of words} jest to metoda wektoryzacji, w której każdemu unikalnemu symbolowi z tekstu przypisuje się liczbę 
+    odpowiadającej jego ilości w analizowanym tekście. Symbolami mogą być całe zdania, słowa bądź NGramy. 
+    Metoda ta w żaden sposób nie zachowuje informacji o porządku ani kontekście występujących symboli a jedynie o 
+    częstotliwości ich występowania. 
+    
+    Wektor wynikowy metody ``Bag of words'' ma wymiar równy liczbie unikalnych symboli w tekście, przez co przy analizie dużej ilości 
+    dokumentów ma dużą złożoność pamięciową aby naprawić ten problem najpierw na danych wykonuje się metody przygotowywania danych tekstowych.
+
+
+
+    \item TFIDF (ang. \textbf{Term frequency inverse document frequency}) jest to metoda przypisująca, każdemu symbolowi 
+    jego wagę w kontekście analizowanych dokumentów. Aby obliczyć tę wagę potrzebuje ona dwa elementy:
+    \begin{enumerate}
+        \item Częstość symboli - którą uzyskuje się dzieląc liczbę wystąpień symbolu przez liczbę symboli w całym dokumencie
+        \item Odwrotną częstość w dokumentach 
+    \end{enumerate}
+    Po obliczeniu obu tych wartości oblicza się tzw. TFIDF score, której wartość określa jak ważny jest dany symbol 
+    dla dokumentu w kontekście wykonywanej analizy. Wynik ten oblicza się na podstawie wzoru \ref{eq:tfidf}, gdzie
+    \begin{itemize}
+        \item x - symbol
+        \item y - dokument
+        \item TF - częstość symbolu
+        \item N - ilość wszystkich dokumentów
+        \item df - ilość dokumentów w których pojawił się symbol x
+    \end{itemize}
+
+    \begin{equation}
+        \label{eq:tfidf}
+        TFIDF_x,_y = TF_x,_y* \log{\frac{N}{df_x}}
+    \end{equation}
+\end{itemize}

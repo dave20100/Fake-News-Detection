@@ -22,7 +22,7 @@ from datetime import datetime
 
 #Set a range of Ngram length that will be tested
 minNgram = 1
-maxNgram = 10
+maxNgram = 8
 
 NgramSizeRange = range(minNgram, maxNgram)
 
@@ -65,7 +65,6 @@ def plotData():
 #Prepare data
 (text, labels) = basicPreparation("news.csv") 
 (text, labels) = dataPreprocessing(text, labels)
-
 
 for size in NgramSizeRange:
     extractedData["bagOfWords"]["Ngram"].append({"vectorizer": CountVectorizer(analyzer="char", ngram_range=(size, size))})

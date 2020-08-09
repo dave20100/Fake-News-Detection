@@ -15,8 +15,8 @@ systemu tego typu, jego program automatycznie grał w warcaby i uczył się na p
 Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zależności od problemów, które mają one rozwiązywać są to:
 \begin{enumerate}
     \item \textbf{Uczenie nadzorowane}
-    Jest to najczęściej wykorzystywany rodzaj uczenia maszynowego polega on na tym 
-    że maszyna uczy się na podstawie przykładów zawartych w danych treningowych 
+    Jest to najczęściej wykorzystywany rodzaj uczenia maszynowego polega on na tym,
+    że maszyna uczy się na podstawie przykładów zawartych w danych treningowych,
     uczenie nadzorowane można porównać do nauczyciela i ucznia gdzie dane pełnią rolę nauczyciela 
     a program ucznia. Algorytmy tego typu potrafią znaleźć odpowiednie zależności na podstawie
     etykiet przypisanym danym,
@@ -166,7 +166,7 @@ ten radzi sobie w jeden z dwóch sposobów:
     wymiaru w którym podział jest możliwy.
 \end{enumerate}
 Aby odnaleźć optymalne rozwiązanie SVM skupiają się na punktach jak najbardziej skrajnych
-obu klas są one nazywane \textbf{wektorami nośnymi} zmiana ich położenia lub usunięcie
+obu klas są one nazywane \textbf{wektorami nośnymi}. Zmiana ich położenia lub usunięcie
 całkowicie zmienia położenie płaszczyzny.
 
 \begin{table}[h]
@@ -214,13 +214,13 @@ Funkcje aktywacji dzieli się na:
     \item \textbf{Funkcje liniowe} z wyjściem ciągłym,
     \item \textbf{Funkcje nieliniowe} z wyjściem ciągłym.
 \end{itemize}
-W sieciach wielowarstwowych najczęściej wykorzystuje się funkcje nieliniowe poniważ 
-wykazują one najwieksze zdolności do nauki.
+W sieciach wielowarstwowych najczęściej wykorzystuje się funkcje nieliniowe ponieważ 
+wykazują one największe zdolności do nauki.
 
 Perceptron wielowarstwowy składa się z trzech warstw sztucznych neuronów: 
 \begin{enumerate}
     \item \textbf{Warstwy wejściowej} - są to neurony zapewniające całej sieci
-    informacje czyli zazwyczaj dane treningowe nie wykonują one żadnych obliczeń
+    informacje czyli zazwyczaj dane treningowe. Nie wykonują one żadnych obliczeń,
     a jedynie przekazują informacje do kolejnych warstw.
     \item \textbf{Warstwy ukrytej} - wykonują one odpowiednie obliczenia zmieniając 
     i przekazując informacje z warstwy wejściowej do wyjściowej. Sieć może składać
@@ -230,7 +230,7 @@ Perceptron wielowarstwowy składa się z trzech warstw sztucznych neuronów:
 \end{enumerate}
 
 Uczenie takiej sieci polega na takiej modyfikacji wag na wejściu neuronów aby poprawić
-wyniki klasyfikacji. Podczas gdy perceptron jednowarstwowy czyli nieposiadający żadnej warstwy ukrytej może 
+wyniki klasyfikacji. Podczas gdy perceptron jednowarstwowy czyli nie posiadający żadnej warstwy ukrytej może 
 nauczyć się wyłącznie funkcji liniowych perceptron wielowarstwowy pozwala na nauczenie
 się skomplikowanych funkcji nieliniowych.
 
@@ -271,15 +271,15 @@ należy przypisać, ostatnim elementem są krawędzie którymi reprezentuje się
 Kroki algorytmu są następujące:
 \begin{enumerate}
     \item Wybranie najlepszej cechy,
-    \item Dodanie gałęzi odpowiadającym poszeczególnym wartościom wybranej cechy,
+    \item Dodanie gałęzi odpowiadających poszeczególnym wartościom wybranej cechy,
     \item Podział zbioru danych na podzbiory zgodnie z wartościami cechy,
-    \item Jeżeli wszystkie elementy pozdzbiorów należą do tej samej klasy 
+    \item Jeżeli wszystkie elementy podzbiorów należą do tej samej klasy 
     zakończenie gałęzi liściem. W przeciwnym wypadku powtórzenie kroków 
     od 1 do 4 dla każdego podzbioru.
 \end{enumerate}
 Aby dokonać optymalnego podziału algorytm musi wybrać cechy powodujące jak najlepsze
-podzielenie różnych klas a więc niosące ze sobą największą ilośc informacji,
-wykorzystuje się w tym celu entropię, której wartość pozwala określić średnią ilość 
+podzielenie różnych klas, a więc niosące ze sobą największą ilość informacji.
+Wykorzystuje się w tym celu entropię, której wartość pozwala określić średnią ilość 
 informacji niesioną przez poszczególne cechy.
 \begin{equation}
     H(x)=-\sum_{i=1}^n p(x_i) \log_2 p(x_i).
@@ -324,8 +324,8 @@ Naiwny klasyfikator Bayesowski (\textbf{Naive Bayes}) jest probabilistycznym kla
 zakłada wzajemną niezależność wszystkich cech stąd naiwność algorytmu. Stworzony przez niego model
 opiera się na obliczeniu prawdopodobieństw wystąpienia poszczególnych cech pod warunkiem że 
 występują one w danej klasie. Pozwala to przy użyciu twierdzenia Bayesa ~\ref{eq:bayes} obliczyć prawdopodobieństwa 
-warunkowe określające z jak duża pewnością występująca kombinacja cech prowadzi do 
-wystąpienia róznych klas na podstawie czego algorytm wykonuje predykcję. 
+warunkowe określające z jak dużą pewnością występująca kombinacja cech prowadzi do 
+wystąpienia różnych klas na podstawie czego algorytm wykonuje predykcję. 
 
 
 \begin{equation}
@@ -373,13 +373,13 @@ wykorzystania ich i katastrofalne skutki, do których mogą doprowadzić.
 Wśród takich osób znajdują się naukowcy tacy jak jak Stephen Hawking, Elon Musk, Steve Wozniak i Bill Gates. 
 Według Elona Muska sztuczna inteligencja niesie ze sobą większe zagrożenie niż bomby atomowe. 
 
-Dwa głowne sposoby w jaki sztuczna inteligencja może powodować zagrożenie to:
+Dwa główne sposoby w jaki sztuczna inteligencja może powodować zagrożenie to:
 \begin{enumerate}
-    \item \textbf{AI zaprogramowane do czynienia krzywdy} czyli na przykład wykorzystanie uczenia maszynowego
+    \item \textbf{AI zaprogramowane do czynienia krzywdy}, czyli na przykład wykorzystanie uczenia maszynowego
     w takich narzędziach jak broń, która w niewłaściwych rękach stanowiłaby zagrożenie dla całej ludzkości.
     \item \textbf{AI zaprogramowane w dobrych celach, jednak odnajdujące krzywdzący innych optymalny
-    sposób osiągnięcia sukcesu} może to być związane ze złym przekazaniem celu jaki maszyna ma osiągnąć przez 
-    programistę. Przykładowo mogłby to być samojezdny samochód, który podczas jazdy zwraca uwagę tylko i wyłącznie 
+    sposób osiągnięcia sukcesu}, może to być związane ze złym przekazaniem celu jaki maszyna ma osiągnąć przez 
+    programistę. Przykładowo mógłby to być samojezdny samochód, który podczas jazdy zwraca uwagę tylko i wyłącznie 
     na to by jak najszybciej dojechać do celu podróży. Samochód taki nie przestrzegał by istniejących praw drogowych
     ponieważ ograniczałyby one jego prędkość.
 \end{enumerate}
@@ -388,7 +388,7 @@ z sytuacji w której maszyny wykonują poświęcone im zadania za dobrze i nie w
 stwórcę systemu.
 
 Istotnym problemem jest także bezrobocie będące skutkiem zastępowania ludzi maszynami,
-ponieważ są one znacznie tańsze w utrzymaniu niż pracownicy a z wykorzystaniem uczenia
+ponieważ są one znacznie tańsze w utrzymaniu niż pracownicy, a z wykorzystaniem uczenia
 maszynowego mogą one opanować niektóre zadania lepiej od ludzi.
-Rozwiązaniem na takie problemy mogłyby być obowiązkowo przestrzegane zasaady bezpiecznego korzystania
+Rozwiązaniem na takie problemy mogłyby być obowiązkowo przestrzegane zasady bezpiecznego korzystania
 ze sztucznej inteligencji, których złamanie wiązałoby się z odpowiedzialnością karną.

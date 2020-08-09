@@ -2,10 +2,10 @@
 \chapter{Przetwarzanie języków naturalnych}
 Systemy przetwarzania języków naturalnych (\textbf{Natural language processing}) nazywane 
 w skrócie NLP, oznaczają systemy mogące zrozumieć mowę i pismo ludzkie w takiej
-formie jaką ludzie posługują się na codzień. Programy takie mogą wykonywać zadania od zliczania
+formie jaką ludzie posługują się na co dzień. Programy takie mogą wykonywać zadania od zliczania
 częstotliwości występowania danego słowa w tekście do automatycznego pisania artykułów. 
 
-Głownym problemem w tworzeniu tego typu systemów jest to że do komunikacji z komputerem zazwyczaj
+Głównym problemem w tworzeniu tego typu systemów jest to, że do komunikacji z komputerem zazwyczaj
 potrzebne jest posługiwanie się precyzyjnymi komendami danego języka programowania, mowa ludzka
 jednak nie zawsze jest precyzyjna i jej znaczenie może różnić się w zależności od kontekstu czy
 różnego rodzaju regionalnych dialektów. Systemy NLP są często wykorzystywane w takich 
@@ -15,15 +15,15 @@ celach jak:
     wykonują komendy wypowiedziane w ich kierunku przez użytkownika.  
     \item Wyodrębnianie ważnych informacji z tekstu w celu późniejszej analizy.
     \item Analiza sentymentu czyli wnioskowanie na podstawie tekstu opinii użytkowników na dany temat.
-    \item Sprawdzanie błędów ortograficznych,
-    \item Tłumaczenie tekstu na inne języki,
+    \item Sprawdzanie błędów ortograficznych.
+    \item Tłumaczenie tekstu na inne języki.
     \item Chatboty wykorzystywane przez wiele firm w celu posiadania całodobowej zautomatyzowanej obsługi klienta.
 \end{itemize}
 Rozwój NLP ma bardzo duże znaczenie dla osób niepełnosprawnych, które często tylko dzięki ich pomocy są 
 w stanie nawiązać interakcję z technologią pozwalającą im na znaczne podniesienie jakości życia.
 \section{Przygotowywanie danych tekstowych}
 Aby ułatwić analizę ogromnej ilości danych tekstowych potrzebnych do poprawnego nauczenia systemu NLP,
-wykonuje się na nich różnego rodzaju operacje. Operacje te powodują że tekst nie traci swoich najważniejszych cech 
+wykonuje się na nich różnego rodzaju operacje. Operacje te powodują, że tekst nie traci swoich najważniejszych cech 
 natomiast znacznie zmniejsza się moc obliczeniowa potrzebna do nauki algorytmów uczących wykonywanych na nim. 
 Najczęściej wykorzystywanymi tego typu operacjami są: 
 \begin{itemize}
@@ -31,22 +31,22 @@ Najczęściej wykorzystywanymi tego typu operacjami są:
     \item Usunięcie znaków specjalnych,
     \item Usunięcie tak zwanych ``Stop words'' - są to bardzo często występujące w danym języku słowa, które 
     zazwyczaj nie wnoszą istotnych dla analizy informacji.
-    \item Tokenizacja - polega na podziale tekstu na mniejsze częsci zwane tokenami. W przypadku dużych bloków 
-    tekstu może to być podział na zdania a w przypadku zdań podział na słowa itd..
+    \item Tokenizacja - polega na podziale tekstu na mniejsze części zwane tokenami. W przypadku dużych bloków 
+    tekstu może to być podział na zdania, a w przypadku zdań podział na słowa itd..
     \item Lematyzacja - oznacza ona sprowadzenie grupy wyrazów stanowiących odmianę danego zwrotu do wspólnej postaci,
-    pozwala to na traktowanie ich jako to samo słowo.
-    \item Stemming - jest to proces usunięcia końcówki fleksyjnej pozostawiając tylko tematu czyli nośnika znaczenia 
+    co pozwala na traktowanie ich jako to samo słowo.
+    \item Stemming - jest to proces usunięcia końcówki fleksyjnej pozostawiając tylko temat czyli nośnik znaczenia 
     wyrazu.
 \end{itemize}
-Wykonanie wybranych operacji na tekscie daje na wyjściu skrócone dane tekstowe, które można następnie przeanalizować lub 
-wykonać na nich wektoryzację co pozwala na wykorzystanie ich w różnych algorytmach uczenia maszynowego. 
+Wykonanie wybranych operacji na tekście daje na wyjściu skrócone dane tekstowe, które można następnie przeanalizować lub 
+wykonać na nich wektoryzację, co pozwala na wykorzystanie ich w różnych algorytmach uczenia maszynowego. 
 \section{Wektoryzacja}
-Ponieważ algorytmy sztucznej inteligencji potrafią uczyć się tylko z danych przedstawionych w formie numerycznej, aby móc 
-wykorzystać je w kombinacji z NLP potrzebny jest pewien sposób zamiany formy tekstowej na liczbową, tak by straciły ona jak najmniej
+Z uwagi na fakt, że algorytmy sztucznej inteligencji potrafią uczyć się tylko z danych przedstawionych w formie numerycznej, aby móc 
+wykorzystać je w kombinacji z NLP potrzebny jest pewien sposób zamiany formy tekstowej na liczbową, tak by straciły one jak najmniej
 swoich najważniejszych cech a zarazem były czytelne dla maszyny. 
 
 Operacje takie nazywa się wektoryzacją tekstu, ponieważ 
-reprezentacja liczbowa będąca wynikiem ich to najczęściej wektory. 
+reprezentacja liczbowa będąca ich wynikiem to najczęściej wektory. 
 Wybór poprawnego sposobu zamiany tekstu może mieć ogromne znaczenie dla efektywności nauczonego modelu.
 
 Jedne z najpopularniejszych metod wektoryzacji to:
@@ -60,7 +60,7 @@ Jedne z najpopularniejszych metod wektoryzacji to:
     dokumentów ma dużą złożoność pamięciową aby naprawić ten problem najpierw na danych wykonuje się metody przygotowywania danych tekstowych.
 
     \item \textbf{TFIDF} (ang. Term frequency inverse document frequency) jest to metoda przypisująca, każdemu symbolowi 
-    jego wagę w kontekście analizowanych dokumentów. Aby obliczyć tę wagę potrzebuje ona dwa elementy:
+    jego wagę w kontekście analizowanych dokumentów. Aby obliczyć tę wagę potrzebne są dwa elementy:
     \begin{enumerate}
         \item Częstość symboli - którą uzyskuje się dzieląc liczbę wystąpień symbolu przez liczbę symboli w całym dokumencie,
         \item Odwrotną częstość w dokumentach.

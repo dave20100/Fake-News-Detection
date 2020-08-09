@@ -15,8 +15,8 @@ celach jak:
     wykonują komendy wypowiedziane w ich kierunku przez użytkownika.  
     \item Wyodrębnianie ważnych informacji z tekstu w celu późniejszej analizy.
     \item Analiza sentymentu czyli wnioskowanie na podstawie tekstu opinii użytkowników na dany temat.
-    \item Sprawdzanie błędów ortograficznych
-    \item Tłumaczenie tekstu na inne języki
+    \item Sprawdzanie błędów ortograficznych,
+    \item Tłumaczenie tekstu na inne języki,
     \item Chatboty wykorzystywane przez wiele firm w celu posiadania całodobowej zautomatyzowanej obsługi klienta.
 \end{itemize}
 Rozwój NLP ma bardzo duże znaczenie dla osób niepełnosprawnych, które często tylko dzięki ich pomocy są 
@@ -27,10 +27,10 @@ wykonuje się na nich różnego rodzaju operacje. Operacje te powodują że teks
 natomiast znacznie zmniejsza się moc obliczeniowa potrzebna do nauki algorytmów uczących wykonywanych na nim. 
 Najczęściej wykorzystywanymi tego typu operacjami są: 
 \begin{itemize}
-    \item Zamiana wszystkich dużych liter na małe
-    \item Usunięcie znaków specjalnych  
+    \item Zamiana wszystkich dużych liter na małe,
+    \item Usunięcie znaków specjalnych,
     \item Usunięcie tak zwanych ``Stop words'' - są to bardzo często występujące w danym języku słowa, które 
-    zazwyczaj nie wnoszą istotnych dla analizy informacji
+    zazwyczaj nie wnoszą istotnych dla analizy informacji.
     \item Tokenizacja - polega na podziale tekstu na mniejsze częsci zwane tokenami. W przypadku dużych bloków 
     tekstu może to być podział na zdania a w przypadku zdań podział na słowa itd..
     \item Lematyzacja - oznacza ona sprowadzenie grupy wyrazów stanowiących odmianę danego zwrotu do wspólnej postaci,
@@ -59,22 +59,20 @@ Jedne z najpopularniejszych metod wektoryzacji to:
     Wektor wynikowy metody ``Bag of words'' ma wymiar równy liczbie unikalnych symboli w tekście, przez co przy analizie dużej ilości 
     dokumentów ma dużą złożoność pamięciową aby naprawić ten problem najpierw na danych wykonuje się metody przygotowywania danych tekstowych.
 
-
-
     \item \textbf{TFIDF} (ang. Term frequency inverse document frequency) jest to metoda przypisująca, każdemu symbolowi 
     jego wagę w kontekście analizowanych dokumentów. Aby obliczyć tę wagę potrzebuje ona dwa elementy:
     \begin{enumerate}
-        \item Częstość symboli - którą uzyskuje się dzieląc liczbę wystąpień symbolu przez liczbę symboli w całym dokumencie
-        \item Odwrotną częstość w dokumentach 
+        \item Częstość symboli - którą uzyskuje się dzieląc liczbę wystąpień symbolu przez liczbę symboli w całym dokumencie,
+        \item Odwrotną częstość w dokumentach.
     \end{enumerate}
     Po obliczeniu obu tych wartości oblicza się tzw. TFIDF score, której wartość określa jak ważny jest dany symbol 
     dla dokumentu w kontekście wykonywanej analizy. Wynik ten oblicza się na podstawie wzoru \ref{eq:tfidf}, gdzie
     \begin{itemize}
-        \item x - symbol
-        \item y - dokument
-        \item TF - częstość symbolu
-        \item N - ilość wszystkich dokumentów
-        \item df - ilość dokumentów w których pojawił się symbol x
+        \item x - symbol,
+        \item y - dokument,
+        \item TF - częstość symbolu,
+        \item N - ilość wszystkich dokumentów,
+        \item df - ilość dokumentów w których pojawił się symbol x.
     \end{itemize}
 
     \begin{equation}

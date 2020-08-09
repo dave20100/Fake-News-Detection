@@ -28,15 +28,15 @@ Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zale�
 
     Przykładowe zastosowanie:
     \begin{itemize}
-        \item Klasyfikacja - przewidywanie kategorii
+        \item Klasyfikacja - przewidywanie kategorii:
         \begin{itemize}
-            \item rozpoznawanie elementów na zdjęciu
-            \item filtrowanie spamu w skrzynce mailowej
+            \item rozpoznawanie elementów na zdjęciu,
+            \item filtrowanie spamu w skrzynce mailowej.
         \end{itemize}
-        \item Regresja - przewidywanie liczb
+        \item Regresja - przewidywanie liczb:
         \begin{itemize}
             \item przewidywanie trendów finansowych lub ekonomicznych,
-            \item prognozowanie pogody
+            \item prognozowanie pogody.
         \end{itemize}
     \end{itemize}
     \item \textbf{Uczenie nienadzorowane}
@@ -57,15 +57,15 @@ Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zale�
     
     Przykładowe zastosowanie:
     \begin{itemize}
-        \item Redukcja wymiarów
+        \item Redukcja wymiarów:
         \begin{itemize}
-            \item Wizualizacja danych ``big data''
-            \item Kompresja danych
+            \item Wizualizacja danych ``big data'',
+            \item Kompresja danych.
         \end{itemize}
-        \item Klasteryzacja
+        \item Klasteryzacja:
         \begin{itemize}
-            \item Spersonalizowane reklamy
-            \item Systemy rekomendacyjne
+            \item Spersonalizowane reklamy,
+            \item Systemy rekomendacyjne.
         \end{itemize}
     \end{itemize}
     \item \textbf{Uczenie ze wzmocnieniem}
@@ -78,8 +78,8 @@ Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zale�
     
     Przykładowe zastosowanie:
     \begin{itemize}
-        \item Tworzenie programów grających w gry
-        \item Samojezdne samochody
+        \item Tworzenie programów grających w gry,
+        \item Samojezdne samochody.
     \end{itemize}
 \end{enumerate} 
 
@@ -107,9 +107,9 @@ Algorytm K najbliższych sąsiadów (\textbf{K nearest neighbours}) jest algoryt
 stosowanym zarówno w problemach regresyjnych jak i klasyfikacji. Kroki jego działania
 można opisać w następujący sposób:
 \begin{enumerate}
-    \item Umieszczenie wszystkich obiektów posiadających N cech jako punkty w N-wymiarowej przestrzeni
+    \item Umieszczenie wszystkich obiektów posiadających N cech jako punkty w N-wymiarowej przestrzeni,
     \item Obliczenie odległości między obiektem którego etykieta będzie przewidywana a każdym innym
-    obiektem
+    obiektem,
     \item Przypisanie do obiektu etykiety, którą posiada większość z K najbliższych obiektów. 
 \end{enumerate}
 Faza uczenia w KNN polega wyłącznie na wczytaniu danych treningowych do pamięci przez co jest 
@@ -210,9 +210,9 @@ wejściowych.
 
 Funkcje aktywacji dzieli się na:
 \begin{itemize}
-    \item \textbf{Funkcje progowe} z wyjściem binarnym
-    \item \textbf{Funkcje liniowe} z wyjściem ciągłym
-    \item \textbf{Funkcje nieliniowe} z wyjściem ciągłym
+    \item \textbf{Funkcje progowe} z wyjściem binarnym,
+    \item \textbf{Funkcje liniowe} z wyjściem ciągłym,
+    \item \textbf{Funkcje nieliniowe} z wyjściem ciągłym.
 \end{itemize}
 W sieciach wielowarstwowych najczęściej wykorzystuje się funkcje nieliniowe poniważ 
 wykazują one najwieksze zdolności do nauki.
@@ -270,12 +270,12 @@ są poszczególnymi cechami zbioru danych a liście odpowiadają klasom, które 
 należy przypisać, ostatnim elementem są krawędzie którymi reprezentuje się wartości cech. 
 Kroki algorytmu są następujące:
 \begin{enumerate}
-    \item Wybranie najlepszej cechy
-    \item Dodanie gałęzi odpowiadającym poszeczególnym wartościom wybranej cechy
-    \item Podział zbioru danych na podzbiory zgodnie z wartościami cechy
+    \item Wybranie najlepszej cechy,
+    \item Dodanie gałęzi odpowiadającym poszeczególnym wartościom wybranej cechy,
+    \item Podział zbioru danych na podzbiory zgodnie z wartościami cechy,
     \item Jeżeli wszystkie elementy pozdzbiorów należą do tej samej klasy 
     zakończenie gałęzi liściem. W przeciwnym wypadku powtórzenie kroków 
-    od 1 do 4 dla każdego podzbioru
+    od 1 do 4 dla każdego podzbioru.
 \end{enumerate}
 Aby dokonać optymalnego podziału algorytm musi wybrać cechy powodujące jak najlepsze
 podzielenie różnych klas a więc niosące ze sobą największą ilośc informacji,

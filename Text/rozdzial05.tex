@@ -12,9 +12,138 @@ NGramy są to sekwencje następujących po sobie jednostek, którymi mogą być 
 głoski lub litery. W pracy wykonane zostaną badania różnych algorytmów klasyfikacji
 na podstawie podziału na różnej długości NGramy literowe a następnie wyniki zostaną
 porównane w celu odnalezienia optymalnych ustawień do rozpoznawania Fake newsów.
+
+System pozwoli na zbadanie takich wyników algorytmów jak efektywność predykcji oraz 
+czas fazy uczenia.
+
 \section{Wykorzystane technologie}
+Najpopularniejszymi językami programowania wykorzystywanymi do tworzenia modeli uczenia
+maszynowego są:
+\begin{itemize}
+    \item Python,
+    \item R,
+    \item Lisp,
+    \item Prolog
+\end{itemize}
+Do wykonania systemu został wybrany język Python w wersji 3.8.5, jest to interpretowalny
+język wysokiego poziomu powstały w roku 1991. Został on wybrany 
+ponieważ posiada on dużą ilość bibliotek takich jak: 
+\begin{itemize}
+    \item Scikit-learn,
+    \item PySpark,
+    \item PyTorch,
+    \item TensorFlow,
+    \item Keras
+\end{itemize}
+Znacznie ułatwiają one korzystanie z możliwości uczenia maszynowego.
+W pracy zostanie wykorzystana biblioteka scikit-learn w wersji 0.23 zawiera ona wszystkie 
+testowane algorytmy i pozwala na bardzo wygodną implementację ich. Posiada także obie 
+badane metody wektoryzacji tekstu. Jest ona udostępniana na zasadach licencji BSD ~\cite{scikitlearn}. 
+Licencja ta pozwala na użytkowanie i redystrybucję kodu zarówno zmodyfikowanego jak i oryginalnego.
 
+Ostatnią biblioteką potrzebną do stworzenia systemu była Natural Language Toolkit w skrócie 
+NLTK, jest to biblioteka służąca do przetwarzania języków naturalnych, która pozwala na proste przygotowanie tekstu do jego analizy
 \section{Wymagania funkcjonalne}
-
+Aplikacja powinna spełniać następujące wymagania funkcjonalne: 
+\begin{itemize}
+    \item Wczytywać dane z zewnętrznego pliku w formacie csv,
+    \item W odpowiedni sposób przygotowywać dane,
+    \item Dzielić dane na treningowe oraz testowe,
+    \item Wykonywać uczenie badanych algorytmów na danych treningowych,
+    \item Testować nauczone modele na danych testowych,
+    \item Zapisywać wyniki do pliku w formacie csv,
+\end{itemize}
+Są to funkcjonalności kluczowe aby system pozwalał wykonywać ważne dla osiągnięcia celu
+badania.
 \section{Implementacja}
+\begin{lstlisting}[language=Python, caption={Funkcja przygotowywująca dane pobrane z pliku csv}, captionpos=b, frame=single]
+def basicPreparation(fileName): 
+    file = pd.read_csv(fileName)
+    label_encoder = preprocessing.LabelEncoder()
+    file['label'] = label_encoder.fit_transform
+        (file['label']) #labelling data FAKE = 0 REAL = 1
+    file = file.applymap
+        (lambda s: s.lower() if type(s) == str else s) 
+    return (file['text'], file['label'])
 
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption={Funkcja przygotowywująca dane tekstowe}, captionpos=b, frame=single]
+def dataPreprocessing(articles, labels):
+    deletionIndexes = []
+    for articleIndex in range(len(articles)):
+        articles[articleIndex] = 
+            ''.join(w+' ' for w in articles[articleIndex]
+            .split(' ') if not w in stop_words and w != '')  
+        articles[articleIndex] = 
+            re.sub(r'[^a-zA-Z]+', ' ', articles[articleIndex])
+        articleLength = len(articles[articleIndex])
+        if(articleLength == 0 
+            or articleLength < 500 
+            or articleLength > 5000):
+            deletionIndexes.append(articleIndex) 
+    articles = articles.drop(deletionIndexes, axis=0)
+    labels = labels.drop(deletionIndexes, axis=0)
+    return (articles, labels)
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption={Tworzenie wektoryzatorów dzielących tekst na różnej długości ngramy}, captionpos=b, frame=single]
+for size in NgramSizeRange:
+    extractedData["bagOfWords"]["Ngram"]
+        .append({"vectorizer": CountVectorizer
+        (analyzer="char", ngram_range=(size, size))})
+    extractedData["tfidf"]["Ngram"]
+        .append({"vectorizer": TfidfVectorizer
+        (analyzer="char", ngram_range=(size, size))})
+
+extractedData["bagOfWords"]["Word"]
+    .append({"vectorizer": CountVectorizer
+    (analyzer="word", ngram_range=(1, 1))})
+extractedData["tfidf"]["Word"]
+    .append({"vectorizer": TfidfVectorizer
+    (analyzer="word", ngram_range=(1, 1))})
+
+\end{lstlisting}
+\begin{lstlisting}[language=Python, caption={Główna pętla programu iterująca po wszystkich badanych metodach i wykonująca na nich pomiary}, captionpos=b, frame=single]
+for method in extractedData.keys():
+    for wordType in extractedData[method].keys():
+        for size in 
+            range(len(extractedData[method][wordType])):
+            extractedData
+                [method][wordType][size]["classificator"] = {
+                "SVC": svm.SVC(),
+                "KNN": KNeighborsClassifier(),
+                "RandomForest": RandomForestClassifier(),
+                "MLP": MLPClassifier(),
+                "Naive Bayes": MultinomialNB()
+            }
+            for classifier in extractedData[method]
+                [wordType][size]["classificator"].keys():
+                X_train, X_test, y_train, y_test = 
+                    train_test_split
+                    (text, labels, test_size=0.50)
+
+                extractedData[method][wordType][size]
+                    ["vectorizer"].fit(X_train)
+                
+                trainingFeatures = extractedData
+                    [method][wordType][size]["vectorizer"]
+                    .transform(X_train)
+                testFeatures = extractedData
+                    [method][wordType][size]["vectorizer"]
+                    .transform(X_test)
+
+                scalerTrain = StandardScaler(with_mean=False)
+                scalerTest = StandardScaler(with_mean=False)
+                trainingFeatures = scalerTrain
+                    .fit_transform(trainingFeatures)
+                testFeatures = scalerTest
+                    .fit_transform(testFeatures)
+
+                start = time.time()
+                extractedData[method][wordType]
+                    [size]["classificator"][classifier]
+                    .fit(trainingFeatures, y_train)
+                end = time.time() 
+\end{lstlisting}

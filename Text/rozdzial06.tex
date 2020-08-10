@@ -1,11 +1,122 @@
 \chapter{Ocena eksperymentalna}
 
 \section{Cel Badań}
-
+Celem badań jest sprawdzenie jak zmiana długości Ngramów podczas ekstrakcji cech
+z tekstu wpływa na możliwości predykcyjne jednych z najpopularniejszych algorytmów 
+uczenia maszynowego. 
 \section{Warunki przeprowadzonego eksperymentu}
 
 \section{Wyniki}
 
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | c | c | c | c | c | c | c | c |}
+        \hline
+        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\ \hline
+        Efektywność & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%   \\ \hline
+        Czas fazy uczenia & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%  \\ \hline
+    \end{tabular}
+    \caption{Wyniki algorytmu KNN wektoryzacja metodą Bag of words}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | c | c | c | c | c | c | c | c |}
+        \hline
+        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\ \hline
+        Efektywność & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%   \\ \hline
+        Czas fazy uczenia & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%  \\ \hline
+    \end{tabular}
+    \caption{Wyniki algorytmu KNN wektoryzacja metodą TFIDF}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | c | c | c | c | c | c | c | c |}
+        \hline
+        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\ \hline
+        Efektywność & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%   \\ \hline
+        Czas fazy uczenia & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%  \\ \hline
+    \end{tabular}
+    \caption{Wyniki algorytmu SVC wektoryzacja metodą Bag of words}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | c | c | c | c | c | c | c | c |}
+        \hline
+        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\ \hline
+        Efektywność & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%   \\ \hline
+        Czas fazy uczenia & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%  \\ \hline
+    \end{tabular}
+    \caption{Wyniki algorytmu SVC wektoryzacja metodą TFIDF}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | c | c | c | c | c | c | c | c |}
+        \hline
+        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\ \hline
+        Efektywność & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%   \\ \hline
+        Czas fazy uczenia & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%  \\ \hline
+    \end{tabular}
+    \caption{Wyniki algorytmu Naive Bayes wektoryzacja metodą Bag of words}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | c | c | c | c | c | c | c | c |}
+        \hline
+        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\ \hline
+        Efektywność & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%   \\ \hline
+        Czas fazy uczenia & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%  \\ \hline
+    \end{tabular}
+    \caption{Wyniki algorytmu Naive Bayes wektoryzacja metodą TFIDF}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | c | c | c | c | c | c | c | c |}
+        \hline
+        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\ \hline
+        Efektywność & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%   \\ \hline
+        Czas fazy uczenia & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%  \\ \hline
+    \end{tabular}
+    \caption{Wyniki algorytmu Random Forest wektoryzacja metodą Bag of words}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | c | c | c | c | c | c | c | c |}
+        \hline
+        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\ \hline
+        Efektywność & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%   \\ \hline
+        Czas fazy uczenia & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%  \\ \hline
+    \end{tabular}
+    \caption{Wyniki algorytmu Random Forest wektoryzacja metodą TFIDF}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | c | c | c | c | c | c | c | c |}
+        \hline
+        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\ \hline
+        Efektywność & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%   \\ \hline
+        Czas fazy uczenia & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%  \\ \hline
+    \end{tabular}
+    \caption{Wyniki algorytmu MLP wektoryzacja metodą Bag of words}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ | l | c | c | c | c | c | c | c | c |}
+        \hline
+        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\ \hline
+        Efektywność & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%   \\ \hline
+        Czas fazy uczenia & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\% & 23\%  \\ \hline
+    \end{tabular}
+    \caption{Wyniki algorytmu MLP wektoryzacja metodą TFIDF}
+\end{table}
 \section{Analiza wyników wraz z oceną statystyczną}
 
 \section{Wnioski z badań}

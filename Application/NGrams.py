@@ -75,12 +75,12 @@ extractedData["bagOfWords"]["Word"].append({"vectorizer": CountVectorizer(
 extractedData["tfidf"]["Word"].append({"vectorizer": TfidfVectorizer(
     analyzer="word", ngram_range=(1, 1))})
 
-print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(
-    "Vectorization", "Word type", "Size", "Classifier", "Score", "Time"))
+print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20} {:^20}'.format(
+    "Vectorization", "Word type", "Size", "Classifier", "Score", "Learn time", "Test time"))
 
 with open('./Wyniki/' + str(datetime.now().strftime("%d%m%Y%H%M%S")) + str(minNgram) + 'to' + str(maxNgram) + '.csv', mode='w', newline='') as score_file:
     csv_writer = csv.writer(score_file)
-    csv_writer.writerow(["Vectorization", "Word Type", "Size", "Classifier", "Score", "Time"])
+    csv_writer.writerow(["Vectorization", "Word Type", "Size", "Classifier", "Score", "Learn time", "Test time"])
     for method in extractedData.keys():
         for wordType in extractedData[method].keys():
             for size in range(len(extractedData[method][wordType])):
@@ -91,28 +91,39 @@ with open('./Wyniki/' + str(datetime.now().strftime("%d%m%Y%H%M%S")) + str(minNg
                     "MLP": MLPClassifier(),
                     "Naive Bayes": MultinomialNB()
                 }
+                X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.40, random_state=42)
+
+                extractedData[method][wordType][size]["vectorizer"].fit(X_train)
+                
+                trainingFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_train)
+                testFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_test)
+
+                scalerTrain = StandardScaler(with_mean=False)
+                scalerTest = StandardScaler(with_mean=False)
+                trainingFeatures = scalerTrain.fit_transform(trainingFeatures)
+                testFeatures = scalerTest.fit_transform(testFeatures)
+                
                 for classifier in extractedData[method][wordType][size]["classificator"].keys():
-                    X_train, X_test, y_train, y_test = train_test_split(text, labels, test_size=0.40)
 
-                    extractedData[method][wordType][size]["vectorizer"].fit(X_train)
-                    
-                    trainingFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_train)
-                    testFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_test)
-
-                    scalerTrain = StandardScaler(with_mean=False)
-                    scalerTest = StandardScaler(with_mean=False)
-                    trainingFeatures = scalerTrain.fit_transform(trainingFeatures)
-                    testFeatures = scalerTest.fit_transform(testFeatures)
-
-                    start = time.time()
+                    startLearn = time.time()
                     extractedData[method][wordType][size]["classificator"][classifier].fit(trainingFeatures, y_train)
-                    end = time.time() 
-                    csv_writer.writerow([method, wordType, minNgram+size, classifier, 
-                                         str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test)*100, 2)) + "%", 
-                                         str(round(end-start, 3))])
-                    print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(method, wordType, minNgram+size, classifier, 
-                            str(round(extractedData[method][wordType][size]["classificator"][classifier].score(testFeatures, y_test)*100, 2)) + "%",
-                            str(round(end-start, 3)) + "s"))
+                    endLearn = time.time() 
+
+                    startTest = time.time()
+                    acuraccy = extractedData[method][wordType][size]["classificator"][classifier].score(
+                        testFeatures, y_test)*100
+                    endTest = time.time()
+
+                    csv_writer.writerow([method, wordType, minNgram+size, classifier,
+                                         str(round(acuraccy, 2)) + "%", 
+                                         str(round(endLearn-startLearn, 3)),
+                                         str(round(endTest-startTest, 3))])
+                    print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20} {:^20}'.format(method, wordType, minNgram+size, classifier,
+                            str(round(acuraccy, 2)) + "%",
+                            str(round(endLearn-startLearn, 3)) + "s",
+                            str(round(endTest-startTest, 3)) + "s"))
+
+                            
 
 
 

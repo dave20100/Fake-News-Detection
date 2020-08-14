@@ -38,7 +38,7 @@ ponieważ posiada on dużą ilość bibliotek takich jak:
 Znacznie ułatwiają one korzystanie z możliwości uczenia maszynowego.
 W pracy zostanie wykorzystana biblioteka scikit-learn w wersji 0.23 zawiera ona wszystkie 
 testowane algorytmy i pozwala na bardzo wygodną implementację ich. Posiada także obie 
-badane metody wektoryzacji tekstu. Jest ona udostępniana na zasadach licencji BSD ~\cite{scikitlearn}. 
+badane metody wektoryzacji tekstu czyli Bag of words oraz TFIDF. Jest ona udostępniana na zasadach licencji BSD ~\cite{scikitlearn}. 
 Licencja ta pozwala na użytkowanie i redystrybucję kodu zarówno zmodyfikowanego jak i oryginalnego.
 
 Ostatnią biblioteką potrzebną do stworzenia systemu była Natural Language Toolkit w skrócie 
@@ -54,7 +54,7 @@ Aplikacja powinna spełniać następujące wymagania funkcjonalne:
     \item Zapisywać wyniki do pliku w formacie csv,
 \end{itemize}
 Są to funkcjonalności kluczowe aby system pozwalał wykonywać ważne dla osiągnięcia celu
-badania.
+badania. 
 \section{Implementacja}
 \begin{lstlisting}[language=Python, caption={Funkcja przygotowywująca dane pobrane z pliku csv}, captionpos=b, frame=single]
 def basicPreparation(fileName): 

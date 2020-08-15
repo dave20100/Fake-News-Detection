@@ -1,0 +1,4 @@
+bagOfWords,Ngram,5,MLP,98.37%,2038.845,2.444
+bagOfWords,Word,1,MLP,97.58%,460.36,0.153
+tfidf,Ngram,1,MLP,79.8%,16.176,0.034
+tfidf,Ngram,2,MLP,97.43%,22.159,0.113

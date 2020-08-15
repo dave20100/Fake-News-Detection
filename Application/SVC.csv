@@ -1,0 +1,8 @@
+bagOfWords,Ngram,1,SVC,81.36%,14.175,8.18
+bagOfWords,Ngram,2,SVC,96.1%,319.6,127.618
+bagOfWords,Ngram,3,SVC,97.75%,2779.462,716.666
+bagOfWords,Ngram,4,SVC,98.45%,7282.055,1502.585
+bagOfWords,Ngram,5,SVC,98.34%,10144.174,2534.03
+bagOfWords,Word,1,SVC,97.39%,1385.778,313.256
+tfidf,Ngram,1,SVC,79.47%,14.046,8.008
+tfidf,Ngram,2,SVC,96.61%,220.009,106.538

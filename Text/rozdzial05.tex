@@ -59,7 +59,8 @@ badania.
 Implementacja systemu została napisana w . Program składa się z dwóch metod oraz jednej pętli
 głownej wykonującej obliczenia oraz zapisującej wyniki do pliku. Tworzona jest w nim także struktura
 wielowymiarowej mapy (((odniesienie do zdjecia))) po zakończeniu wykonywania programu zawiera ona
-wszystkie nauczone modele wektoryzacji oraz uczenia maszynowego. Zapisanie tej struktury pozwala na
+wszystkie nauczone modele wektoryzacji oraz uczenia maszynowego. Zapisanie tego obiektu za pomocą
+biblioteki takiej jak \textit{Pickle} pozwala
 w prosty sposób użyć i przetestować modele na dowolnych danych testowych. 
 
 \begin{lstlisting}[language=Python, caption={Funkcja przygotowywująca dane pobrane z pliku csv}, captionpos=b, frame=single]
@@ -118,7 +119,7 @@ kolejno operacje:
     \item Usunięcia ze zbioru danych artykułów o długości poniżej 500 znaków oraz powyżej 5000 znaków 
     ponieważ przekazują one niepotrzebną ilość informacji.
 \end{enumerate}
-Funkcja ta zwraca dokładnie taką samą krotkę jak pierwsza.
+Funkcja ta zwraca dokładnie taką samą krotkę jak \textit{basicPreparation}.
 \begin{lstlisting}[language=Python, caption={Tworzenie wektoryzatorów dzielących tekst na różnej długości ngramy}, captionpos=b, frame=single]
 for size in NgramSizeRange:
     extractedData["bagOfWords"]["Ngram"]
@@ -161,8 +162,7 @@ testFeatures = scalerTest.fit_transform(testFeatures)
 
 for classifier in extractedData[method][wordType][size]["classificator"].keys():
     startLearn = time.time()
-    extractedData[method][wordType][size]["classificator"][classifier].fit(
-        trainingFeatures, y_train)
+    extractedData[method][wordType][size]["classificator"][classifier].fit(trainingFeatures, y_train)
     endLearn = time.time()
 
     startTest = time.time()

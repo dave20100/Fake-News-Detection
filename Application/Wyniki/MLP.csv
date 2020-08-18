@@ -1,0 +1,12 @@
+bagOfWords ,Ngram ,1 ,MLP ,81.68% ,32.655   ,0.039
+bagOfWords ,Ngram ,2 ,MLP ,97.16% ,22.982   ,0.11
+bagOfWords ,Ngram ,3 ,MLP ,98.6%  ,115.108  ,0.373
+bagOfWords ,Ngram ,4 ,MLP ,97.79% ,544.161  ,1.085
+bagOfWords ,Ngram ,5 ,MLP ,98.37% ,2038.845 ,2.444
+bagOfWords ,Word  ,1 ,MLP ,97.58% ,460.36   ,0.153
+tfidf      ,Ngram ,1 ,MLP ,79.8%  ,16.176   ,0.034
+tfidf      ,Ngram ,2 ,MLP ,97.43% ,22.159   ,0.113
+tfidf      ,Ngram ,3 ,MLP ,98.6%  ,111.424  ,0.38
+tfidf      ,Ngram ,4 ,MLP ,98.69% ,520.082  ,0.911
+tfidf      ,Ngram ,5 ,MLP ,98.09% ,1926.648 ,2.133
+tfidf      ,Word  ,3 ,MLP ,97.31% ,358.628  ,0.143

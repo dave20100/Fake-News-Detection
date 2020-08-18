@@ -21,7 +21,7 @@ from sklearn.naive_bayes import MultinomialNB
 from datetime import datetime
 
 #Set a range of Ngram length that will be tested
-minNgram = 1
+minNgram = 4
 maxNgram = 6
 NgramSizeRange = range(minNgram, maxNgram)
 
@@ -34,7 +34,7 @@ datasplit = {
 }
 
 extractedData = {
-    "bagOfWords": copy.deepcopy(datasplit),
+    # "bagOfWords": copy.deepcopy(datasplit),
     "tfidf": copy.deepcopy(datasplit)
 }
 
@@ -69,13 +69,13 @@ X_train, X_test, y_train, y_test = train_test_split(
     text, labels, test_size=0.40, random_state=42)
 
 for size in NgramSizeRange:
-    extractedData["bagOfWords"]["Ngram"].append(
-        {"vectorizer": CountVectorizer(analyzer="char", ngram_range=(size, size))})
+    # extractedData["bagOfWords"]["Ngram"].append(
+    #     {"vectorizer": CountVectorizer(analyzer="char", ngram_range=(size, size))})
     extractedData["tfidf"]["Ngram"].append(
         {"vectorizer": TfidfVectorizer(analyzer="char", ngram_range=(size, size))})
 
-extractedData["bagOfWords"]["Word"].append({"vectorizer": CountVectorizer(
-    analyzer="word", ngram_range=(1, 1))})
+# extractedData["bagOfWords"]["Word"].append({"vectorizer": CountVectorizer(
+#     analyzer="word", ngram_range=(1, 1))})
 extractedData["tfidf"]["Word"].append({"vectorizer": TfidfVectorizer(
     analyzer="word", ngram_range=(1, 1))})
 
@@ -86,11 +86,11 @@ for method in extractedData.keys():
     for wordType in extractedData[method].keys():
         for size in range(len(extractedData[method][wordType])):
             extractedData[method][wordType][size]["classificator"] = {
-                "KNN": KNeighborsClassifier(),
-                "RandomForest": RandomForestClassifier(),
-                "Naive Bayes": MultinomialNB(),
-                "SVC": svm.SVC(),
-                "MLP": MLPClassifier()
+                # "KNN": KNeighborsClassifier(),
+                # "RandomForest": RandomForestClassifier(),
+                # "Naive Bayes": MultinomialNB(),
+                "SVC": svm.SVC()
+                # "MLP": MLPClassifier()
             }
 
             extractedData[method][wordType][size]["vectorizer"].fit(X_train)

@@ -21,7 +21,7 @@ from sklearn.naive_bayes import MultinomialNB
 from datetime import datetime
 
 #Set a range of Ngram length that will be tested
-minNgram = 4
+minNgram = 1
 maxNgram = 6
 NgramSizeRange = range(minNgram, maxNgram)
 
@@ -34,17 +34,22 @@ datasplit = {
 }
 
 extractedData = {
-    # "bagOfWords": copy.deepcopy(datasplit),
+    "bagOfWords": copy.deepcopy(datasplit),
     "tfidf": copy.deepcopy(datasplit)
 }
 
 #Prepares data by removing not needed columns and encoding labels
-def basicPreparation(fileName): 
+
+
+def basicPreparation(fileName):
     file = pd.read_csv(fileName)
     label_encoder = preprocessing.LabelEncoder()
-    file['label'] = label_encoder.fit_transform(file['label']) #labelling data FAKE = 0 REAL = 1
-    file = file.applymap(lambda s: s.lower() if type(s) == str else s) #set every letter to lowercase
+    file['label'] = label_encoder.fit_transform(
+        file['label'])  # labelling data FAKE = 0 REAL = 1
+    file = file.applymap(lambda s: s.lower() if type(
+        s) == str else s)  # set every letter to lowercase
     return (file['text'], file['label'])
+
 
 def dataPreprocessing(articles, labels):
     deletionIndexes = []
@@ -56,26 +61,28 @@ def dataPreprocessing(articles, labels):
             r'[^a-zA-Z]+', ' ', articles[articleIndex])
         articleLength = len(articles[articleIndex])
         if(articleLength == 0 or articleLength < 500 or articleLength > 5000):
-            deletionIndexes.append(articleIndex) #save indexes of rows that need to be deleted
+            # save indexes of rows that need to be deleted
+            deletionIndexes.append(articleIndex)
     articles = articles.drop(deletionIndexes, axis=0)
     labels = labels.drop(deletionIndexes, axis=0)
     return (articles, labels)
 
+
 #Prepare data
-(text, labels) = basicPreparation("news.csv") 
+(text, labels) = basicPreparation("news.csv")
 (text, labels) = dataPreprocessing(text, labels)
 
 X_train, X_test, y_train, y_test = train_test_split(
     text, labels, test_size=0.40, random_state=42)
 
 for size in NgramSizeRange:
-    # extractedData["bagOfWords"]["Ngram"].append(
-    #     {"vectorizer": CountVectorizer(analyzer="char", ngram_range=(size, size))})
+    extractedData["bagOfWords"]["Ngram"].append(
+        {"vectorizer": CountVectorizer(analyzer="char", ngram_range=(size, size))})
     extractedData["tfidf"]["Ngram"].append(
         {"vectorizer": TfidfVectorizer(analyzer="char", ngram_range=(size, size))})
 
-# extractedData["bagOfWords"]["Word"].append({"vectorizer": CountVectorizer(
-#     analyzer="word", ngram_range=(1, 1))})
+extractedData["bagOfWords"]["Word"].append({"vectorizer": CountVectorizer(
+    analyzer="word", ngram_range=(1, 1))})
 extractedData["tfidf"]["Word"].append({"vectorizer": TfidfVectorizer(
     analyzer="word", ngram_range=(1, 1))})
 
@@ -86,24 +93,23 @@ for method in extractedData.keys():
     for wordType in extractedData[method].keys():
         for size in range(len(extractedData[method][wordType])):
             extractedData[method][wordType][size]["classificator"] = {
-                # "KNN": KNeighborsClassifier(),
-                # "RandomForest": RandomForestClassifier(),
-                # "Naive Bayes": MultinomialNB(),
-                "SVC": svm.SVC()
-                # "MLP": MLPClassifier()
+                "KNN": KNeighborsClassifier(),
+                "RandomForest": RandomForestClassifier(),
+                "Naive Bayes": MultinomialNB(),
+                "SVC": svm.SVC(),
+                "MLP": MLPClassifier()
             }
 
             extractedData[method][wordType][size]["vectorizer"].fit(X_train)
-            
+
             trainingFeatures = extractedData[method][wordType][size]["vectorizer"].transform(
                 X_train)
             testFeatures = extractedData[method][wordType][size]["vectorizer"].transform(
                 X_test)
 
-            scalerTrain = StandardScaler(with_mean=False)
-            scalerTest = StandardScaler(with_mean=False)
-            trainingFeatures = scalerTrain.fit_transform(trainingFeatures)
-            testFeatures = scalerTest.fit_transform(testFeatures)
+            scaler = StandardScaler(with_mean=False)
+            trainingFeatures = scaler.fit_transform(trainingFeatures)
+            testFeatures = scaler.fit_transform(testFeatures)
 
             for classifier in extractedData[method][wordType][size]["classificator"].keys():
                 startLearn = time.time()
@@ -119,14 +125,13 @@ for method in extractedData.keys():
                 with open('./Wyniki/' + classifier + '.csv', mode='a', newline='') as score_file:
                     csv_writer = csv.writer(score_file)
                     csv_writer.writerow([method, wordType, minNgram+size, classifier,
-                                            str(round(acuraccy, 2)) + "%", 
-                                            str(round(endLearn-startLearn, 3)),
-                                            str(round(endTest-startTest, 3))])
+                                         str(round(acuraccy, 2)) + "%",
+                                         str(round(endLearn-startLearn, 3)),
+                                         str(round(endTest-startTest, 3))])
 
                 print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20} {:^20}'.format(method, wordType, minNgram+size, classifier,
-                        str(round(acuraccy, 2)) + "%",
-                        str(round(endLearn-startLearn, 3)) + "s",
-                        str(round(endTest-startTest, 3)) + "s"))
-
-                            
-
+                                                                                  str(round(
+                                                                                      acuraccy, 2)) + "%",
+                                                                                  str(round(
+                                                                                      endLearn-startLearn, 3)) + "s",
+                                                                                  str(round(endTest-startTest, 3)) + "s"))

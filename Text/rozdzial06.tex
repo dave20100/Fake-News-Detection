@@ -1,5 +1,4 @@
 \chapter{Ocena eksperymentalna}
-
 \section{Cel Badań}
 Celem badań było sprawdzenie jak popularne algorytmy uczenia maszynowego radzą sobie z rozwiązaniem problemu 
 klasyfikacji informacji jako prawdziwe lub nieprawdziwe. W celu sprawdzenia ich efektywności należało zbadać
@@ -21,7 +20,6 @@ Do badania wybrano pięć popularnych algorytmów uczenia maszynowego są to:
     \item Random forest - las losowy,
     \item MLP - wielowarstwowy perceptron.
 \end{itemize} 
-Algorytmy te mają różne zalety i wady dzięki, którym można zobaczyć 
 \section{Warunki przeprowadzonego eksperymentu}
 Badania zostały wykonane na komputerze stacjonarnym o następującej specyfikacji:
 \begin{itemize}
@@ -37,15 +35,16 @@ kanadzie ``Univerity of Victoria''. Zawiera on 12600 artykułów prawdziwych poc
 internetowej Reuters.com oraz 12600 artykułów nieprawdziwych zebranych z niewiarygodnych źródeł
 oznaczonych przez organizację do sprawdzania faktów Politifact. Tematyka artykułów to głównie polityka i wiadomości 
 ze świata.  Teksty zawarte w zbiorze zostały wstępnie przygotowane jednak błędy znajdujące się w nieprawdziwych 
-artykułach pozostały w tekście. Zbiór został pobrany z witryny znajdującej się pod adresem \url{https://www.uvic.ca/}.~\cite{ISOT}
+artykułach pozostały w tekście. Zbiór został pobrany w dniu 16.06.2020 z witryny znajdującej się pod adresem \url{https://www.uvic.ca/}.~\cite{ISOT}
 
 Algorytmy KNN, Random forest oraz Naive Bayes zostały zbadane na rozmiarach NGramów od 1 do 10 natomiast
 MLP i SVC od 1 do 5 z powodu dużej złożoności obliczeniowej przy większym rozmiarze. Podczas
 dzielenia danych na treningowe i testowe został wykorzystany parametr random\_state gwarantuje on
 że dane zostaną zawsze podzielone w dokładnie taki sam sposób.
 \section{Wyniki}
-Wyniki badań przedstawione są poniżej: 
-\begin{table}[h!]
+Wyniki badań przedstawiono poniżej, każdy z algorytmów został zbadany pod 
+kątem 3 cech. Efektywność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zbioru.
+\begin{table}[H]
     \centering
     \caption{Wyniki algorytmu KNN wektoryzacja metodą Bag of words}
     \resizebox{\textwidth}{!}{%
@@ -59,7 +58,7 @@ Wyniki badań przedstawione są poniżej:
     }
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{Wyniki algorytmu KNN wektoryzacja metodą TFIDF}
     \resizebox{\textwidth}{!}{%
@@ -73,7 +72,7 @@ Wyniki badań przedstawione są poniżej:
     }
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{Wyniki algorytmu Random Forest wektoryzacja metodą Bag of words}
     \resizebox{\textwidth}{!}{%
@@ -87,7 +86,7 @@ Wyniki badań przedstawione są poniżej:
     }
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{Wyniki algorytmu Random Forest wektoryzacja metodą TFIDF}
     \resizebox{\textwidth}{!}{%
@@ -101,7 +100,7 @@ Wyniki badań przedstawione są poniżej:
     }
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{Wyniki algorytmu Naive Bayes wektoryzacja metodą Bag of words}
     \resizebox{\textwidth}{!}{%
@@ -115,7 +114,7 @@ Wyniki badań przedstawione są poniżej:
     }
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{Wyniki algorytmu Naive Bayes wektoryzacja metodą TFIDF}
     \resizebox{\textwidth}{!}{%
@@ -129,7 +128,7 @@ Wyniki badań przedstawione są poniżej:
     }
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{Wyniki algorytmu SVC wektoryzacja metodą Bag of words}
     \begin{tabular}{ | l | c | c | c | c | c |}
@@ -141,7 +140,7 @@ Wyniki badań przedstawione są poniżej:
     \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{Wyniki algorytmu SVC wektoryzacja metodą TFIDF}
     \begin{tabular}{ | l | c | c | c | c | c |}
@@ -153,7 +152,7 @@ Wyniki badań przedstawione są poniżej:
     \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{Wyniki algorytmu MLP wektoryzacja metodą Bag of words}
     \begin{tabular}{ | l | c | c | c | c | c |}
@@ -165,7 +164,7 @@ Wyniki badań przedstawione są poniżej:
     \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{Wyniki algorytmu MLP wektoryzacja metodą TFIDF}
     \begin{tabular}{ | l | c | c | c | c | c |}
@@ -177,8 +176,17 @@ Wyniki badań przedstawione są poniżej:
     \end{tabular}
 \end{table}
 \section{Analiza wyników wraz z oceną statystyczną}
-Wykresy i opis
 
+Wyniki przeanalizowano pod kątem trzech badanych cech:
+
+\begin{itemize}
+    \item \textbf{Efektywność}
+    
+    \item \textbf{Czasy fazy uczenia}
+    
+    \item \textbf{Czasy fazy predykcji}
+    
+\end{itemize}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{./Img/BOWAcc.png}
@@ -216,4 +224,5 @@ Wykresy i opis
 \end{figure}
 
 \section{Wnioski z badań}
-Wnioski
+Przeprowadzone badania pozwoliły na odnalezienie odpowiedzi na pytanie 
+będace celem niniejszej pracy.

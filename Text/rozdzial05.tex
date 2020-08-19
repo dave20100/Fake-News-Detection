@@ -56,12 +56,16 @@ Aplikacja powinna spełniać następujące wymagania funkcjonalne:
 Są to funkcjonalności kluczowe aby system pozwalał wykonywać ważne dla osiągnięcia celu
 badania. 
 \section{Implementacja}
-Implementacja systemu została napisana w . Program składa się z dwóch metod oraz jednej pętli
-głownej wykonującej obliczenia oraz zapisującej wyniki do pliku. Tworzona jest w nim także struktura
-wielowymiarowej mapy (((odniesienie do zdjecia))) po zakończeniu wykonywania programu zawiera ona
-wszystkie nauczone modele wektoryzacji oraz uczenia maszynowego. Zapisanie tego obiektu za pomocą
+Implementacja składa się z dwóch funkcji służących do przygotowywania danych tekstowych
+do późniejszej analizy oraz jednej pętli głównej, która wykonuje wszystkie badania
+a następnie zapisuje je do pliku w formacie csv. 
+
+W systemie tworzony jest także obiekt
+wielowymiarowej mapy który, po zakończeniu wykonywania programu przechowuje
+wszystkie nauczone modele wektoryzacji oraz uczenia maszynowego. Zapisanie go za pomocą
 biblioteki takiej jak \textit{Pickle} pozwala
 w prosty sposób użyć i przetestować modele na dowolnych danych testowych. 
+
 
 \begin{lstlisting}[language=Python, caption={Funkcja przygotowywująca dane pobrane z pliku csv}, captionpos=b, frame=single]
 def basicPreparation(fileName): 
@@ -120,53 +124,18 @@ kolejno operacje:
     ponieważ przekazują one niepotrzebną ilość informacji.
 \end{enumerate}
 Funkcja ta zwraca dokładnie taką samą krotkę jak \textit{basicPreparation}.
-\begin{lstlisting}[language=Python, caption={Tworzenie wektoryzatorów dzielących tekst na różnej długości ngramy}, captionpos=b, frame=single]
-for size in NgramSizeRange:
-    extractedData["bagOfWords"]["Ngram"]
-        .append({"vectorizer": CountVectorizer
-        (analyzer="char", ngram_range=(size, size))})
-    extractedData["tfidf"]["Ngram"]
-        .append({"vectorizer": TfidfVectorizer
-        (analyzer="char", ngram_range=(size, size))})
 
-extractedData["bagOfWords"]["Word"]
-    .append({"vectorizer": CountVectorizer
-    (analyzer="word", ngram_range=(1, 1))})
-extractedData["tfidf"]["Word"]
-    .append({"vectorizer": TfidfVectorizer
-    (analyzer="word", ngram_range=(1, 1))})
 
-\end{lstlisting}
-\begin{lstlisting}[language=Python, caption={Główna pętla programu iterująca po wszystkich badanych metodach i wykonująca na nich pomiary}, captionpos=b, frame=single]
-
-extractedData[method][wordType][size]["classificator"] = {
-    "KNN": KNeighborsClassifier(),
-    "RandomForest": RandomForestClassifier(),
-    "Naive Bayes": MultinomialNB(),
-    "SVC": svm.SVC(),
-    "MLP": MLPClassifier()
-}
-
-extractedData[method][wordType][size]["vectorizer"].fit(X_train)
-
-trainingFeatures = 
-    extractedData[method][wordType][size]["vectorizer"]
-    .transform(X_train)
-
-testFeatures = extractedData[method][wordType][size]["vectorizer"].transform(X_test)
-
-scalerTrain = StandardScaler(with_mean=False)
-scalerTest = StandardScaler(with_mean=False)
-trainingFeatures = scalerTrain.fit_transform(trainingFeatures)
-testFeatures = scalerTest.fit_transform(testFeatures)
-
-for classifier in extractedData[method][wordType][size]["classificator"].keys():
-    startLearn = time.time()
-    extractedData[method][wordType][size]["classificator"][classifier].fit(trainingFeatures, y_train)
-    endLearn = time.time()
-
-    startTest = time.time()
-    acuraccy = extractedData[method][wordType][size]["classificator"][classifier].score(
-        testFeatures, y_test)*100
-    endTest = time.time()
-\end{lstlisting}
+Główna pętla programu wykonuje kolejno następujące operacje:
+\begin{enumerate}
+    \item Wytrenowanie modelu wektoryzatora na danych treningowych,
+    \item Wektoryzacja danych treningowych i testowych za pomocą 
+    nauczonego wcześniej modelu,
+    \item Normalizacja cech za pomocą StandardScaler,
+    \item Trening algorytmu na cechach treningowych funkcją \textit{fit},
+    \item Obliczenie efektywności funkcją \textit{score} na danych testowych,
+    \item Zapisanie wyników do pliku csv o tytule odpowiadającym nazwie algorytmu 
+    uczenia maszynowego.
+\end{enumerate}
+Aby obliczyć czas trwania faz uczenia i predykcji wykorzystano bibliotekę time w celu
+zapisania czasu przed i po wykonaniu każdej z faz a następnie odjęciu tych wartości.

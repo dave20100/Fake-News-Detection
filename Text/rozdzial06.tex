@@ -177,16 +177,6 @@ kątem 3 cech. Efektywność została zmierzona funkcją \textit{``Score''} na 4
 \end{table}
 \section{Analiza wyników wraz z oceną statystyczną}
 
-Wyniki przeanalizowano pod kątem trzech badanych cech:
-
-\begin{itemize}
-    \item \textbf{Efektywność}
-    
-    \item \textbf{Czasy fazy uczenia}
-    
-    \item \textbf{Czasy fazy predykcji}
-    
-\end{itemize}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{./Img/BOWAcc.png}
@@ -202,27 +192,80 @@ Wyniki przeanalizowano pod kątem trzech badanych cech:
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{./Img/BOWLearn.png}
-    \caption{Czasy uczenia algorytmów wektoryzacja metodą Bag of words}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.9\textwidth]{./Img/TFIDFLearn.png}
-    \caption{Czasy uczenia algorytmów wektoryzacja metodą TFIDF}
+    \caption{Czasy uczenia algorytmów}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{./Img/BOWPredict.png}
-    \caption{Czasy predykcji algorytmów wektoryzacja metodą Bag of words}
+    \caption{Czasy predykcji algorytmów}
 \end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.9\textwidth]{./Img/TFIDFPredict.png}
-    \caption{Czasy predykcji algorytmów wektoryzacja metodą TFIDF}
-\end{figure}
+Wyniki przeanalizowano pod kątem trzech badanych cech:
+
+\begin{itemize}
+    \item \textbf{Efektywność}
+    
+    Pod względem efektywności algorytmy sprawdziły się następująco:
+    \begin{itemize}
+        \item \textbf{KNN}
+        
+        Dla długości równej 1 algorytm osiąga wyniki większe od 70\% jednak wraz 
+        z podnoszeniem się jej zmniejsza się także efektywność, w przypadku obu metod 
+        wektoryzacji rozmiary 5 i 6 dają wyniki poniżej 50\% co oznacza, że są one gorsze 
+        od wykonania predykcji na podstawie rzutu monetą. Jest to prawdopodobnie związane 
+        z overfittingiem będącym skutkiem podnoszenia się ilości cech. Najlepszym wynikiem w 
+        przypadku KNN jest 84.36\% przy metodzie wektoryzacji Bag of words i rozmiarze równym 2
+        a najgorszy 47.5\%  dla metody Bag of words i rozmiaru 5. 
+        \item \textbf{Random forest, SVC, MLP}
+        
+        Algorytmy te dały bardzo podobne do siebie wyniki
+        \item \textbf{Naive Bayes}
+        
+        
+    \end{itemize}
+    \item \textbf{Czasy fazy uczenia}
+    
+    \begin{itemize}
+        \item \textbf{KNN, Naive Bayes}
+        
+
+        \item \textbf{Random forest}
+        
+        
+        \item \textbf{SVC}
+        
+        
+        \item \textbf{MLP}
+        
+
+        
+    \end{itemize}
+    \item \textbf{Czasy fazy predykcji}
+    
+    \begin{itemize}
+        \item \textbf{KNN}
+        
+        asdasdasdaj
+        \item \textbf{Random forest}
+        
+        
+        \item \textbf{Naive Bayes}
+        
+        
+        \item \textbf{SVC}
+        
+        
+        \item \textbf{MLP}
+        
+        
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \section{Wnioski z badań}
 Przeprowadzone badania pozwoliły na odnalezienie odpowiedzi na pytanie 
-będace celem niniejszej pracy.
+będace celem niniejszej pracy. Wykorzystanie algorytmów uczenia maszynowego 
+w rozpoznawaniu fałszywych informacji daje 

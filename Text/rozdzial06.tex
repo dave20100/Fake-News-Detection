@@ -208,56 +208,46 @@ Wyniki przeanalizowano pod kątem trzech badanych cech:
     
     Pod względem efektywności algorytmy sprawdziły się następująco:
     \begin{itemize}
-        \item \textbf{KNN}
-        
+        \item \textbf{KNN} -
         Dla długości równej 1 algorytm osiąga wyniki większe od 70\% jednak wraz 
         z podnoszeniem się jej zmniejsza się także efektywność, w przypadku obu metod 
         wektoryzacji rozmiary 5 i 6 dają wyniki poniżej 50\% co oznacza, że są one gorsze 
-        od wykonania predykcji na podstawie rzutu monetą. Jest to prawdopodobnie związane 
+        od predykcji wykonanej na podstawie rzutu monetą. Jest to prawdopodobnie związane 
         z overfittingiem będącym skutkiem podnoszenia się ilości cech. Najlepszym wynikiem w 
         przypadku KNN jest 84.36\% przy metodzie wektoryzacji Bag of words i rozmiarze równym 2
-        a najgorszy 47.5\%  dla metody Bag of words i rozmiaru 5. 
-        \item \textbf{Random forest, SVC, MLP}
-        
-        Algorytmy te dały bardzo podobne do siebie wyniki
-        \item \textbf{Naive Bayes}
-        
-        
+        a najgorszy 47.5\%  dla metody Bag of words i rozmiaru 5.
+
+        \item \textbf{Random forest, SVC, MLP} -        
+        Wyniki tych algorytmów wyglądają bardzo podobnie, dla długości równej 1 mają
+        one efektywność około 80\%. Podnoszenie rozmiaru NGramów powoduje znaczne zwiększenie
+        możliwości predykcyjnych algorytmów i każdy z nich już 
+        \item \textbf{Naive Bayes} -
+        Algorytm Naive Bayes zwiększa sw
     \end{itemize}
     \item \textbf{Czasy fazy uczenia}
     
     \begin{itemize}
-        \item \textbf{KNN, Naive Bayes}
-        
+        \item \textbf{KNN, Naive Bayes} -
 
-        \item \textbf{Random forest}
+        \item \textbf{Random forest} -
         
+        \item \textbf{SVC} -
         
-        \item \textbf{SVC}
-        
-        
-        \item \textbf{MLP}
-        
-
+        \item \textbf{MLP} -
         
     \end{itemize}
     \item \textbf{Czasy fazy predykcji}
     
     \begin{itemize}
-        \item \textbf{KNN}
-        
+        \item \textbf{KNN} -
         asdasdasdaj
-        \item \textbf{Random forest}
+        \item \textbf{Random forest} -
         
+        \item \textbf{Naive Bayes} -
         
-        \item \textbf{Naive Bayes}
+        \item \textbf{SVC} -
         
-        
-        \item \textbf{SVC}
-        
-        
-        \item \textbf{MLP}
-        
+        \item \textbf{MLP} -
         
     \end{itemize}
 \end{itemize}
@@ -268,4 +258,25 @@ Wyniki przeanalizowano pod kątem trzech badanych cech:
 \section{Wnioski z badań}
 Przeprowadzone badania pozwoliły na odnalezienie odpowiedzi na pytanie 
 będace celem niniejszej pracy. Wykorzystanie algorytmów uczenia maszynowego 
-w rozpoznawaniu fałszywych informacji daje 
+w rozpoznawaniu fałszywych informacji skutkuje osiągnięciem bardzo optymistycznych wyników,
+z badanych w niniejszej pracy algorytmów jedynie algorytm KNN swoją efektywnością dla 
+każdej długości NGramów nie pozwoliłby na pewne podjęcie decyzji czy dany artykuł jest prawdziwy czy też nie.
+Może to być związane z bardzo duża ilością cech w tekście co bardzo szybko prowadzi do tak zwanego 
+overfittingu. 
+
+Z powodu eksponencjalnego zwiększania się ilości cech wraz ze zwiększaniem długości NGramów, 
+algorytmy takie jak SVC oraz MLP osiągają już dla długości 5 ogromne czasy faz uczenia sięgające 
+do 3 godzin. Czas taki nie pozwala na wykorzystanie ich w systemach detekcji fake newsów, ponieważ
+musiałyby one analizować dużą ilość artykułów dla których bardzo duże znaczenie ma to jak 
+szybko pojawią się one na docelowej stronie internetowej.
+
+Najlepszym z algorytmów okazał się Random Forest, który dla NGramów o długości równej 4
+osiągnął efektywność równą 99.82\%. Pomimo iż efektywność ta została prawie osiągnięta przez algorytmy
+SVC oraz MLP to były one znacznie wolniejsze podczas fazy uczenia a także podczas fazy 
+predykcji w przypadku SVC. Szybszy od Random Forest algorytm Naive Bayes też osiągnął zadowalające wyniki
+jednak w przypadku Fake Newsów najbardziej znacząca jest efektywność, której nawet niewielka różnica
+może mieć katastrofalne skutki.  
+
+Wykorzystanie technologii machine learningu do zadania detekcji Fake Newsów, 
+może stanowić rozwiązanie problemów jaki takie informacje ze sobą niosą, ich automatyczna 
+detekcja uchroniłaby miliony ludzi przed byciem oszukanym. 

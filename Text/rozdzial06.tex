@@ -236,13 +236,22 @@ Wyniki przeanalizowano pod kątem trzech badanych cech:
     
     \begin{itemize}
         \item \textbf{KNN, Naive Bayes} -
-
+        Algorytmy KNN oraz Naive Bayes osiągneły najlepsze wyniki czasu trwania fazy uczenia i podczas 
+        trwania całego badania nie trwała ona dłużej niż sekundę.
+        Jest to spowodowane względnie prostymi operacjami wykonywanymi przez nie podczas tej fazy. 
+        Zadaniem algorytmu KNN jest jedynie zapisanie wszystkich danych, Naive Bayes natomiast 
+        oblicza prawdopodobieństwa na podstawie prostych kalkulacji wykonywanych podczas jednej iteracji. 
         \item \textbf{Random forest} -
-        
-        \item \textbf{SVC} -
-        
-        \item \textbf{MLP} -
-        
+        Czas trwania fazy uczenia dla algorytmu Random Forest ulega niewielkiemu wydłuzaniu podczas zmiany rozmiaru 
+        NGramów jednak podczas całego badania jest on przeciętny przez co nie trwa zbyt długo ale też nie jest szybki.
+        Faza ta w tym przypadku polega na stworzeniu drzewa decyzyjnego jak najlepiej podejmującego decyzje, czas ten nie
+        ulega znacznemu zwiększeniu przy większej liczbie cech ponieważ algorytm wybiera tylko najważniejsze cechy do tworzenia 
+        drzewa.
+        \item \textbf{SVC, MLP} -
+        w przypadku obu tych algorytmów można zauważyć znacznie zwiększanie się czasu uczenia wraz ze zwiększaniem
+        długości NGramów doprowadziło to w ich przypadku do ograniczenia badań tylko do długości równej 5,
+        ponieważ czas tej fazy wynosił niemal 3 godziny. Takie wyniki powodują, że nieprawdopodobne jest 
+        ich efektywne wykorzystanie w systemach rozpoznawania fake newsów. 
     \end{itemize}
     \item \textbf{Czasy fazy predykcji}
     
@@ -250,15 +259,23 @@ Wyniki przeanalizowano pod kątem trzech badanych cech:
     
     \begin{itemize}
         \item \textbf{KNN} -
-        asdasdasdaj
+        predykcja tego algorytmu jest znacznie dłuższa niż uczenia i dla mniejszych długości NGramów trwa
+        najdłużej. Początkowo zwiększanie długości powoduje wzrost czasu jednak po osiągnięciu maksimum dla rozmiaru 3
+        następuje powolna stabilizacja w kierunku około 40 sekund.
         \item \textbf{Random forest} -
-        
+        czas trwania fazy predykcji zwiększa się powoli do wartości 26.49 sekund. Spowodowane jest to zwiększaniem
+        się drzewa decyzyjnego który jest trawersowany w celu podjęcia decyzji. Czas ten podobnie jak w przypadku 
+        fazy uczenia jest przeciętny w porównaniu z innymi algorytmami.
         \item \textbf{Naive Bayes} -
-        
+        Jest to najszybszy algorytm zarówno pod względem fazy uczenia jak i predykcji, której wykonanie 
+        opiera się na wyliczeniu odpowiednich prawdopodobieństw będących dla maszyny bardzo prostym zadaniem. 
         \item \textbf{SVC} -
-        
+        czas trwania fazy predykcji jest bardzo podobny do czasu uczenia. Użycie SVC trwa zbyt długo
+        by mógł on być zaimplementowany w jakichkolwiek systemach.
         \item \textbf{MLP} -
-        
+        w porówaniu z fazą uczenia predykcja następuje bardzo szybko, ponieważ opiera się tylko
+        na aktywacji odpowiednich neuronów w stworzonym wcześniej modelu. Jest on na drugim miejscu
+        pod względem prędkości wykonywania predykcji.
     \end{itemize}
 \end{itemize}
 
@@ -275,10 +292,10 @@ Może to być związane z bardzo duża ilością cech w tekście co bardzo szybk
 overfittingu. 
 
 Z powodu eksponencjalnego zwiększania się ilości cech wraz ze zwiększaniem długości NGramów, 
-algorytmy takie jak SVC oraz MLP osiągają już dla długości 5 ogromne czasy faz uczenia sięgające 
+algorytmy takie jak SVC oraz MLP osiągają już dla długości równej 5 ogromne czasy faz uczenia sięgające 
 do 3 godzin. Czas taki nie pozwala na wykorzystanie ich w systemach detekcji fake newsów, ponieważ
 musiałyby one analizować dużą ilość artykułów dla których bardzo duże znaczenie ma to jak 
-szybko pojawią się one na docelowej stronie internetowej.
+szybko pojawią się one na docelowej stronie internetowej bądz mediach społecznościowych.
 
 Najlepszym z algorytmów okazał się Random Forest, który dla NGramów o długości równej 4
 osiągnął efektywność równą 99.82\%. Pomimo iż efektywność ta została prawie osiągnięta przez algorytmy
@@ -290,8 +307,9 @@ może mieć katastrofalne skutki.
 Zauważono także że wybór metody wektoryzacji ma niewielki wpływ na to jak dobrze wykorzystany algorytm 
 sprawdzi się w wykonywaniu swojego zadania. Jeżeli chodzi o czas trwania poszczególnych faz to 
 różnica w czasie wynosiła zazwyczaj poniżej paru sekund w przypadku dłuższych algorytmów lub poniżej 
-sekundy w przypadku krótszych. Pod względem efektywności ponieważ te wartości przeplatają się
-wraz ze zmianą długości to nie jest możliwe określenie, która metoda jest lepsza.
+sekundy w przypadku krótszych. Pod względem efektywności można także można zauważyć niewielkie różnice,
+które przeplatają się
+wraz ze zmianą długości z tego powodu nie jest możliwe określenie, która metoda jest lepsza.
 
 Wykorzystanie technologii machine learningu do zadania detekcji Fake Newsów, 
 może stanowić rozwiązanie problemów jaki takie informacje ze sobą niosą, ich automatyczna 

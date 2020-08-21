@@ -218,11 +218,17 @@ Wyniki przeanalizowano pod kątem trzech badanych cech:
         a najgorszy 47.5\%  dla metody Bag of words i rozmiaru 5.
 
         \item \textbf{Random forest, SVC, MLP} -        
-        Wyniki tych algorytmów wyglądają bardzo podobnie, dla długości równej 1 mają
-        one efektywność około 80\%. Podnoszenie rozmiaru NGramów powoduje znaczne zwiększenie
-        możliwości predykcyjnych algorytmów i każdy z nich już 
+        Algorytmy te zachowują się w bardzo podobny sposób zwiększanie długości NGramów 
+        do wartości 4 powoduje bardzo szybki wzrost efektywności do nawet 99.82\%. Zmiana 
+        długości ponad 4 prowadzi do powolnego spadku możliwości predykcyjnych co może być 
+        związane podobnie jak w przypadku KNN z overfittingiem. Algorytmy te osiągają najlepsze 
+        wyniki pod względem efektywności ze wszystkich badanych.
         \item \textbf{Naive Bayes} -
-        Algorytm Naive Bayes zwiększa sw
+        Algorytm Naive Bayes zwiększa swoją efektywność w taki sposób jak Random Forest, SVC oraz MLP 
+        jednak robi to dużo wolniej i osiąga swoją szczytową efektywność dla długości równej 8 gdzie 
+        jest ona równa 96.56\%, dalsze wydłużanie NGramów prowadzi do powolnego spadku możliwości predykcyjnych.
+        Algorytm Naive Bayes osiąga najniższe wyniki w przypadku podziału na NGramy o długości równej 1, gdzie 
+        poprawnie klasyfikuje tylko 69.63\% danych testowych.
     \end{itemize}
     \item \textbf{Czasy fazy uczenia}
     
@@ -280,6 +286,12 @@ SVC oraz MLP to były one znacznie wolniejsze podczas fazy uczenia a także podc
 predykcji w przypadku SVC. Szybszy od Random Forest algorytm Naive Bayes też osiągnął zadowalające wyniki
 jednak w przypadku Fake Newsów najbardziej znacząca jest efektywność, której nawet niewielka różnica
 może mieć katastrofalne skutki.  
+
+Zauważono także że wybór metody wektoryzacji ma niewielki wpływ na to jak dobrze wykorzystany algorytm 
+sprawdzi się w wykonywaniu swojego zadania. Jeżeli chodzi o czas trwania poszczególnych faz to 
+różnica w czasie wynosiła zazwyczaj poniżej paru sekund w przypadku dłuższych algorytmów lub poniżej 
+sekundy w przypadku krótszych. Pod względem efektywności ponieważ te wartości przeplatają się
+wraz ze zmianą długości to nie jest możliwe określenie, która metoda jest lepsza.
 
 Wykorzystanie technologii machine learningu do zadania detekcji Fake Newsów, 
 może stanowić rozwiązanie problemów jaki takie informacje ze sobą niosą, ich automatyczna 

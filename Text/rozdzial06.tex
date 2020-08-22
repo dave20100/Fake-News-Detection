@@ -4,9 +4,9 @@ Celem badań było sprawdzenie jak popularne algorytmy uczenia maszynowego radz�
 klasyfikacji informacji jako prawdziwe lub nieprawdziwe. W celu sprawdzenia ich efektywności należało zbadać
 takie cechy jak:
 \begin{itemize}
-    \item Czas fazy uczenia
-    \item Czas fazy predykcji
-    \item Procent poprawnych predykcji po nauczeniu modelu
+    \item czas fazy uczenia,
+    \item czas fazy predykcji,
+    \item procent poprawnych predykcji po nauczeniu modelu.
 \end{itemize}
 W badaniach głównym sprawdzanym elementem było to jak zmiana długości NGramów na które podzielony
 został tekst przed wektoryzacją wpływa na wyniki algorytmów i odnalezienie takiego rozmiaru, który
@@ -23,9 +23,9 @@ Do badania wybrano pięć popularnych algorytmów uczenia maszynowego są to:
 \section{Warunki przeprowadzonego eksperymentu}
 Badania zostały wykonane na komputerze stacjonarnym o następującej specyfikacji:
 \begin{itemize}
-    \item System operacyjny Windows 10 Pro w wersji 10.0.19041
-    \item Procesor AMD Ryzen 5 3600
-    \item Pamięć RAM 16 GB
+    \item system operacyjny Windows 10 Pro w wersji 10.0.19041,
+    \item procesor AMD Ryzen 5 3600,
+    \item pamięć RAM 16 GB.
 \end{itemize}
 Wszystkie badania były wykonywane w dokładnie takich samych warunkach aby można było 
 je w prosty sposób porównywać. 
@@ -215,14 +215,14 @@ Wyniki przeanalizowano pod kątem trzech badanych cech:
         od predykcji wykonanej na podstawie rzutu monetą. Jest to prawdopodobnie związane 
         z overfittingiem będącym skutkiem podnoszenia się ilości cech. Najlepszym wynikiem w 
         przypadku KNN jest 84.36\% przy wykorzystaniu metody wektoryzacji Bag of words i rozmiarze równym 2
-        a najgorszy 47.5\%  przy wykorzystaniu metody Bag of words i rozmiaru 5.
+        a najgorszy 47.5\%  przy wykorzystaniu metody Bag of words i rozmiaru 5,
 
         \item \textbf{Random forest, SVC, MLP} -        
         Algorytmy te zachowują się w bardzo podobny sposób. Zwiększanie długości NGramów 
         do wartości 4 powoduje bardzo szybki wzrost efektywności do nawet 99.82\%, natomiast zmiana 
         długości ponad 4 prowadzi do powolnego spadku możliwości predykcyjnych co może być 
         związane podobnie jak w przypadku algorytmu KNN z overfittingiem. Algorytmy te osiągają najlepsze 
-        wyniki pod względem efektywności ze wszystkich badanych.
+        wyniki pod względem efektywności ze wszystkich badanych,
         \item \textbf{Naive Bayes} -
         Algorytm Naive Bayes zwiększa swoją efektywność w taki sposób jak Random Forest, SVC oraz MLP 
         jednak robi to dużo wolniej i osiąga swoją szczytową efektywność dla długości równej 8 przy której 
@@ -240,13 +240,13 @@ Wyniki przeanalizowano pod kątem trzech badanych cech:
         trwania całego badania była dłuższa niż jedna sekunda.
         Jest to spowodowane względnie prostymi operacjami wykonywanymi przez nie podczas tej fazy. 
         Zadaniem algorytmu KNN jest jedynie zapisanie wszystkich danych, Naive Bayes natomiast 
-        oblicza prawdopodobieństwa na podstawie prostych kalkulacji wykonywanych podczas jednej iteracji. 
+        oblicza prawdopodobieństwa na podstawie prostych kalkulacji wykonywanych podczas jednej iteracji,
         \item \textbf{Random forest} -
         Czas trwania fazy uczenia dla algorytmu Random Forest ulega niewielkiemu wydłużaniu podczas zmiany rozmiaru 
         NGramów, jednak podczas całego badania jest on przeciętny przez co nie trwa zbyt długo, ale też nie jest szybki.
         Faza ta w tym przypadku polega na stworzeniu drzewa decyzyjnego jak najlepiej podejmującego decyzje. Czas ten nie
         ulega znacznemu wydłużeniu przy większej liczbie cech ponieważ algorytm wybiera tylko najważniejsze z nich do stworzenia 
-        drzewa.
+        drzewa,
         \item \textbf{SVC, MLP} -
         w przypadku obu tych algorytmów można zauważyć znacznie zwiększanie się czasu uczenia wraz ze zwiększaniem
         długości NGramów. Doprowadziło to w ich przypadku do ograniczenia badań tylko do długości równej 5,
@@ -261,17 +261,17 @@ Wyniki przeanalizowano pod kątem trzech badanych cech:
         \item \textbf{KNN} -
         predykcja tego algorytmu jest znacznie dłuższa niż uczenia i dla mniejszych długości NGramów trwa
         najdłużej. Początkowo zwiększanie długości powoduje wzrost czasu jednak po osiągnięciu maksimum dla rozmiaru 3
-        następuje powolna stabilizacja w kierunku około 40 sekund.
+        następuje powolna stabilizacja w kierunku około 40 sekund,
         \item \textbf{Random forest} -
         czas trwania fazy predykcji zwiększa się powoli do wartości 26.49 sekund. Spowodowane jest to zwiększaniem
         się drzewa decyzyjnego który jest trawersowany w celu podjęcia decyzji. Czas ten podobnie jak w przypadku 
-        fazy uczenia jest przeciętny w porównaniu z innymi algorytmami.
+        fazy uczenia jest przeciętny w porównaniu z innymi algorytmami,
         \item \textbf{Naive Bayes} -
         Jest to najszybszy algorytm zarówno pod względem fazy uczenia jak i predykcji, której wykonanie 
-        opiera się na wyliczeniu odpowiednich prawdopodobieństw będących dla maszyny bardzo prostym zadaniem. 
+        opiera się na wyliczeniu odpowiednich prawdopodobieństw będących dla maszyny bardzo prostym zadaniem,
         \item \textbf{SVC} -
         czas trwania fazy predykcji jest bardzo podobny do czasu uczenia. Użycie SVC trwa zbyt długo
-        by mógł on być zaimplementowany w jakichkolwiek systemach.
+        by mógł on być zaimplementowany w jakichkolwiek systemach,
         \item \textbf{MLP} -
         w porówaniu z fazą uczenia predykcja następuje bardzo szybko, ponieważ opiera się tylko
         na aktywacji odpowiednich neuronów w stworzonym wcześniej modelu. Jest on na drugim miejscu

@@ -11,13 +11,13 @@ jednak nie zawsze jest precyzyjna i jej znaczenie może różnić się w zależn
 różnego rodzaju regionalnych dialektów. Systemy NLP są często wykorzystywane w takich 
 celach jak:
 \begin{itemize}
-    \item Asystenci głosowi na przykład (\textit{Siri, Alexa, Cortana}) - są to urządzenia, które 
-    wykonują komendy wypowiedziane w ich kierunku przez użytkownika.  
-    \item Wyodrębnianie ważnych informacji z tekstu w celu późniejszej analizy.
-    \item Analiza sentymentu czyli wnioskowanie na podstawie tekstu opinii użytkowników na dany temat.
-    \item Sprawdzanie błędów ortograficznych.
-    \item Tłumaczenie tekstu na inne języki.
-    \item Chatboty wykorzystywane przez wiele firm w celu posiadania całodobowej zautomatyzowanej obsługi klienta.
+    \item asystenci głosowi na przykład (\textit{Siri, Alexa, Cortana}) - są to urządzenia, które 
+    wykonują komendy wypowiedziane w ich kierunku przez użytkownika,
+    \item wyodrębnianie ważnych informacji z tekstu w celu późniejszej analizy,
+    \item analiza sentymentu czyli wnioskowanie na podstawie tekstu opinii użytkowników na dany temat,
+    \item sprawdzanie błędów ortograficznych,
+    \item tłumaczenie tekstu na inne języki,
+    \item chatboty wykorzystywane przez wiele firm w celu posiadania całodobowej zautomatyzowanej obsługi klienta.
 \end{itemize}
 Rozwój NLP ma bardzo duże znaczenie dla osób niepełnosprawnych, które często tylko dzięki ich pomocy są 
 w stanie nawiązać interakcję z technologią pozwalającą im na znaczne podniesienie jakości życia. ~\cite{TextProcessing}
@@ -27,15 +27,15 @@ wykonuje się na nich różnego rodzaju operacje. Operacje te powodują, że tek
 natomiast znacznie zmniejsza się moc obliczeniowa potrzebna do nauki algorytmów uczących wykonywanych na nim. 
 Najczęściej wykorzystywanymi tego typu operacjami są ~\cite{preprocessing}:
 \begin{itemize}
-    \item Zamiana wszystkich dużych liter na małe.
-    \item Usunięcie znaków specjalnych.
-    \item Usunięcie tak zwanych ``Stop words'' - są to bardzo często występujące w danym języku słowa, które 
-    zazwyczaj nie wnoszą istotnych dla analizy informacji.
-    \item Tokenizacja - polega na podziale tekstu na mniejsze części zwane tokenami. W przypadku dużych bloków 
-    tekstu może to być podział na zdania, a w przypadku zdań podział na słowa itd.
-    \item Lematyzacja - oznacza ona sprowadzenie grupy wyrazów stanowiących odmianę danego zwrotu do wspólnej postaci,
-    co pozwala na traktowanie ich jako to samo słowo.
-    \item Stemming - jest to proces usunięcia końcówki fleksyjnej pozostawiając tylko temat czyli nośnik znaczenia 
+    \item zamiana wszystkich dużych liter na małe,
+    \item usunięcie znaków specjalnych,
+    \item usunięcie tak zwanych ``Stop words'' - są to bardzo często występujące w danym języku słowa, które 
+    zazwyczaj nie wnoszą istotnych dla analizy informacji,
+    \item tokenizacja - polega na podziale tekstu na mniejsze części zwane tokenami. W przypadku dużych bloków 
+    tekstu może to być podział na zdania, a w przypadku zdań podział na słowa itd.,
+    \item lematyzacja - oznacza ona sprowadzenie grupy wyrazów stanowiących odmianę danego zwrotu do wspólnej postaci,
+    co pozwala na traktowanie ich jako to samo słowo,
+    \item stemming - jest to proces usunięcia końcówki fleksyjnej pozostawiając tylko temat czyli nośnik znaczenia 
     wyrazu.
 \end{itemize}
 Wykonanie wybranych operacji na tekście daje na wyjściu skrócone dane tekstowe, które można następnie przeanalizować lub 
@@ -62,8 +62,8 @@ Jedne z najpopularniejszych metod wektoryzacji to: ~\cite{ML}
     \item \textbf{TFIDF} (ang. Term frequency inverse document frequency) jest to metoda przypisująca, każdemu symbolowi 
     jego wagę w kontekście analizowanych dokumentów. Aby obliczyć tę wagę potrzebne są dwa elementy:
     \begin{enumerate}
-        \item Częstość symboli - którą uzyskuje się dzieląc liczbę wystąpień symbolu przez liczbę symboli w całym dokumencie,
-        \item Odwrotną częstość w dokumentach.
+        \item częstość symboli - którą uzyskuje się dzieląc liczbę wystąpień symbolu przez liczbę symboli w całym dokumencie,
+        \item odwrotną częstość w dokumentach.
     \end{enumerate}
     Po obliczeniu obu tych wartości oblicza się tzw. TFIDF score, której wartość określa jak ważny jest dany symbol 
     dla dokumentu w kontekście wykonywanej analizy. Wynik ten oblicza się na podstawie wzoru \ref{eq:tfidf}, gdzie

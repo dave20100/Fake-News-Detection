@@ -46,12 +46,12 @@ NLTK. Jest to biblioteka służąca do przetwarzania języków naturalnych, któ
 \section{Wymagania funkcjonalne}
 Aplikacja powinna spełniać następujące wymagania funkcjonalne: 
 \begin{itemize}
-    \item Wczytywać dane z zewnętrznego pliku w formacie csv.
-    \item W odpowiedni sposób przygotowywać dane.
-    \item Dzielić dane na treningowe oraz testowe.
-    \item Wykonywać uczenie badanych algorytmów na danych treningowych.
-    \item Testować nauczone modele na danych testowych.
-    \item Zapisywać wyniki badań do pliku w formacie csv.
+    \item wczytywać dane z zewnętrznego pliku w formacie csv,
+    \item w odpowiedni sposób przygotowywać dane,
+    \item dzielić dane na treningowe oraz testowe,
+    \item wykonywać uczenie badanych algorytmów na danych treningowych,
+    \item testować nauczone modele na danych testowych,
+    \item zapisywać wyniki badań do pliku w formacie csv.
 \end{itemize}
 Są to funkcjonalności kluczowe aby system pozwalał wykonywać ważne dla osiągnięcia celu
 badania. 
@@ -85,8 +85,8 @@ akcją wykonywaną przez funkcję jest zamiana wszystkich liter zawartych w dany
 
 Funkcja ta zwraca krotkę zawierającą dwa elementy:
 \begin{itemize}
-    \item listę artykułów
-    \item listę etykiet
+    \item listę artykułów,
+    \item listę etykiet.
 \end{itemize} 
 
 \begin{lstlisting}[language=Python, caption={Funkcja przygotowywująca dane tekstowe}, captionpos=b, frame=single]
@@ -112,30 +112,30 @@ def dataPreprocessing(articles, labels):
 Drugą funkcją znajdującą się w programie jest \textit{dataPreprocessing} posiada 
 ona dwa argumenty:
 \begin{itemize}
-    \item articles - Lista artykułów
-    \item labels - Lista etykiet
+    \item articles - lista artykułów,
+    \item labels - lista etykiet.
 \end{itemize}
 Funkcja ta wykonuje przygotowanie tekstu do późniejszej wektoryzacji. Wykonuje ona 
 kolejno operacje:
-\begin{enumerate}
-    \item Usunięcia Stop words z tekstu każdego artykułu.
-    \item Usunięcia wszystkich znaków nie będących literami.
-    \item Usunięcia ze zbioru danych artykułów o długości poniżej 500 znaków oraz powyżej 5000 znaków
+\begin{itemize}
+    \item usunięcia Stop words z tekstu każdego artykułu,
+    \item usunięcia wszystkich znaków nie będących literami,
+    \item usunięcia ze zbioru danych artykułów o długości poniżej 500 znaków oraz powyżej 5000 znaków
     ponieważ przekazują one niepotrzebną ilość informacji.
-\end{enumerate}
+\end{itemize}
 Funkcja ta zwraca dokładnie taką samą krotkę jak \textit{basicPreparation}.
 
 
 Główna pętla programu wykonuje kolejno następujące operacje:
-\begin{enumerate}
-    \item Wytrenowanie modelu wektoryzatora na danych treningowych,
-    \item Wektoryzacja danych treningowych i testowych za pomocą 
+\begin{itemize}
+    \item wytrenowanie modelu wektoryzatora na danych treningowych,
+    \item wektoryzacja danych treningowych i testowych za pomocą 
     nauczonego wcześniej modelu,
-    \item Normalizacja cech za pomocą StandardScaler,
-    \item Trening algorytmu na cechach treningowych funkcją \textit{fit},
-    \item Obliczenie efektywności funkcją \textit{score} na danych testowych,
-    \item Zapisanie wyników do pliku csv o tytule odpowiadającym nazwie algorytmu 
+    \item normalizacja cech za pomocą StandardScaler,
+    \item trening algorytmu na cechach treningowych funkcją \textit{fit},
+    \item obliczenie efektywności funkcją \textit{score} na danych testowych,
+    \item zapisanie wyników do pliku csv o tytule odpowiadającym nazwie algorytmu 
     uczenia maszynowego.
-\end{enumerate}
+\end{itemize}
 Aby obliczyć czas trwania faz uczenia i predykcji wykorzystano bibliotekę time w celu
 zapisania czasu przed i po wykonaniu każdej z faz, a następnie odjęciu od siebie tych wartości.

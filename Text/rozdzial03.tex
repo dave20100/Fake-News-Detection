@@ -13,8 +13,8 @@ systemu tego typu, jego program automatycznie grał w warcaby i uczył się na p
     \caption{Rodzaje uczenia maszynowego Źródło: Własne}
 \end{figure}
 Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zależności od problemów, które mają one rozwiązywać są to:
-\begin{enumerate}
-    \item \textbf{Uczenie nadzorowane}
+\begin{itemize}
+    \item \textbf{uczenie nadzorowane}
     Jest to najczęściej wykorzystywany rodzaj uczenia maszynowego polega on na tym,
     że maszyna uczy się na podstawie przykładów zawartych w danych treningowych,
     uczenie nadzorowane można porównać do nauczyciela i ucznia gdzie dane pełnią rolę nauczyciela 
@@ -28,47 +28,47 @@ Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zale�
 
     Przykładowe zastosowanie:
     \begin{itemize}
-        \item Klasyfikacja - przewidywanie kategorii:
+        \item klasyfikacja - przewidywanie kategorii:
         \begin{itemize}
             \item rozpoznawanie elementów na zdjęciu,
             \item filtrowanie spamu w skrzynce mailowej.
         \end{itemize}
-        \item Regresja - przewidywanie liczb:
+        \item regresja - przewidywanie liczb:
         \begin{itemize}
             \item przewidywanie trendów finansowych lub ekonomicznych,
             \item prognozowanie pogody.
         \end{itemize}
     \end{itemize}
-    \item \textbf{Uczenie nienadzorowane}
+    \item \textbf{uczenie nienadzorowane}
     W przeciwieństwie do uczenia nadzorowanego opiera się na braku
     nauczyciela, a zadaniem maszyny jest znalezienie wzorców i zależności między analizowanymi
     obiektami samodzielnie. Dwie metody które są najczęściej wykorzystywane w uczeniu nienadzorowanym
     to:
-    \begin{enumerate}
-        \item \textbf{Analiza składowych głownych} - polega na zmniejszaniu wymiarowości danych poprzez
+    \begin{itemize}
+        \item \textbf{analiza składowych głownych} - polega na zmniejszaniu wymiarowości danych poprzez
         odnajdywanie a następnie odrzucanie cech, które niosą ze sobą najmniejszą ilość informacji.
-        \item \textbf{Analiza skupień (Klasteryzacja)} - pozwala na identyfikację oraz grupowanie danych
+        \item \textbf{analiza skupień (Klasteryzacja)} - pozwala na identyfikację oraz grupowanie danych
         podobnych, które nie są w żaden sposób oznaczone. Może także pomóc w odnalezieniu anomalii
         nie pasujących do żadnej z wydzielonych grup.
         
-    \end{enumerate} 
+    \end{itemize} 
     Wykorzystanie tego typu algorytmów pozwala na badanie danych nieoznaczonych,
     które są znacznie częściej spotykane niż dane oznaczone.
     
     Przykładowe zastosowanie:
     \begin{itemize}
-        \item Redukcja wymiarów:
+        \item redukcja wymiarów:
         \begin{itemize}
-            \item Wizualizacja danych ``big data'',
-            \item Kompresja danych.
+            \item wizualizacja danych ``big data'',
+            \item kompresja danych.
         \end{itemize}
-        \item Klasteryzacja:
+        \item klasteryzacja:
         \begin{itemize}
-            \item Spersonalizowane reklamy,
-            \item Systemy rekomendacyjne.
+            \item spersonalizowane reklamy,
+            \item systemy rekomendacyjne.
         \end{itemize}
     \end{itemize}
-    \item \textbf{Uczenie ze wzmocnieniem}
+    \item \textbf{uczenie ze wzmocnieniem}
     polega na wykorzystaniu metody prób i błędów w taki sposób by maszyna została
     ``nagrodzona'' za wykonywanie czynności pożądanych oraz ``karana'' za popełnianie błędów. 
     Sukces takiego systemu oparty jest na odpowiedniej implementacji systemu nagród, który może 
@@ -78,10 +78,10 @@ Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zale�
     
     Przykładowe zastosowanie:
     \begin{itemize}
-        \item Tworzenie programów grających w gry,
-        \item Samojezdne samochody.
+        \item tworzenie programów grających w gry,
+        \item samojezdne samochody.
     \end{itemize}
-\end{enumerate} 
+\end{itemize} 
 
 \section{Algorytmy klasyfikacji}
 Z problemem klasyfikacji można się spotkać wszędzie tam, gdzie wykorzystując
@@ -91,11 +91,11 @@ binarne (\textbf{klasyfikacja dwuklasowa}) lub jedną z wielu etykiet (\textbf{k
 Aby wybrać odpowiedni do rozwiązywanego problemu algorytm klasyfikacji należy wziąć 
 pod uwagę 4 czynniki:
 \begin{itemize}
-    \item Złożoność czasowa - jak długo trwa uczenie oraz predykcja nowych danych.
-    \item Interpretowalność - jak łatwo można wytłumaczyć decyzję podjętą przez 
-    system.
-    \item Skalowalność - jak dużą ilość zasobów zużywa dany algorytm.
-    \item Czynnik ludzki - Aby poprawnie ustawić parametry algorytmu potrzebna
+    \item złożoność czasowa - jak długo trwa uczenie oraz predykcja nowych danych,
+    \item interpretowalność - jak łatwo można wytłumaczyć decyzję podjętą przez 
+    system,
+    \item skalowalność - jak dużą ilość zasobów zużywa dany algorytm,
+    \item czynnik ludzki - Aby poprawnie ustawić parametry algorytmu potrzebna
     jest wiedza na temat jego działania. Ponieważ poprawne ich ustawienie może 
     mieć większe znaczenie dla efektywności niż dobór najlepszego algorytmu często
     lepiej jest wykorzystać algorytm znany a nie optymalny.
@@ -106,12 +106,12 @@ pod uwagę 4 czynniki:
 Algorytm K najbliższych sąsiadów (\textbf{K nearest neighbours}) jest algorytmem
 stosowanym zarówno w problemach regresyjnych jak i klasyfikacji. Kroki jego działania
 można opisać w następujący sposób:
-\begin{enumerate}
-    \item Umieszczenie wszystkich obiektów posiadających N cech jako punkty w N-wymiarowej przestrzeni.
-    \item Obliczenie odległości między obiektem którego etykieta będzie przewidywana a każdym innym
-    obiektem.
-    \item Przypisanie do obiektu etykiety, którą posiada większość z K najbliższych obiektów. 
-\end{enumerate}
+\begin{itemize}
+    \item umieszczenie wszystkich obiektów posiadających N cech jako punkty w N-wymiarowej przestrzeni,
+    \item obliczenie odległości między obiektem którego etykieta będzie przewidywana a każdym innym
+    obiektem,
+    \item przypisanie do obiektu etykiety, którą posiada większość z K najbliższych obiektów. 
+\end{itemize}
 Faza uczenia w KNN polega wyłącznie na wczytaniu danych treningowych do pamięci przez co jest 
 ona bardzo szybka.
 
@@ -130,16 +130,16 @@ predykcję wykonuje się na podstawie średniej wartości K najbliższych sąsia
     \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
     
     %% PROS, seperated by empty line or \par
-    Prosty do zrozumienia i interpretacji\par
-    Szybkość fazy uczenia\par
-    Uniwersalność można go wykorzystać zarówno w problemach regresyjnych jak i klasyfikcyjnych\par
-    Nie wykonuje generalizacji danych przez co jest efektywny w przypadku danych nieliniowych\par
+    prosty do zrozumienia i interpretacji,\par
+    szybkość fazy uczenia,\par
+    uniwersalność można go wykorzystać zarówno w problemach regresyjnych jak i klasyfikcyjnych,\par
+    nie wykonuje generalizacji danych przez co jest efektywny w przypadku danych nieliniowych.\par
     &
     
     %% CONS, seperated by empty line or \par
-    Przechowuje wszystkie dane treningowe w pamięci co skutkuje wysoką złożonością pamięciową\par
-    Wrażliwy na ilość danych i nieistotne cechy\par
-    Kosztowny obliczeniowo\par
+    przechowuje wszystkie dane treningowe w pamięci co skutkuje wysoką złożonością pamięciową,\par
+    wrażliwy na ilość danych i nieistotne cechy,\par
+    kosztowny obliczeniowo.\par
     \\\bottomrule
     \end{tabularx}
     \caption{Wady i zalety KNN}
@@ -160,11 +160,11 @@ oznacza że obiekty należy podzielić na dokładnie dwie klasy. SVM polega na z
 takiej prostej lub płaszczyzny (w zależności od liczby cech), która w jak najlepszy sposób
 dzieli obiekty dwóch klas. Czasami idealny podział jest niemożliwy z czym klasyfikator 
 ten radzi sobie w jeden z dwóch sposobów:
-\begin{enumerate}
-    \item Ignorowanie punktów które uniemożliwiają podział,
-    \item Wykorzystanie tak zwanych kernel trick, które przekształcają dane do wyższego 
+\begin{itemize}
+    \item ignorowanie punktów które uniemożliwiają podział,
+    \item wykorzystanie tak zwanych kernel trick, które przekształcają dane do wyższego 
     wymiaru w którym podział jest możliwy.
-\end{enumerate}
+\end{itemize}
 Aby odnaleźć optymalne rozwiązanie SVM skupiają się na punktach jak najbardziej skrajnych
 obu klas są one nazywane \textbf{wektorami nośnymi}. Zmiana ich położenia lub usunięcie
 całkowicie zmienia położenie płaszczyzny.
@@ -178,17 +178,17 @@ całkowicie zmienia położenie płaszczyzny.
     \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
     
     %% PROS, seperated by empty line or \par
-    Efektywny w wielowymiarowych przestrzeniach\par
-    Działa nawet w przypadku gdzie liczba danych treningowych jest mniejsza od
-    ilości ich cech\par
-    Przechowuje w pamięci tylko niewielką ilość danych treningowych\par
+    efektywny w wielowymiarowych przestrzeniach,\par
+    działa nawet w przypadku gdzie liczba danych treningowych jest mniejsza od
+    ilości ich cech,\par
+    przechowuje w pamięci tylko niewielką ilość danych treningowych.\par
     
     &
     
     %% CONS, seperated by empty line or \par
-    Nie jest on przystosowany do dużej ilości danych treningowych\par
+    Nie jest on przystosowany do dużej ilości danych treningowych,\par
     Nie radzi sobie dobrze jeżeli obiekty różnych klas nachodzą na siebie\par
-    Trudne do zinterpretowania wyniki predykcji
+    Trudne do zinterpretowania wyniki predykcji.
     
     \\\bottomrule
     \end{tabularx}
@@ -210,24 +210,24 @@ wejściowych.
 
 Funkcje aktywacji dzieli się na:
 \begin{itemize}
-    \item \textbf{Funkcje progowe} z wyjściem binarnym.
-    \item \textbf{Funkcje liniowe} z wyjściem ciągłym.
-    \item \textbf{Funkcje nieliniowe} z wyjściem ciągłym.
+    \item \textbf{funkcje progowe} z wyjściem binarnym,
+    \item \textbf{funkcje liniowe} z wyjściem ciągłym,
+    \item \textbf{funkcje nieliniowe} z wyjściem ciągłym.
 \end{itemize}
 W sieciach wielowarstwowych najczęściej wykorzystuje się funkcje nieliniowe ponieważ 
 wykazują one największe zdolności do nauki.
 
 Perceptron wielowarstwowy składa się z trzech warstw sztucznych neuronów: 
-\begin{enumerate}
-    \item \textbf{Warstwy wejściowej} - są to neurony zapewniające całej sieci
+\begin{itemize}
+    \item \textbf{warstwy wejściowej} - są to neurony zapewniające całej sieci
     informacje czyli zazwyczaj dane treningowe. Nie wykonują one żadnych obliczeń,
-    a jedynie przekazują informacje do kolejnych warstw.
-    \item \textbf{Warstwy ukrytej} - wykonują one odpowiednie obliczenia zmieniając 
+    a jedynie przekazują informacje do kolejnych warstw,
+    \item \textbf{warstwy ukrytej} - wykonują one odpowiednie obliczenia zmieniając 
     i przekazując informacje z warstwy wejściowej do wyjściowej. Sieć może składać
-    się z dowolnej liczby warstw ukrytych.
-    \item \textbf{Warstwy wyjsćiowej} - wykonują one ostatnie obliczenia na danych 
+    się z dowolnej liczby warstw ukrytych,
+    \item \textbf{warstwy wyjsćiowej} - wykonują one ostatnie obliczenia na danych 
     a następnie zwracają wynik.
-\end{enumerate}
+\end{itemize}
 
 Uczenie takiej sieci polega na takiej modyfikacji wag na wejściu neuronów aby poprawić
 wyniki klasyfikacji. Podczas gdy perceptron jednowarstwowy czyli nie posiadający żadnej warstwy ukrytej może 
@@ -243,15 +243,15 @@ się skomplikowanych funkcji nieliniowych.
     \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
     
     %% PROS, seperated by empty line or \par
-    Szybkie wykonywanie predykcji po nauczeniu modelu\par
-    Efektywny dla nieliniowych danych posiadających wiele cech takich jak zdjęcia\par
-    Działają najlepiej dla dużej ilości danych treningowych\par
+    szybkie wykonywanie predykcji po nauczeniu modelu,\par
+    efektywny dla nieliniowych danych posiadających wiele cech takich jak zdjęcia,\par
+    działają najlepiej dla dużej ilości danych treningowych.\par
     &
     
     %% CONS, seperated by empty line or \par
-    Brak możliwości interpretacji wyniku predykcji\par
-    Uczenie bardzo złożone obliczeniowo co skutkuje długim czasem uczenia\par
-    Użytkownik ma niewielki wpływ na działanie sieci\par
+    brak możliwości interpretacji wyniku predykcji,\par
+    uczenie bardzo złożone obliczeniowo co skutkuje długim czasem uczenia,\par
+    użytkownik ma niewielki wpływ na działanie sieci.\par
     \\\bottomrule
     \end{tabularx}
     \caption{Wady i zalety MLP}
@@ -270,10 +270,10 @@ są poszczególnymi cechami zbioru danych a liście odpowiadają klasom, które 
 należy przypisać, ostatnim elementem są krawędzie którymi reprezentuje się wartości cech. 
 Kroki algorytmu są następujące:
 \begin{enumerate}
-    \item Wybranie najlepszej cechy.
-    \item Dodanie gałęzi odpowiadających poszeczególnym wartościom wybranej cechy.
-    \item Podział zbioru danych na podzbiory zgodnie z wartościami cechy.
-    \item Jeżeli wszystkie elementy podzbiorów należą do tej samej klasy 
+    \item wybranie najlepszej cechy,
+    \item dodanie gałęzi odpowiadających poszeczególnym wartościom wybranej cechy,
+    \item podział zbioru danych na podzbiory zgodnie z wartościami cechy,
+    \item jeżeli wszystkie elementy podzbiorów należą do tej samej klasy 
     zakończenie gałęzi liściem. W przeciwnym wypadku powtórzenie kroków 
     od 1 do 4 dla każdego podzbioru.
 \end{enumerate}
@@ -296,15 +296,16 @@ wybrania klasy \textit{x\textsubscript{i}}
     \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
     
     %% PROS, seperated by empty line or \par
-    Łatwe do zinterpretowania wyniki bardzo wygodne do zwizualizowania\par
-    Automatyczna selekcja ważnych cech. Obecność cech zbędnych nie ma wpływu na efektywność\par
-    Szybkie wykonywanie predykcji\par
+    łatwe do zinterpretowania wyniki bardzo wygodne do zwizualizowania,\par
+    automatyczna selekcja ważnych cech,\par 
+    obecność cech zbędnych nie ma wpływu na efektywność,\par
+    szybkie wykonywanie predykcji.\par
     &
     
     %% CONS, seperated by empty line or \par
-    Wrażliwy na przeuczenie\par
-    Potrzeba stworzenia nowego drzewa podczas dodawania nowych danych\par
-    Małe zmiany w danych treningowych maja duży wpływ na predykcję\par
+    wrażliwy na przeuczenie,\par
+    potrzeba stworzenia nowego drzewa podczas dodawania nowych danych,\par
+    małe zmiany w danych treningowych maja duży wpływ na predykcję.\par
     
     \\\bottomrule
     \end{tabularx}
@@ -346,18 +347,18 @@ jego efektywność w porównaniu do bardziej skomplikowanych algorytmów jest mn
     \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
     
     %% PROS, seperated by empty line or \par
-    - Bardzo szybki nawet w przypadku przewidywania wieloklasowego\par
-    Działa nawet dla małej ilości danych\par
-    Dobra efektywność w przypadku klasyfikacji danych wielowymiarowych
-    jak na przykład w przypadku klasyfikacji tekstu\par
+    bardzo szybki nawet w przypadku przewidywania wieloklasowego,\par
+    działa nawet dla małej ilości danych,\par
+    dobra efektywność w przypadku klasyfikacji danych wielowymiarowych
+    jak na przykład w przypadku klasyfikacji tekstu.\par
     
     &
     
     %% CONS, seperated by empty line or \par
-    Jeżeli pewna cecha nie pojawi się w danych treningowych a istnieje w danych 
-    testowych algorytm nie będzie w stanie wykonać jego predykcji\par
-    Przyjmuje niezależność cech co w rzeczywistości jest prawie niespotykane\par
-    Mniejsza efektywność w porównaniu z bardziej skomplikowanymi algorytmami\par
+    jeżeli pewna cecha nie pojawi się w danych treningowych a istnieje w danych 
+    testowych algorytm nie będzie w stanie wykonać jego predykcji,\par
+    przyjmuje niezależność cech co w rzeczywistości jest prawie niespotykane,\par
+    mniejsza efektywność w porównaniu z bardziej skomplikowanymi algorytmami.\par
     
     \\\bottomrule
     \end{tabularx}
@@ -374,15 +375,15 @@ Wśród takich osób znajdują się naukowcy tacy jak jak Stephen Hawking, Elon 
 Według Elona Muska sztuczna inteligencja niesie ze sobą większe zagrożenie niż bomby atomowe. ~\cite{dangers}
 
 Dwa główne sposoby w jaki sztuczna inteligencja może powodować zagrożenie to:
-\begin{enumerate}
+\begin{itemize}
     \item \textbf{AI zaprogramowane do czynienia krzywdy}, czyli na przykład wykorzystanie uczenia maszynowego
-    w takich narzędziach jak broń, która w niewłaściwych rękach stanowiłaby zagrożenie dla całej ludzkości.
+    w takich narzędziach jak broń, która w niewłaściwych rękach stanowiłaby zagrożenie dla całej ludzkości,
     \item \textbf{AI zaprogramowane w dobrych celach, jednak odnajdujące krzywdzący innych optymalny
     sposób osiągnięcia sukcesu}, może to być związane ze złym przekazaniem celu jaki maszyna ma osiągnąć przez 
     programistę. Przykładowo mógłby to być samojezdny samochód, który podczas jazdy zwraca uwagę tylko i wyłącznie 
     na to by jak najszybciej dojechać do celu podróży. Samochód taki nie przestrzegał by istniejących praw drogowych
     ponieważ ograniczałyby one jego prędkość.
-\end{enumerate}
+\end{itemize}
 Przykłady te pokazują że zagrożenie nie płynie z sytuacji gdzie maszyny odwracają się przeciwko ludzkości, a 
 z sytuacji w której maszyny wykonują poświęcone im zadania za dobrze i nie w sposób przewidziany przez 
 stwórcę systemu.

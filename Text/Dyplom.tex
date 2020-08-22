@@ -512,22 +512,7 @@ SPECJALNOŚĆ: & \@specjalnosc\\
 \mbox{}\pdfbookmark[0]{Spis treści}{spisTresci.1}
 \tableofcontents* 
 
-\newpage
-% \mbox{}\pdfbookmark[0]{Spis rysunków}{spisRysunkow.1}
-% \addcontentsline{toc}{chapter}{Spis rysunków}
-% \listoffigures*
-{%
-\let\oldnumberline\numberline%
-\renewcommand{\numberline}{\figurename~\oldnumberline}%
-\listoffigures%
-}
-\newpage
 
-
-% \newpage
-\mbox{}\pdfbookmark[0]{Spis tabel}{spisTabel.1}
-\addcontentsline{toc}{chapter}{Spis tabel}
-\listoftables*
 
 % \include{skroty} %skróty można sobie pominąć
 \chapterstyle{default}
@@ -545,6 +530,24 @@ SPECJALNOŚĆ: & \@specjalnosc\\
 %UWAGA: bibliotekę referencji należy przygotować samemu. Dobrym do tego narzędziem jest JabRef.
 %       Nazwę przygotowanej biblioteki wpisuje się poniżej bez rozszerzenia 
 %       (w tym przypadku jest to "dokumentacja.bib")
+
+\newpage
+% \mbox{}\pdfbookmark[0]{Spis rysunków}{spisRysunkow.1}
+% \addcontentsline{toc}{chapter}{Spis rysunków}
+% \listoffigures*
+{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\figurename~\oldnumberline}%
+\listoffigures%
+}
+\newpage
+
+
+% \newpage
+% \mbox{}\pdfbookmark[0]{Spis tabel}{spisTabel.1}
+% \addcontentsline{toc}{chapter}{Spis tabel}
+% \listoftables*
+
 \bibliography{dokumentacja}
 \appendix
 \include{dodatekA}

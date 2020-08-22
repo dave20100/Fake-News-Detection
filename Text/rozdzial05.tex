@@ -1,16 +1,16 @@
 \chapter{Projekt i implementacja systemu}
 Do wykonania badań efektywności algorytmów uczenia maszynowego w rozpoznawaniu
 fałszywych informacji potrzebne było stworzenie systemu, który w prosty sposób 
-dla każdego z badanych algorytmów wykonałby uczenie go na danych treningowych 
+dla każdego z badanych algorytmów wykonałby operację uczenia go na danych treningowych,
 a następnie sprawdził jak dobrze przewiduje on przypadki ze zbioru testowego.
 System musi także w odpowiedni sposób przygotować dane tekstowe przy użyciu takich
-metod jak zamiana dużych liter na małe oraz usuwanie znaków interpunkcyjnych itd.
+metod jak zamiana dużych liter na małe, usuwanie znaków interpunkcyjnych itd.
 Ważną funkcjonalnością oprogramowania jest też to by dzielił on dane tekstowe na 
 różnej długości NGramy. 
 
 NGramy są to sekwencje następujących po sobie jednostek, którymi mogą być słowa, 
 głoski lub litery. W pracy wykonane zostaną badania różnych algorytmów klasyfikacji
-na podstawie podziału na różnej długości literowe NGramy a następnie wyniki zostaną
+na podstawie podziału na różnej długości literowe NGramy, a następnie wyniki zostaną
 porównane w celu odnalezienia optymalnych ustawień do rozpoznawania Fake newsów.
 
 System pozwoli na zbadanie takich wyników algorytmów jak efektywność predykcji oraz 
@@ -27,7 +27,7 @@ maszynowego są:
 \end{itemize}
 Do wykonania systemu został wybrany język Python w wersji 3.8.5, jest to interpretowalny
 język wysokiego poziomu powstały w roku 1991. Został on wybrany 
-ponieważ posiada on dużą ilość bibliotek takich jak: 
+ponieważ posiada dużą ilość bibliotek takich jak: 
 \begin{itemize}
     \item Scikit-learn,
     \item PySpark,
@@ -35,23 +35,23 @@ ponieważ posiada on dużą ilość bibliotek takich jak:
     \item TensorFlow,
     \item Keras.
 \end{itemize}
-Znacznie ułatwiają one korzystanie z możliwości uczenia maszynowego.
-W pracy zostanie wykorzystana biblioteka scikit-learn w wersji 0.23 zawiera ona wszystkie 
-testowane algorytmy i pozwala na bardzo wygodną implementację ich. Posiada także obie 
+Biblioteki te Znacznie ułatwiają korzystanie z możliwości uczenia maszynowego.
+W pracy zostanie wykorzystana biblioteka scikit-learn w wersji 0.23, która zawiera wszystkie 
+testowane algorytmy i pozwala na bardzo wygodną ich implementację. Posiada także obie 
 badane metody wektoryzacji tekstu czyli Bag of words oraz TFIDF. Jest ona udostępniana na zasadach licencji BSD ~\cite{scikitlearn}. 
 Licencja ta pozwala na użytkowanie i redystrybucję kodu zarówno zmodyfikowanego jak i oryginalnego.
 
 Ostatnią biblioteką potrzebną do stworzenia systemu była Natural Language Toolkit nazywana w skrócie 
-NLTK, jest to biblioteka służąca do przetwarzania języków naturalnych, która pozwala na proste przygotowanie tekstu do jego analizy
+NLTK. Jest to biblioteka służąca do przetwarzania języków naturalnych, która pozwala na proste przygotowanie tekstu do jego analizy
 \section{Wymagania funkcjonalne}
 Aplikacja powinna spełniać następujące wymagania funkcjonalne: 
 \begin{itemize}
-    \item Wczytywać dane z zewnętrznego pliku w formacie csv,
-    \item W odpowiedni sposób przygotowywać dane,
-    \item Dzielić dane na treningowe oraz testowe,
-    \item Wykonywać uczenie badanych algorytmów na danych treningowych,
-    \item Testować nauczone modele na danych testowych,
-    \item Zapisywać wyniki badań do pliku w formacie csv,
+    \item Wczytywać dane z zewnętrznego pliku w formacie csv.
+    \item W odpowiedni sposób przygotowywać dane.
+    \item Dzielić dane na treningowe oraz testowe.
+    \item Wykonywać uczenie badanych algorytmów na danych treningowych.
+    \item Testować nauczone modele na danych testowych.
+    \item Zapisywać wyniki badań do pliku w formacie csv.
 \end{itemize}
 Są to funkcjonalności kluczowe aby system pozwalał wykonywać ważne dla osiągnięcia celu
 badania. 
@@ -61,7 +61,7 @@ do późniejszej analizy oraz jednej pętli głównej, która wykonuje wszystkie
 a następnie zapisuje je do pliku w formacie csv. 
 
 W systemie tworzony jest także obiekt
-wielowymiarowej mapy który, po zakończeniu wykonywania programu przechowuje
+wielowymiarowej mapy, który po zakończeniu wykonywania programu przechowuje
 wszystkie nauczone modele wektoryzacji oraz uczenia maszynowego. Zapisanie go za pomocą
 biblioteki takiej jak \textit{Pickle} pozwala
 w prosty sposób użyć i przetestować modele na dowolnych danych testowych. 
@@ -85,8 +85,8 @@ akcją wykonywaną przez funkcję jest zamiana wszystkich liter zawartych w dany
 
 Funkcja ta zwraca krotkę zawierającą dwa elementy:
 \begin{itemize}
-    \item Listę artykułów
-    \item Listę etykiet
+    \item listę artykułów
+    \item listę etykiet
 \end{itemize} 
 
 \begin{lstlisting}[language=Python, caption={Funkcja przygotowywująca dane tekstowe}, captionpos=b, frame=single]
@@ -118,9 +118,9 @@ ona dwa argumenty:
 Funkcja ta wykonuje przygotowanie tekstu do późniejszej wektoryzacji. Wykonuje ona 
 kolejno operacje:
 \begin{enumerate}
-    \item Usunięcia Stop words z tekstu każdego artykułu,
-    \item Usunięcia wszystkich znaków nie będących literami,
-    \item Usunięcia ze zbioru danych artykułów o długości poniżej 500 znaków oraz powyżej 5000 znaków 
+    \item Usunięcia Stop words z tekstu każdego artykułu.
+    \item Usunięcia wszystkich znaków nie będących literami.
+    \item Usunięcia ze zbioru danych artykułów o długości poniżej 500 znaków oraz powyżej 5000 znaków
     ponieważ przekazują one niepotrzebną ilość informacji.
 \end{enumerate}
 Funkcja ta zwraca dokładnie taką samą krotkę jak \textit{basicPreparation}.
@@ -138,4 +138,4 @@ Główna pętla programu wykonuje kolejno następujące operacje:
     uczenia maszynowego.
 \end{enumerate}
 Aby obliczyć czas trwania faz uczenia i predykcji wykorzystano bibliotekę time w celu
-zapisania czasu przed i po wykonaniu każdej z faz a następnie odjęciu tych wartości.
+zapisania czasu przed i po wykonaniu każdej z faz, a następnie odjęciu od siebie tych wartości.

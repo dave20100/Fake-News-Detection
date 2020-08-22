@@ -3,8 +3,7 @@ Do wykonania badań efektywności algorytmów uczenia maszynowego w rozpoznawani
 fałszywych informacji potrzebne było stworzenie systemu, który w prosty sposób 
 dla każdego z badanych algorytmów wykonałby operację uczenia go na danych treningowych,
 a następnie sprawdził jak dobrze przewiduje on przypadki ze zbioru testowego.
-System musi także w odpowiedni sposób przygotować dane tekstowe przy użyciu takich
-metod jak zamiana dużych liter na małe, usuwanie znaków interpunkcyjnych itd.
+System musi w odpowiedni sposób przygotować dane tekstowe przy użyciu metod takich jak zamiana dużych liter na małe, usuwanie znaków interpunkcyjnych itd.
 Ważną funkcjonalnością oprogramowania jest też to by dzielił on dane tekstowe na 
 różnej długości NGramy. 
 
@@ -13,7 +12,7 @@ głoski lub litery. W pracy wykonane zostaną badania różnych algorytmów klas
 na podstawie podziału na różnej długości literowe NGramy, a następnie wyniki zostaną
 porównane w celu odnalezienia optymalnych ustawień do rozpoznawania Fake newsów.
 
-System pozwoli na zbadanie takich wyników algorytmów jak efektywność predykcji oraz 
+System pozwoli na zbadanienwyników algorytmów takich jak efektywność predykcji oraz 
 czasy trwania poszczególnych faz.
 
 \section{Wykorzystane technologie}
@@ -35,11 +34,11 @@ ponieważ posiada dużą ilość bibliotek takich jak:
     \item TensorFlow,
     \item Keras.
 \end{itemize}
-Biblioteki te Znacznie ułatwiają korzystanie z możliwości uczenia maszynowego.
+Biblioteki te znacznie ułatwiają korzystanie z możliwości uczenia maszynowego.
 W pracy zostanie wykorzystana biblioteka scikit-learn w wersji 0.23, która zawiera wszystkie 
 testowane algorytmy i pozwala na bardzo wygodną ich implementację. Posiada także obie 
-badane metody wektoryzacji tekstu czyli Bag of words oraz TFIDF. Jest ona udostępniana na zasadach licencji BSD ~\cite{scikitlearn}. 
-Licencja ta pozwala na użytkowanie i redystrybucję kodu zarówno zmodyfikowanego jak i oryginalnego.
+badane metody wektoryzacji tekstu, czyli Bag of words oraz TFIDF. Jest ona udostępniana na zasadach licencji BSD ~\cite{scikitlearn}. 
+Licencja ta pozwala na użytkowanie i redystrybucję kodu zarówno zmodyfikowanego, jak i oryginalnego.
 
 Ostatnią biblioteką potrzebną do stworzenia systemu była Natural Language Toolkit nazywana w skrócie 
 NLTK. Jest to biblioteka służąca do przetwarzania języków naturalnych, która pozwala na proste przygotowanie tekstu do jego analizy
@@ -57,7 +56,7 @@ Są to funkcjonalności kluczowe aby system pozwalał wykonywać ważne dla osi�
 badania. 
 \section{Implementacja}
 Implementacja składa się z dwóch funkcji służących do przygotowywania danych tekstowych
-do późniejszej analizy oraz jednej pętli głównej, która wykonuje wszystkie badania
+do późniejszej analizy oraz jednej pętli głównej, która wykonuje wszystkie badania,
 a następnie zapisuje je do pliku w formacie csv. 
 
 W systemie tworzony jest także obiekt
@@ -109,7 +108,7 @@ def dataPreprocessing(articles, labels):
 
 \end{lstlisting}
 
-Drugą funkcją znajdującą się w programie jest \textit{dataPreprocessing} posiada 
+Drugą funkcją znajdującą się w programie jest \textit{dataPreprocessing}. Posiada 
 ona dwa argumenty:
 \begin{itemize}
     \item articles - lista artykułów,
@@ -120,7 +119,7 @@ kolejno operacje:
 \begin{itemize}
     \item usunięcia Stop words z tekstu każdego artykułu,
     \item usunięcia wszystkich znaków nie będących literami,
-    \item usunięcia ze zbioru danych artykułów o długości poniżej 500 znaków oraz powyżej 5000 znaków
+    \item usunięcia ze zbioru danych artykułów o długości poniżej 500 znaków oraz powyżej 5000 znaków,
     ponieważ przekazują one niepotrzebną ilość informacji.
 \end{itemize}
 Funkcja ta zwraca dokładnie taką samą krotkę jak \textit{basicPreparation}.

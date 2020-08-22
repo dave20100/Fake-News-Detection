@@ -1,6 +1,6 @@
 
 \chapter{Przetwarzanie języków naturalnych}
-Systemy przetwarzania języków naturalnych (\textbf{Natural language processing}) nazywane 
+Systemy przetwarzania języków naturalnych (Natural language processing) nazywane 
 w skrócie NLP, oznaczają systemy mogące zrozumieć mowę i pismo ludzkie w takiej
 formie jaką ludzie posługują się na co dzień. Programy takie mogą wykonywać zadania od zliczania
 częstotliwości występowania danego słowa w tekście do automatycznego pisania artykułów. 
@@ -11,10 +11,10 @@ jednak nie zawsze jest precyzyjna i jej znaczenie może różnić się w zależn
 różnego rodzaju regionalnych dialektów. Systemy NLP są często wykorzystywane w takich 
 celach jak:
 \begin{itemize}
-    \item asystenci głosowi na przykład (\textit{Siri, Alexa, Cortana}) - są to urządzenia, które 
+    \item asystenci głosowi na przykład (Siri, Alexa, Cortana) - są to urządzenia, które 
     wykonują komendy wypowiedziane w ich kierunku przez użytkownika,
     \item wyodrębnianie ważnych informacji z tekstu w celu późniejszej analizy,
-    \item analiza sentymentu czyli wnioskowanie na podstawie tekstu opinii użytkowników na dany temat,
+    \item analiza sentymentu, czyli wnioskowanie na podstawie tekstu opinii użytkowników na dany temat,
     \item sprawdzanie błędów ortograficznych,
     \item tłumaczenie tekstu na inne języki,
     \item chatboty wykorzystywane przez wiele firm w celu posiadania całodobowej zautomatyzowanej obsługi klienta.
@@ -23,8 +23,8 @@ Rozwój NLP ma bardzo duże znaczenie dla osób niepełnosprawnych, które częs
 w stanie nawiązać interakcję z technologią pozwalającą im na znaczne podniesienie jakości życia. ~\cite{TextProcessing}
 \section{Przygotowywanie danych tekstowych}
 Aby ułatwić analizę ogromnej ilości danych tekstowych potrzebnych do poprawnego nauczenia systemu NLP,
-wykonuje się na nich różnego rodzaju operacje. Operacje te powodują, że tekst nie traci swoich najważniejszych cech 
-natomiast znacznie zmniejsza się moc obliczeniowa potrzebna do nauki algorytmów uczących wykonywanych na nim. 
+wykonuje się na nich różnego rodzaju operacje. Operacje te powodują, że tekst nie traci swoich najważniejszych cech, 
+natomiast znacznie zmniejsza się moc obliczeniowa potrzebna do nauczenia algorytmów wykonywanych na nim. 
 Najczęściej wykorzystywanymi tego typu operacjami są ~\cite{preprocessing}:
 \begin{itemize}
     \item zamiana wszystkich dużych liter na małe,
@@ -43,7 +43,7 @@ wykonać na nich wektoryzację, co pozwala na wykorzystanie ich w różnych algo
 \section{Wektoryzacja}
 Z uwagi na fakt, że algorytmy sztucznej inteligencji potrafią uczyć się tylko z danych przedstawionych w formie numerycznej, aby móc 
 wykorzystać je w kombinacji z NLP potrzebny jest pewien sposób zamiany formy tekstowej na liczbową, tak by straciły one jak najmniej
-swoich najważniejszych cech a zarazem były czytelne dla maszyny. 
+swoich najważniejszych cech, a zarazem były czytelne dla maszyny. 
 
 Operacje takie nazywa się wektoryzacją tekstu, ponieważ 
 reprezentacja liczbowa będąca ich wynikiem to najczęściej wektory. 
@@ -51,18 +51,18 @@ Wybór poprawnego sposobu zamiany tekstu może mieć ogromne znaczenie dla efekt
 
 Jedne z najpopularniejszych metod wektoryzacji to: ~\cite{ML}
 \begin{itemize}
-    \item \textbf{Bag of words} jest to metoda wektoryzacji, w której każdemu unikalnemu symbolowi z tekstu przypisuje się liczbę 
+    \item Bag of words jest to metoda wektoryzacji, w której każdemu unikalnemu symbolowi z tekstu przypisuje się liczbę 
     odpowiadającej jego ilości w analizowanym tekście. Symbolami mogą być całe zdania, słowa bądź NGramy. 
-    Metoda ta w żaden sposób nie zachowuje informacji o porządku ani kontekście występujących symboli a jedynie o 
+    Metoda ta w żaden sposób nie zachowuje informacji o porządku ani kontekście występujących symboli, a jedynie o 
     częstotliwości ich występowania. 
     
     Wektor wynikowy metody ``Bag of words'' ma wymiar równy liczbie unikalnych symboli w tekście, przez co przy analizie dużej ilości 
     dokumentów ma dużą złożoność pamięciową aby naprawić ten problem najpierw na danych wykonuje się metody przygotowywania danych tekstowych.
 
-    \item \textbf{TFIDF} (ang. Term frequency inverse document frequency) jest to metoda przypisująca, każdemu symbolowi 
+    \item TFIDF (ang. Term frequency inverse document frequency) jest to metoda przypisująca każdemu symbolowi 
     jego wagę w kontekście analizowanych dokumentów. Aby obliczyć tę wagę potrzebne są dwa elementy:
     \begin{enumerate}
-        \item częstość symboli - którą uzyskuje się dzieląc liczbę wystąpień symbolu przez liczbę symboli w całym dokumencie,
+        \item częstość symboli, którą uzyskuje się dzieląc liczbę wystąpień symbolu przez liczbę symboli w całym dokumencie,
         \item odwrotną częstość w dokumentach.
     \end{enumerate}
     Po obliczeniu obu tych wartości oblicza się tzw. TFIDF score, której wartość określa jak ważny jest dany symbol 
@@ -72,7 +72,7 @@ Jedne z najpopularniejszych metod wektoryzacji to: ~\cite{ML}
         \item y - dokument,
         \item TF - częstość symbolu,
         \item N - ilość wszystkich dokumentów,
-        \item df - ilość dokumentów w których pojawił się symbol x.
+        \item df - ilość dokumentów, w których pojawił się symbol x.
     \end{itemize}
 
     \begin{equation}

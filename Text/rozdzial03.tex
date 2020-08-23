@@ -1,11 +1,11 @@
 \chapter{Uczenie maszyn}
-Uczenie maszynowe jest dziedziną algorytmów komputerowych, które automatycznie poprawiają swoją efektywność poprzez doświadczenie. 
+Uczenie maszynowe jest dziedziną algorytmów komputerowych, które automatycznie poprawiają swoją poprawność poprzez doświadczenie. 
 Określa się je jako poddziedzinę sztucznej inteligencji. Algorytmy te pozwalają na zbudowanie matematycznego modelu na podstawie 
 przykładowych danych nazywanych danymi treningowymi, co pozwala im na wykonywanie predykcji lub decyzji bez potrzeby ich dokładnego 
 zaimplementowania przez programistę. Uczenie maszynowe stosuje się do wielu zadań, między innymi do filtrowania poczty mailowej ze spamu, reklam internetowe, 
 wykrywania twarzy na zdjęciach oraz nagraniach, a w przyszłości może pomóc w stworzeniu technologii takich jak 
-samojezdne samochody. Sam termin został spopularyzowany przez informatyka Arhura Samuela w roku 1959, był on autorem pierwszego działającego 
-systemu tego typu, jego program automatycznie grał w warcaby i uczył się na podstawie poprzednich potyczek. ~\cite{MLBasics}
+autonomiczne samochody. Sam termin został spopularyzowany przez informatyka Arhura Samuela w roku 1959, był on autorem pierwszego działającego 
+systemu tego typu, jego program automatycznie grał w warcaby i uczył się na podstawie poprzednich potyczek ~\cite{MLBasics}. 
 \section{Rodzaje}
 \begin{figure}[h]
     \centering
@@ -101,7 +101,7 @@ pod uwagę cztery czynniki:
     lepiej jest wykorzystać algorytm znany, a nie optymalny.
 \end{itemize}
 
-\subsection{KNN}
+\subsection{\textit{k}-NN}
 
 Algorytm K najbliższych sąsiadów (K nearest neighbours) jest algorytmem
 stosowanym zarówno w problemach regresyjnych, jak i klasyfikacji. Kroki jego działania
@@ -112,10 +112,10 @@ można opisać w następujący sposób:
     obiektem,
     \item przypisanie do obiektu etykiety, którą posiada większość z K najbliższych obiektów. 
 \end{itemize}
-Faza uczenia w KNN polega wyłącznie na wczytaniu danych treningowych do pamięci, przez co jest 
+Faza uczenia w \textit{k}-NN polega wyłącznie na wczytaniu danych treningowych do pamięci, przez co jest 
 ona bardzo szybka.
 
-Najważniejszą kwestią w poprawnym implementowaniu algorytmu KNN jest odpowiednie wybranie liczby
+Najważniejszą kwestią w poprawnym implementowaniu algorytmu \textit{k}-NN jest odpowiednie wybranie liczby
 K, której optymalna wartość będzie się różnić w zależności od danych. W problemach 
 klasyfikacji często wybiera się K o wartości nieparzystej aby uniknąć problemu remisu
 podczas zliczania sąsiadów. W przypadku problemów regresyjnych zamiast wykonywać głosowanie,
@@ -142,14 +142,14 @@ predykcję wykonuje się na podstawie średniej wartości K najbliższych sąsia
     kosztowny obliczeniowo.\par
     \\\bottomrule
     \end{tabularx}
-    \caption{Wady i zalety KNN}
+    \caption{Wady i zalety \textit{k}-NN}
 \end{table}
     
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{./Img/KNN.png}
-    \caption{Graficzne przedstawienie algorytmu KNN Źródło: Własne}
+    \caption{Graficzne przedstawienie algorytmu \textit{k}-NN Źródło: Własne}
 \end{figure}
 
 \subsection{SVM}
@@ -298,7 +298,7 @@ wybrania klasy \textit{x\textsubscript{i}}
     %% PROS, seperated by empty line or \par
     łatwe do zinterpretowania wyniki oraz wygodne do zwizualizowania,\par
     automatyczna selekcja ważnych cech,\par 
-    obecność cech zbędnych nie ma wpływu na efektywność,\par
+    obecność cech zbędnych nie ma wpływu na poprawność,\par
     szybkie wykonywanie predykcji.\par
     &
     
@@ -337,7 +337,7 @@ gdzie P(A) i P(B) prawdopodobieństwa wystąpienia zdarzeń A i B, P(A|B) prawdo
 zdarzenia A pod warunkiem wystąpienia zdarzenia B.
 
 Algorytm ten jest często wykorzystywany w systemach czasu rzeczywistego, ponieważ działa bardzo szybko jednak
-jego efektywność w porównaniu do bardziej skomplikowanych algorytmów jest mniejsza.
+jego poprawność w porównaniu do bardziej skomplikowanych algorytmów jest mniejsza.
 \begin{table}[h]
     \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
     \toprule
@@ -349,7 +349,7 @@ jego efektywność w porównaniu do bardziej skomplikowanych algorytmów jest mn
     %% PROS, seperated by empty line or \par
     bardzo szybki nawet w przypadku przewidywania wieloklasowego,\par
     działa nawet dla małej ilości danych,\par
-    dobra efektywność w przypadku klasyfikacji danych wielowymiarowych
+    dobra poprawność w przypadku klasyfikacji danych wielowymiarowych
     jak na przykład w przypadku klasyfikacji tekstu.\par
     
     &
@@ -358,7 +358,7 @@ jego efektywność w porównaniu do bardziej skomplikowanych algorytmów jest mn
     jeżeli pewna cecha nie pojawi się w danych treningowych, a istnieje w danych 
     testowych algorytm nie będzie w stanie wykonać jego predykcji,\par
     przyjmuje niezależność cech co w rzeczywistości jest prawie niespotykane,\par
-    mniejsza efektywność w porównaniu z bardziej skomplikowanymi algorytmami.\par
+    mniejsza poprawność w porównaniu z bardziej skomplikowanymi algorytmami.\par
     
     \\\bottomrule
     \end{tabularx}
@@ -372,7 +372,7 @@ na pozytywach związanych
 z tymi technologiami, jednakże niektórzy dostrzegają ogromne zagrożenia płynące z niewłaściwego 
 wykorzystania ich i katastrofalne skutki, do których mogą doprowadzić. 
 Wśród takich osób znajdują się naukowcy tacy jak jak Stephen Hawking, Elon Musk, Steve Wozniak i Bill Gates. 
-Według Elona Muska sztuczna inteligencja niesie ze sobą większe zagrożenie niż bomby atomowe. ~\cite{dangers}
+Według Elona Muska sztuczna inteligencja niesie ze sobą większe zagrożenie niż bomby atomowe ~\cite{dangers}. 
 
 Dwa główne sposoby w jaki sztuczna inteligencja może powodować zagrożenie to:
 \begin{itemize}

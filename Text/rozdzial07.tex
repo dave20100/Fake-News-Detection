@@ -1,22 +1,20 @@
 \chapter{Podsumowanie}
-Tematem niniejszej pracy magisterskiej było 
-``Zastosowanie metod uczenia maszynowego w detekcji fałszywych informacji'',
-natomiast celem było sprawdzenie czy algorytmy uczenia maszynowego mogą zostać wykorzystane
-w detekcji tak zwanych Fake newsów i jak dobrze wykonają to zadanie.
+Celem pracy było sprawdzenie czy algorytmy uczenia maszynowego mogą zostać wykorzystane
+w detekcji tak zwanych \textit{fake newsów} i jak dobrze wykonają to zadanie.
 
 
-Postanowiono sprawdzić metodę podziału tekstu na rożnej długości NGramy i zwrócić uwagę 
+Postanowiono sprawdzić metodę podziału tekstu na rożnej długości ngramy i zwrócić uwagę 
 jak zmiana ich długości wpływa na poszczególne cechy algorytmów.
 Wyniki badań wykonanych na algorytmach: K najbliższych sąsiadów, Random Forest, Naive Bayes,
 SVC oraz MLP pokazują, że algorytmy uczenia jak najbardziej mogą znaleźć swoje miejsce w systemach
 automatycznego rozpoznawania fałszywych informacji. Wiele z nich nie miało problemu z osiągnieciem 
 efektywności powyżej 90\%. Najlepszym z badanych algorytmów okazał się Random Forest osiągając
 wynik 99.82\%. Najgorzej z zadaniem poradziła sobie metoda K najblizszych sąsiadów, jej najwyższa 
-efektywność wynosiła 78.13\%.
+poprawność wynosiła 78.13\%.
 
 Jak przypuszczano ogromne znaczenie dla efektywności
 miała zmiana długości NGramów, które nie mogą być ani za krótkie, ani za długie.
-Dla wszystkich badanych algorytmów poza KNN Ngramy o długości 1 dały najgorsze wyniki, a wartości
+Dla wszystkich badanych algorytmów poza \textit{k}-NN ngramy o długości 1 dały najgorsze wyniki, a wartości
 pośrednie najlepsze.
 
 Istotnym problemem z tego typu rozwiązaniami jest brak zbiorów treningowych posiadających 
@@ -24,7 +22,7 @@ artykuły o zróżnicowanej tematyce. Większość istniejących danych zawiera 
 polityką, przez co z taką tematyką algorytmy poradziłyby sobie najlepiej. Mogłyby mieć one jednak problem 
 z artykułami naukowymi, sportowymi itp.
 
-Jednym ze sposobów na dalszy rozwój pracy mogłoby być stworzenie systemu rozpoznającego 
+Jednym ze sposobów na dalszy rozwój pracy mogłoby być opracowanie systemu rozpoznającego 
 przerobione obrazy. System taki w kombinacji z wykrywaniem fałszywych tekstów zawartym
-w niniejszej pracy jeszcze bardziej zwiększyłby efektywność detekcji fake newsów i stanowiłby 
+w niniejszej pracy jeszcze bardziej zwiększyłby poprawność detekcji fake newsów i stanowiłby 
 duży krok w wyeliminowaniu z internetu zagrożenia jakim są nieprawdziwe informacje.

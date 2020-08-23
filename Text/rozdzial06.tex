@@ -8,7 +8,7 @@ takie cechy jak:
     \item czas fazy predykcji,
     \item procent poprawnych predykcji po nauczeniu modelu.
 \end{itemize}
-W badaniach głównym sprawdzanym elementem było to, jak zmiana długości NGramów, na które podzielony
+W badaniach głównym sprawdzanym elementem było to, jak zmiana długości ngramów, na które podzielony
 został tekst przed wektoryzacją wpływa na wyniki algorytmów i odnalezienie takiego rozmiaru, który
 daje najlepsze wyniki. 
 
@@ -17,7 +17,7 @@ Do badania wybrano pięć popularnych algorytmów uczenia maszynowego:
     \item \textit{k}-NN - K najbliższych sąsiadów,
     \item SVM - maszyna wektorów nośnych,
     \item Naive Bayes,
-    \item Random forest - las losowy,
+    \item RF - las losowy,
     \item MLP - wielowarstwowy perceptron.
 \end{itemize} 
 \section{Warunki przeprowadzonego eksperymentu}
@@ -37,7 +37,7 @@ oznaczonych przez organizację do sprawdzania faktów Politifact. Tematyka artyk
 ze świata.  Teksty zawarte w zbiorze zostały wstępnie przygotowane, jednak błędy znajdujące się w nieprawdziwych 
 artykułach pozostały. Zbiór został pobrany w dniu 16 czerwca 2020 z witryny znajdującej się pod adresem \url{https://www.uvic.ca/}.~\cite{ISOT}
 
-Algorytmy \textit{k}-NN, Random forest oraz Naive Bayes zostały zbadane na rozmiarach NGramów od 1 do 10, natomiast
+Algorytmy \textit{k}-NN, RF oraz Naive Bayes zostały zbadane na rozmiarach ngramów od 1 do 10, natomiast
 MLP i SVC od 1 do 5 z powodu dużej złożoności obliczeniowej przy większym rozmiarze. Podczas
 dzielenia danych na treningowe i testowe został wykorzystany parametr random\_state, który gwarantuje
 że dane zostaną zawsze podzielone w jednakowy sposób.
@@ -50,7 +50,7 @@ Poprawność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zb
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{ | l | c | c | c | c | c | c | c | c | c | c |}
         \hline
-        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10  \\ \hline
+        Rozmiar ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10  \\ \hline
         Poprawność & 75.65\% & 84.36\% & 63.52\% & 48.93\% & 47.5\% & 47.24\% & 47.23\% & 47.41\% & 61.48\% & 53.81\%  \\ \hline
         Czas fazy uczenia & 0.003s & 0.022s & 0.059s & 0.099s & 0.102s & 0.121s & 0.126s & 0.129s & 0.122s & 0.129s  \\ \hline
         Czas fazy predykcji & 27.221s & 180.565s & 312.157s & 221.672s & 137.788s & 91.407s & 67.833s & 54.803s & 45.88s & 40.02s  \\ \hline
@@ -64,7 +64,7 @@ Poprawność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zb
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{ | l | c | c | c | c | c | c | c | c | c | c |}
         \hline
-        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10  \\ \hline
+        Rozmiar ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10  \\ \hline
         Poprawność & 78.13\% & 71.26\% & 60.09\% & 64.01\% & 47.7\% & 47.54\% & 53.89\% & 53.66\% & 53.64\% & 53.63\%   \\ \hline
         Czas fazy uczenia & 0.003s & 0.024s & 0.067s & 0.092s & 0.112s & 0.111s & 0.122s & 0.123s & 0.127s & 0.129s \\ \hline
         Czas fazy predykcji & 27.168s & 186.84s & 321.7s & 220.716s & 141.115s & 93.327s & 68.613s & 46.536s & 47.467s & 37.644s  \\ \hline
@@ -74,11 +74,11 @@ Poprawność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zb
 
 \begin{table}[H]
     \centering
-    \caption{Wyniki algorytmu Random Forest wektoryzacja metodą Bag of words}
+    \caption{Wyniki algorytmu RF wektoryzacja metodą Bag of words}
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{ | l | c | c | c | c | c | c | c | c | c | c |}
         \hline
-        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+        Rozmiar ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
         Poprawność & 84.15\% & 98.09\% & 99.59\% & 99.81\% & 99.64\% & 99.33\% & 99.05\% & 98.81\% & 98.59\% & 98.29\%  \\ \hline
         Czas fazy uczenia & 23.56s & 47.484s & 48.267s & 45.867s & 52.639s & 73.57s & 108.591s & 143.566s & 187.709s & 225.265s \\ \hline
         Czas fazy predykcji & 0.234s & 0.764s & 2.587s & 5.095s & 6.324s & 8.315s & 15.628s & 19.665s & 23.49s & 25.823s  \\ \hline
@@ -88,11 +88,11 @@ Poprawność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zb
 
 \begin{table}[H]
     \centering
-    \caption{Wyniki algorytmu Random Forest wektoryzacja metodą TFIDF}
+    \caption{Wyniki algorytmu RF wektoryzacja metodą TFIDF}
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{ | l | c | c | c | c | c | c | c | c | c | c |}
         \hline
-        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+        Rozmiar ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
         Poprawność & 83.43\% & 98.15\% & 99.54\% & 99.82\% & 99.55\% & 99.27\% & 99.0\% & 98.62\% & 98.68\% & 98.24\%  \\ \hline
         Czas fazy uczenia & 26.536s & 57.014s & 53.246s & 47.681s & 48.82s & 63.392s & 92.896s & 132.436s & 175.463s & 217.02s \\ \hline
         Czas fazy predykcji & 0.24s & 0.729s & 3.027s & 5.021s & 6.554s & 7.893s & 14.047s & 20.172s & 24.588s & 26.493s  \\ \hline
@@ -106,7 +106,7 @@ Poprawność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zb
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{ | l | c | c | c | c | c | c | c | c | c | c |}
         \hline
-        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+        Rozmiar ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
         Poprawność & 69.53\% & 78.91\% & 83.96\% & 92.19\% & 94.92\% & 96.12\% & 96.54\% & 96.67\% & 96.5\% & 96.29\%  \\ \hline
         Czas fazy uczenia & 0.005s & 0.031s & 0.102s & 0.147s & 0.201s & 0.377s & 0.551s & 0.692s & 0.837s & 1.027s \\ \hline
         Czas fazy predykcji & 0.003s & 0.016s & 0.047s & 0.072s & 0.095s & 0.182s & 0.299s & 0.362s & 0.382s & 0.41s  \\ \hline
@@ -120,7 +120,7 @@ Poprawność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zb
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{ | l | c | c | c | c | c | c | c | c | c | c |}
         \hline
-        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+        Rozmiar ngramu & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
         Poprawność & 75.19\% & 81.98\% & 85.54\% & 92.43\% & 94.78\% & 96.11\% & 96.58\% & 96.71\% & 96.56\% & 96.38\%  \\ \hline
         Czas fazy uczenia & 0.005s & 0.033s & 0.105s & 0.159s & 0.193s & 0.293s & 0.504s & 0.675s & 0.853s & 1.02s \\ \hline
         Czas fazy predykcji & 0.002s & 0.017s & 0.05s & 0.077s & 0.09s & 0.145s & 0.319s & 0.343s & 0.406s & 0.407s  \\ \hline
@@ -133,7 +133,7 @@ Poprawność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zb
     \caption{Wyniki algorytmu SVC wektoryzacja metodą Bag of words}
     \begin{tabular}{ | l | c | c | c | c | c |}
         \hline
-        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5 \\ \hline
+        Rozmiar ngramu & 1 & 2 & 3 & 4 & 5 \\ \hline
         Poprawność & 81.36\% & 96.1\% & 97.75\% & 98.45\% & 98.34\%   \\ \hline
         Czas fazy uczenia & 14.175s & 319.6s & 2779.462s & 7282.055s & 10144.174s  \\ \hline
         Czas fazy predykcji & 8.18s & 127.618s & 716.666s & 1502.585s & 2534.03s  \\ \hline
@@ -145,7 +145,7 @@ Poprawność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zb
     \caption{Wyniki algorytmu SVC wektoryzacja metodą TFIDF}
     \begin{tabular}{ | l | c | c | c | c | c |}
         \hline
-        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5   \\ \hline
+        Rozmiar ngramu & 1 & 2 & 3 & 4 & 5   \\ \hline
         Poprawność & 79.47\% & 96.61\% & 97.95\% & 98.65\% & 98.66\% \\ \hline
         Czas fazy uczenia & 14.046s & 220.009s & 3068.672s & 8322.766s & 10384.898s \\ \hline
         Czas fazy predykcji & 8.008s & 106.538s & 751.689s & 1594.27s & 2286.608s  \\ \hline
@@ -157,7 +157,7 @@ Poprawność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zb
     \caption{Wyniki algorytmu MLP wektoryzacja metodą Bag of words}
     \begin{tabular}{ | l | c | c | c | c | c |}
         \hline
-        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5  \\ \hline
+        Rozmiar ngramu & 1 & 2 & 3 & 4 & 5  \\ \hline
         Poprawność & 81.68\% & 97.16\% & 98.6\% & 97.79\% & 98.37\%   \\ \hline
         Czas fazy uczenia & 32.655s & 22.982s & 115.108s & 544.161s & 2038.845s  \\ \hline
         Czas fazy predykcji & 0.039s & 0.11s & 0.373s & 1.085s & 2.444s  \\ \hline
@@ -169,7 +169,7 @@ Poprawność została zmierzona funkcją \textit{``Score''} na 40\% danych ze zb
     \caption{Wyniki algorytmu MLP wektoryzacja metodą TFIDF}
     \begin{tabular}{ | l | c | c | c | c | c |}
         \hline
-        Rozmiar Ngramu & 1 & 2 & 3 & 4 & 5   \\ \hline
+        Rozmiar ngramu & 1 & 2 & 3 & 4 & 5   \\ \hline
         Poprawność & 79.8\% & 97.43\% & 98.6\% & 98.69\% & 98.09\%   \\ \hline
         Czas fazy uczenia & 16.176s & 22.159s & 111.424s & 520.082s & 1926.648s  \\ \hline
         Czas fazy predykcji & 0.034s & 0.113s & 0.38s & 0.911s & 2.133s  \\ \hline
@@ -217,16 +217,16 @@ Wyniki zostały przeanalizowane pod kątem trzech badanych cech:
         przypadku \textit{k}-NN jest 84.36\% przy wykorzystaniu metody wektoryzacji Bag of words i rozmiarze równym 2,
         a najgorszym 47.5\%  przy wykorzystaniu metody Bag of words i rozmiaru 5,
 
-        \item Random forest, SVC, MLP -        
-        algorytmy te zachowują się w bardzo podobny sposób. Zwiększanie długości NGramów 
+        \item RF, SVC, MLP -        
+        algorytmy te zachowują się w bardzo podobny sposób. Zwiększanie długości ngramów 
         do wartości 4 powoduje bardzo szybki wzrost efektywności do nawet 99.82\%, natomiast zmiana 
         długości ponad 4 prowadzi do powolnego spadku możliwości predykcyjnych, co może być 
         związane podobnie jak w przypadku algorytmu \textit{k}-NN z overfittingiem. Algorytmy te osiągają najlepsze 
         wyniki pod względem efektywności ze wszystkich badanych,
         \item Naive Bayes -
-        Algorytm Naive Bayes zwiększa swoją poprawność w taki sposób jak Random Forest, SVC oraz MLP 
+        Algorytm Naive Bayes zwiększa swoją poprawność w taki sposób jak RF, SVC oraz MLP 
         jednak robi to dużo wolniej i osiąga swoją szczytową poprawność dla długości równej 8 przy której 
-        jest ona równa 96.56\%. Dalsze wydłużanie NGramów prowadzi do powolnego spadku możliwości predykcyjnych.
+        jest ona równa 96.56\%. Dalsze wydłużanie ngramów prowadzi do powolnego spadku możliwości predykcyjnych.
         Algorytm Naive Bayes osiąga najniższe wyniki w przypadku podziału na ngramy o długości równej 1, gdzie 
         poprawnie klasyfikuje tylko 69.63\% danych testowych.
     \end{itemize}
@@ -241,17 +241,17 @@ Wyniki zostały przeanalizowane pod kątem trzech badanych cech:
         Jest to spowodowane względnie prostymi operacjami wykonywanymi przez nie podczas tej fazy. 
         Zadaniem algorytmu \textit{k}-NN jest jedynie zapisanie wszystkich danych, natomiast Naive Bayes  
         oblicza prawdopodobieństwa na podstawie prostych kalkulacji wykonywanych podczas jednej iteracji,
-        \item Random forest -
-        czas trwania fazy uczenia dla algorytmu Random Forest ulega niewielkiemu wydłużaniu podczas zmiany rozmiaru 
-        NGramów, jednak podczas całego badania jest on przeciętny, przez co nie trwa zbyt długo, ale też nie jest szybki.
+        \item RF -
+        czas trwania fazy uczenia dla algorytmu RF ulega niewielkiemu wydłużaniu podczas zmiany rozmiaru 
+        ngramów, jednak podczas całego badania jest on przeciętny, przez co nie trwa zbyt długo, ale też nie jest szybki.
         Faza ta w tym przypadku polega na stworzeniu drzewa decyzyjnego jak najlepiej podejmującego decyzje. Czas ten nie
         ulega znacznemu wydłużeniu przy większej liczbie cech, ponieważ algorytm wybiera tylko najważniejsze z nich do stworzenia 
         drzewa,
         \item SVC, MLP -
         w przypadku obu tych algorytmów można zauważyć znacznie zwiększanie się czasu uczenia wraz ze zwiększaniem
-        długości NGramów. Doprowadziło to w ich przypadku do ograniczenia badań tylko do długości równej 5,
+        długości ngramów. Doprowadziło to w ich przypadku do ograniczenia badań tylko do długości równej 5,
         ponieważ czas tej fazy wynosił niemal 3 godziny. Takie wyniki powodują, że nieprawdopodobne jest 
-        ich efektywne wykorzystanie w systemach rozpoznawania fake newsów. 
+        ich efektywne wykorzystanie w systemach rozpoznawania \textit{fake newsów}. 
     \end{itemize}
     \item Czasy fazy predykcji
     
@@ -259,10 +259,10 @@ Wyniki zostały przeanalizowane pod kątem trzech badanych cech:
     
     \begin{itemize}
         \item \textit{k}-NN -
-        predykcja tego algorytmu jest znacznie dłuższa niż uczenia i dla mniejszych długości NGramów trwa
+        predykcja tego algorytmu jest znacznie dłuższa niż uczenia i dla mniejszych długości ngramów trwa
         najdłużej. Początkowo zwiększanie długości powoduje wzrost czasu, jednak po osiągnięciu maksimum dla rozmiaru 3
         następuje powolna stabilizacja w kierunku około 40 sekund,
-        \item Random forest -
+        \item RF -
         czas trwania fazy predykcji zwiększa się powoli do wartości 26.49 sekund. Spowodowane jest to zwiększaniem
         się drzewa decyzyjnego który jest trawersowany w celu podjęcia decyzji. Czas ten podobnie jak w przypadku 
         fazy uczenia jest przeciętny w porównaniu z innymi algorytmami,
@@ -287,21 +287,21 @@ Przeprowadzone badania pozwoliły na odnalezienie odpowiedzi na pytanie
 będące celem niniejszej pracy. Wykorzystanie algorytmów uczenia maszynowego 
 w rozpoznawaniu fałszywych informacji skutkuje osiągnięciem bardzo optymistycznych wyników.
 Z badanych w algorytmów jedynie algorytm \textit{k}-NN swoją efektywnością dla 
-każdej długości NGramów nie pozwoliłby na pewne podjęcie decyzji, czy dany artykuł jest prawdziwy, czy też nie.
+każdej długości ngramów nie pozwoliłby na pewne podjęcie decyzji, czy dany artykuł jest prawdziwy, czy też nie.
 Może to być związane z bardzo dużą liczbą cech w tekście, co bardzo szybko prowadzi do tak zwanego 
 overfittingu. 
 
-Z powodu eksponencjalnego zwiększania się ilości cech wraz ze zwiększaniem długości NGramów, 
+Z powodu eksponencjalnego zwiększania się ilości cech wraz ze zwiększaniem długości ngramów, 
 algorytmy takie jak SVC oraz MLP osiągają już dla długości równej 5 zbyt długie czasy trwania faz uczenia sięgające 
-do 3 godzin. Czas taki nie pozwala na wykorzystanie ich w systemach detekcji fake newsów, ponieważ
+do 3 godzin. Czas taki nie pozwala na wykorzystanie ich w systemach detekcji \textit{fake newsów}, ponieważ
 musiałyby one analizować dużą ilość artykułów, dla których bardzo duże znaczenie ma to jak 
 szybko pojawią się na docelowej stronie internetowej bądź mediach społecznościowych.
 
-Najlepszym z algorytmów okazał się Random Forest, który dla NGramów o długości równej 4
+Najlepszym z algorytmów okazał się RF, który dla ngramów o długości równej 4
 osiągnął poprawność równą 99.82\%. Pomimo iż poprawność ta została prawie osiągnięta przez algorytmy
 SVC oraz MLP to były one znacznie wolniejsze podczas fazy uczenia, a także podczas fazy 
-predykcji w przypadku SVC. Szybszy od Random Forest algorytm Naive Bayes również osiągnął zadowalające wyniki,
-jednak w przypadku Fake Newsów najbardziej znacząca jest poprawność, której nawet niewielki deficyt
+predykcji w przypadku SVC. Szybszy od RF algorytm Naive Bayes również osiągnął zadowalające wyniki,
+jednak w przypadku \textit{fake newsów} najbardziej znacząca jest poprawność, której nawet niewielki deficyt
 może być katastrofalny w skutkach.  
 
 Zauważono także, że wybór metody wektoryzacji ma niewielki wpływ na to jak dobrze wykorzystany algorytm 
@@ -311,6 +311,6 @@ sekundy w przypadku krótszych. Pod względem efektywności można także zauwa�
 które przeplatają się
 wraz ze zmianą długości, z tego powodu nie jest możliwe określenie, która metoda jest lepsza.
 
-Wykorzystanie technologii machine learningu do zadania detekcji Fake Newsów 
+Wykorzystanie technologii machine learningu do zadania detekcji \textit{fake newsów} 
 może stanowić rozwiązanie problemów jakie niosą ze sobą fałszywe informacje. Ich automatyczna 
 detekcja uchroniłaby miliony ludzi przed byciem oszukanym. 

@@ -2,17 +2,32 @@
 Uczenie maszynowe jest dziedziną algorytmów komputerowych, które automatycznie poprawiają swoją poprawność poprzez doświadczenie. 
 Określa się je jako poddziedzinę sztucznej inteligencji. Algorytmy te pozwalają na zbudowanie matematycznego modelu na podstawie 
 przykładowych danych nazywanych danymi treningowymi, co pozwala im na wykonywanie predykcji lub decyzji bez potrzeby ich dokładnego 
-zaimplementowania przez programistę. Uczenie maszynowe stosuje się do wielu zadań, między innymi do filtrowania poczty mailowej ze spamu, reklam internetowe, 
+zaimplementowania przez programistę. 
+
+
+Uczenie maszynowe stosuje się do wielu zadań, między innymi do filtrowania poczty mailowej ze spamu, reklam internetowe, 
 wykrywania twarzy na zdjęciach oraz nagraniach, a w przyszłości może pomóc w stworzeniu technologii takich jak 
 autonomiczne samochody. Sam termin został spopularyzowany przez informatyka Arhura Samuela w roku 1959, był on autorem pierwszego działającego 
 systemu tego typu, jego program automatycznie grał w warcaby i uczył się na podstawie poprzednich potyczek ~\cite{MLBasics}. 
-\section{Rodzaje}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1\textwidth]{./Img/typesofLearning.png}
-    \caption{Rodzaje uczenia maszynowego Źródło: Własne}
-\end{figure}
-Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zależności od problemów, które mają one rozwiązywać:
+
+
+W dzisiejszych czasach implementacja takich systemów opiera się na wykonaniu następujących czynności:
+\begin{itemize}
+    \item preprocessing danych:
+    \begin{itemize}
+        \item czyszczenie,
+        \item uzupełnianie,
+        \item redukcja wymiarowości.
+    \end{itemize}
+    \item ekstrakcja cech,
+    \item uczenie modelu,
+    \item sprawdzenie poprawności modelu.
+\end{itemize}
+Odpowiednie wykonanie etapu ekstrakcji cech jest kluczowym elementem do stworzenia poprawnego modelu, jest
+on opisany w kolejnym rozdziale pracy. 
+\section{Rodzaje uczenia na podstawie przykładów}
+
+Algorytmy uczenia maszynowego uczące się na podstawie przykładów można podzielić na dwa główne rodzaje w zależności od problemów, które mają one rozwiązywać:
 \begin{itemize}
     \item uczenie nadzorowane -
     jest to najczęściej wykorzystywany rodzaj uczenia maszynowego, polega on na tym,
@@ -68,21 +83,7 @@ Algorytmy uczenia maszynowego można podzielić na trzy główne rodzaje w zale�
             \item systemy rekomendacyjne.
         \end{itemize}
     \end{itemize}
-    \item uczenie ze wzmocnieniem -
-    polega na wykorzystaniu metody prób i błędów w taki sposób, by maszyna została
-    ``nagrodzona'' za wykonywanie czynności pożądanych oraz ``karana'' za popełnianie błędów. 
-    Sukces takiego systemu oparty jest na odpowiedniej implementacji systemu nagród, który może 
-    mieć całkowicie inne działanie w zależności od rozwiązywanego problemu. 
-    Z uwagi na fakt, że algorytmy uczenia ze wzmocnieniem dążą do zebrania jak największej
-    ilości ``nagrody'', nie zawsze odnajdują one optymalne rozwiązanie.
-    
-    Przykładowe zastosowania:
-    \begin{itemize}
-        \item tworzenie programów grających w gry,
-        \item samojezdne samochody.
-    \end{itemize}
 \end{itemize} 
-\newpage
 \section{Algorytmy klasyfikacji}
 Z problemem klasyfikacji można się spotkać wszędzie tam, gdzie wykorzystując
 zbiór zmiennych objaśniających należy wskazać wartość przyjmowaną przez zmienną
@@ -100,7 +101,7 @@ pod uwagę cztery czynniki:
     mieć większe znaczenie dla efektywności niż dobór najlepszego algorytmu. Często
     lepiej jest wykorzystać algorytm znany, a nie optymalny.
 \end{itemize}
-Poniżej opisane zostały najpopularniejsze metody klasyfikacji.
+W dalszej części rodziału opisane zostały najpopularniejsze metody klasyfikacji.
 \subsection{\textit{k}-NN}
 
 Algorytm K najbliższych sąsiadów (K nearest neighbours) jest algorytmem
@@ -119,7 +120,7 @@ Najważniejszą kwestią w poprawnym implementowaniu algorytmu \textit{k}-NN jes
 K, której optymalna wartość będzie się różnić w zależności od danych. W problemach 
 klasyfikacji często wybiera się K o wartości nieparzystej aby uniknąć problemu remisu
 podczas zliczania sąsiadów. W przypadku problemów regresyjnych zamiast wykonywać głosowanie,
-predykcję wykonuje się na podstawie średniej wartości K najbliższych sąsiadów.
+predykcję wykonuje się na podstawie średniej wartości K najbliższych sąsiadów ~\cite{MLAlgorithms}.
 
 \begin{table}[h]
     \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
@@ -132,7 +133,6 @@ predykcję wykonuje się na podstawie średniej wartości K najbliższych sąsia
     %% PROS, seperated by empty line or \par
     prosty do zrozumienia i interpretacji,\par
     szybkość fazy uczenia,\par
-    uniwersalność można go wykorzystać zarówno w problemach regresyjnych jak i klasyfikacyjnych,\par
     nie wykonuje generalizacji danych, przez co jest efektywny w przypadku danych nieliniowych.\par
     &
     
@@ -146,7 +146,7 @@ predykcję wykonuje się na podstawie średniej wartości K najbliższych sąsia
 \end{table}
     
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{./Img/KNN.png}
     \caption{Graficzne przedstawienie algorytmu \textit{k}-NN Źródło: Własne}
@@ -167,7 +167,7 @@ ten radzi sobie w jeden z dwóch sposobów:
 \end{itemize}
 Aby odnaleźć optymalne rozwiązanie SVM skupia się na punktach jak najbardziej skrajnych
 obu klas, są one nazywane wektorami nośnymi. Zmiana ich położenia lub usunięcie
-całkowicie zmienia położenie płaszczyzny.
+całkowicie zmienia położenie płaszczyzny~\cite{MLAlgorithms}.
 
 \begin{table}[h]
     \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
@@ -195,7 +195,7 @@ całkowicie zmienia położenie płaszczyzny.
     \caption{Wady i zalety SVM}
 \end{table}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Img/SVM.png}
     \caption{Wizualizacja algorytmu SVM Źródło: Własne}
@@ -232,7 +232,7 @@ Perceptron wielowarstwowy składa się z trzech warstw sztucznych neuronów:
 Uczenie takiej sieci polega na modyfikacji wag na wejściu neuronów, aby poprawić
 wyniki klasyfikacji. Podczas gdy perceptron jednowarstwowy, czyli nieposiadający żadnej warstwy ukrytej może 
 nauczyć się wyłącznie funkcji liniowych perceptron wielowarstwowy pozwala na nauczenie
-się skomplikowanych funkcji nieliniowych.
+się skomplikowanych funkcji nieliniowych~\cite{MLAlgorithms}.
 
 \begin{table}[h]
     \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
@@ -257,7 +257,7 @@ się skomplikowanych funkcji nieliniowych.
     \caption{Wady i zalety MLP}
 \end{table}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{./Img/MLP.png}
     \caption{Graficzne przedstawienie perceptronu wielowarstwowego Źródło: Własne}
@@ -280,7 +280,7 @@ Kroki algorytmu są następujące:
 Aby dokonać optymalnego podziału algorytm musi wybrać cechy powodujące jak najlepsze
 podzielenie różnych klas, a więc niosące ze sobą największą ilość informacji.
 Wykorzystuje się w tym celu entropię, której wartość pozwala określić średnią ilość 
-informacji niesioną przez poszczególne cechy.
+informacji niesioną przez poszczególne cechy~\cite{MLAlgorithms}.
 \begin{equation}
     H(x)=-\sum_{i=1}^n p(x_i) \log_2 p(x_i).
     \label{eq-entropy}
@@ -319,7 +319,44 @@ wybrania klasy \textit{x\textsubscript{i}}
 \end{figure}
 
 \subsection{RF}
+Algorytm lasów losowych (Random forest) w skrócie RF, polega na stworzeniu lasu składającego się z drzew decyzjnych, 
+które są budowane w następujący sposób:
+\begin{itemize}
+    \item z danych treningowych wybrane zostają losowe obiekty (może nastąpić wybranie tego samego obiektu dwukrotnie),
+    \item wybrane obiekty stają się nowym zbiorem treningowym,
+    \item w nowym zbiorze wybrana zostaje określona liczba losowych cech,
+    \item tworzone zostaje drzewo decyzjne oparte tylko i wyłącznie na wybranych wcześniej cechach
+    \item poprzednie kroki są powtarzane do czasu stworzenia określonej liczby drzew zazwyczaj jest to 
+    liczba między 64 a 128 drzewami. 
+\end{itemize}
+Po stworzeniu wielu drzew decyzyjnych model jest gotowy aby wykonywać predykcje.
+Predykcja w algorytmie RF jest wykonywana na podstawie głosowania przez każde stworzone drzewo na klasy, w głosowaniu 
+tym wybrana zostaje klasa, na którą głosowała większość drzew ~\cite{randomforest}.
 
+\begin{table}[H]
+    \begin{tabularx}{\linewidth}{>{\parskip1ex}X@{\kern4\tabcolsep}>{\parskip1ex}X}
+    \toprule
+    \hfil\bfseries Zalety
+    &
+    \hfil\bfseries Wady
+    \\\cmidrule(r{3\tabcolsep}){1-1}\cmidrule(l{-\tabcolsep}){2-2}
+    
+    %% PROS, seperated by empty line or \par
+    odporny na overfitting,\par
+    pojawienie się nowych danych nie wymaga tworzenia modelu od nowa,\par
+    zachowuje poprawność w przypadku brakujących danych.\par
+    
+    &
+    
+    %% CONS, seperated by empty line or \par
+    ciężkie do zinterpretowania wyniki z powodu ilości drzew,\par
+    długi czas uczenia,\par
+    nie sprawdza się dobrze w przypadku problemów regresyjnych\par
+    
+    \\\bottomrule
+    \end{tabularx}
+    \caption{Wady i zalety RF}
+\end{table}
 
 \subsection{Naive Bayes}
 
@@ -328,7 +365,7 @@ zakłada wzajemną niezależność wszystkich cech, stąd naiwność algorytmu. 
 opiera się na obliczeniu prawdopodobieństw wystąpienia poszczególnych cech pod warunkiem, że 
 występują one w danej klasie. Pozwala to przy użyciu twierdzenia Bayesa ~\ref{eq:bayes} obliczyć prawdopodobieństwa 
 warunkowe określające z jak dużą pewnością występująca kombinacja cech prowadzi do 
-wystąpienia różnych klas, na podstawie czego algorytm wykonuje predykcję. 
+wystąpienia różnych klas, na podstawie czego algorytm wykonuje predykcję~\cite{MLAlgorithms}. 
 
 
 \begin{equation}

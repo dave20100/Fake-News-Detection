@@ -19,6 +19,8 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.naive_bayes import MultinomialNB
 from datetime import datetime
+from sklearn.pipeline import make_pipeline
+from sklearn.model_selection import cross_val_score
 
 #Set a range of Ngram length that will be tested
 minNgram = 1
@@ -135,3 +137,16 @@ for method in extractedData.keys():
                                                                                   str(round(
                                                                                       endLearn-startLearn, 3)) + "s",
                                                                                   str(round(endTest-startTest, 3)) + "s"))
+                clf = make_pipeline(
+                    extractedData[method][wordType][size]["vectorizer"], StandardScaler(with_mean=False), extractedData[method][wordType][size]["classificator"][classifier])
+                scores = cross_val_score(
+                    clf, text, labels, cv=5)
+                with open('./Wyniki/' + classifier + 'cross' + '.csv', mode='a', newline='') as score_file:
+                    csv_writer = csv.writer(score_file)
+                    csv_writer.writerow(
+                        [classifier, str(minNgram+size), str(round(scores.mean()*100, 2)) + "%", str(round(scores.std() * 200, 2)) + "%"])
+
+                print('{:^20}  {:^20}  {:^20} {:^20} {:^20} {:^20}'.format(method, wordType, minNgram+size, classifier,
+                                                                           str(round(
+                                                                               scores.std() * 200, 2)),
+                                                                           str(round(scores.mean()*100, 2))))

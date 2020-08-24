@@ -1,13 +1,13 @@
 
 \chapter{Przetwarzanie języków naturalnych}
-Systemy przetwarzania języków naturalnych (Natural language processing) nazywane 
+Systemy przetwarzania języków naturalnych (Natural language processing), nazywane 
 w skrócie NLP, oznaczają systemy mogące zrozumieć mowę i pismo ludzkie w takiej
-formie jaką ludzie posługują się na co dzień. Programy takie mogą wykonywać zadania od zliczania
+formie jaką ludzie posługują się na co dzień. Programy takie mogą wykonywać zadania, od zliczania
 częstotliwości występowania danego słowa w tekście do automatycznego pisania artykułów. 
 
 Głównym problemem w tworzeniu tego typu systemów jest to, że do komunikacji z komputerem zazwyczaj
 potrzebne jest posługiwanie się precyzyjnymi komendami danego języka programowania, mowa ludzka
-jednak nie zawsze jest precyzyjna i jej znaczenie może różnić się w zależności od kontekstu czy
+jednak nie zawsze jest precyzyjna i jej znaczenie może różnić się w zależności od kontekstu, czy
 różnego rodzaju regionalnych dialektów. Systemy NLP są często wykorzystywane w takich 
 celach jak:
 \begin{itemize}
@@ -24,7 +24,7 @@ w stanie nawiązać interakcję z technologią pozwalającą im na znaczne podni
 \section{Przygotowywanie danych tekstowych}
 Aby ułatwić analizę ogromnej ilości danych tekstowych potrzebnych do poprawnego nauczenia systemu NLP,
 wykonuje się na nich różnego rodzaju operacje. Operacje te powodują, że tekst nie traci swoich najważniejszych cech, 
-natomiast znacznie zmniejsza się moc obliczeniowa potrzebna do nauczenia algorytmów wykonywanych na nim. 
+natomiast znacznie zmniejsza się moc obliczeniowa potrzebna do nauczenia algorytmów na nim wykonywanych. 
 Najczęściej wykorzystywanymi tego typu operacjami są ~\cite{preprocessing}:
 \begin{itemize}
     \item zamiana wszystkich dużych liter na małe,
@@ -52,12 +52,12 @@ Wybór poprawnego sposobu zamiany tekstu może mieć ogromne znaczenie dla efekt
 Jedne z najpopularniejszych metod wektoryzacji to ~\cite{ML}: 
 \begin{itemize}
     \item Bag of words jest to metoda wektoryzacji, w której każdemu unikalnemu symbolowi z tekstu przypisuje się liczbę 
-    odpowiadającej jego ilości w analizowanym tekście. Symbolami mogą być całe zdania, słowa bądź ngramy. 
+    odpowiadającą jego ilości w analizowanym tekście. Symbolami mogą być całe zdania, słowa bądź ngramy. 
     Metoda ta w żaden sposób nie zachowuje informacji o porządku ani kontekście występujących symboli, a jedynie o 
     częstotliwości ich występowania. 
     
     Wektor wynikowy metody ``Bag of words'' ma wymiar równy liczbie unikalnych symboli w tekście, przez co przy analizie dużej ilości 
-    dokumentów ma dużą złożoność pamięciową aby naprawić ten problem najpierw na danych wykonuje się metody przygotowywania danych tekstowych.
+    dokumentów ma dużą złożoność pamięciową, aby naprawić ten problem najpierw na danych wykonuje się metody przygotowywania danych tekstowych.
 
     \begin{figure}[h]
         \centering
@@ -65,7 +65,7 @@ Jedne z najpopularniejszych metod wektoryzacji to ~\cite{ML}:
         \caption{Przykład wektoryzacji zdania za pomocą metody Bag of words Źródło: Własne}
     \end{figure}
 
-    \item TFIDF (ang. Term frequency inverse document frequency) jest to metoda przypisująca każdemu symbolowi 
+    \item TFIDF (ang. Term frequency inverse document frequency), jest to metoda przypisująca każdemu symbolowi 
     jego wagę w kontekście analizowanych dokumentów. Aby obliczyć tę wagę potrzebne są dwa elementy:
     \begin{enumerate}
         \item częstość symboli, którą uzyskuje się dzieląc liczbę wystąpień symbolu przez liczbę symboli w całym dokumencie,

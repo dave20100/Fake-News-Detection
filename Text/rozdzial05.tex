@@ -3,11 +3,11 @@ Do wykonania badań efektywności algorytmów uczenia maszynowego w rozpoznawani
 fałszywych informacji potrzebne było stworzenie systemu, który w prosty sposób 
 dla każdego z badanych algorytmów wykonałby operację uczenia go na danych treningowych,
 a następnie sprawdził jak dobrze przewiduje on przypadki ze zbioru testowego.
-System musi w odpowiedni sposób przygotować dane tekstowe przy użyciu metod takich jak zamiana dużych liter na małe, usuwanie znaków interpunkcyjnych itd.
-Ważną funkcjonalnością oprogramowania jest też to by dzielił on dane tekstowe na 
+System musi w odpowiedni sposób przygotować dane tekstowe przy użyciu metod takich jak: zamiana dużych liter na małe, usuwanie znaków interpunkcyjnych itd.
+Ważną funkcjonalnością oprogramowania jest też to, by dzielił on dane tekstowe na 
 różnej długości ngramy. 
 
-System pozwoli na zbadanie wyników algorytmów takich jak poprawność predykcji,
+System pozwoli na zbadanie wyników algorytmów takich jak: poprawność predykcji,
 odchylenie standardowe poprawności oraz czasy trwania poszczególnych faz.
 
 \section{Wykorzystane technologie}
@@ -31,7 +31,7 @@ ponieważ posiada dużą ilość bibliotek takich jak:
 \end{itemize}
 Biblioteki te znacznie ułatwiają korzystanie z możliwości uczenia maszynowego.
 W pracy zostanie wykorzystana biblioteka scikit-learn w wersji 0.23, która zawiera wszystkie 
-testowane algorytmy i pozwala na bardzo wygodną ich implementację. Posiada także obie 
+testowane algorytmy i pozwala na bardzo wygodną ich implementację, posiada także obie 
 badane metody wektoryzacji tekstu, czyli Bag of words oraz TFIDF. Jest ona udostępniana na zasadach licencji BSD ~\cite{scikitlearn}. 
 Licencja ta pozwala na użytkowanie i redystrybucję kodu zarówno zmodyfikowanego, jak i oryginalnego.
 
@@ -47,7 +47,7 @@ Aplikacja powinna spełniać następujące wymagania funkcjonalne:
     \item testować nauczone modele na danych testowych,
     \item zapisywać wyniki badań do pliku w formacie csv.
 \end{itemize}
-Są to funkcjonalności kluczowe aby system pozwalał wykonywać ważne dla osiągnięcia celu
+Są to funkcjonalności kluczowe, aby system pozwalał wykonywać ważne dla osiągnięcia celu
 badania. 
 \section{Implementacja}
 Implementacja składa się z dwóch funkcji służących do przygotowywania danych tekstowych
@@ -72,7 +72,7 @@ def basicPreparation(fileName):
     return (file['text'], file['label'])
 \end{lstlisting}
 Pierwsza funkcja \textit{basicPreparation} przyjmuje tylko jeden argument, którym jest
-nazwa pliku. Metoda ta wczytuje do pamięci dane z pliku csv a następnie wykorzystuje
+nazwa pliku. Metoda ta wczytuje do pamięci dane z pliku csv, a następnie wykorzystuje
 tzw. LabelEncoder, który pozwala na wykonanie zamiany etykiet w zbiorze danych na formę
 numeryczną, w tym przypadku zamienia ona wartości REAL i FAKE na 0 i 1. Ostatnią 
 akcją wykonywaną przez funkcję jest zamiana wszystkich liter zawartych w danych na małe.

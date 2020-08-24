@@ -5,10 +5,10 @@ przykładowych danych nazywanych danymi treningowymi, co pozwala im na wykonywan
 zaimplementowania przez programistę. 
 
 
-Uczenie maszynowe stosuje się do wielu zadań, między innymi do filtrowania poczty mailowej ze spamu, reklam internetowe, 
+Uczenie maszynowe stosuje się do wielu zadań, między innymi do filtrowania poczty mailowej ze spamu, reklam internetowych, 
 wykrywania twarzy na zdjęciach oraz nagraniach, a w przyszłości może pomóc w stworzeniu technologii takich jak 
-autonomiczne samochody. Sam termin został spopularyzowany przez informatyka Arhura Samuela w roku 1959, był on autorem pierwszego działającego 
-systemu tego typu, jego program automatycznie grał w warcaby i uczył się na podstawie poprzednich potyczek ~\cite{MLBasics}. 
+autonomiczne samochody. Sam termin został spopularyzowany przez informatyka Arhura Samuela w roku 1959, który był autorem pierwszego działającego 
+systemu tego typu. Jego program automatycznie grał w warcaby i uczył się na podstawie poprzednich potyczek ~\cite{MLBasics}. 
 
 
 W dzisiejszych czasach implementacja takich systemów opiera się na wykonaniu następujących czynności:
@@ -267,14 +267,14 @@ się skomplikowanych funkcji nieliniowych~\cite{MLAlgorithms}.
 
 Algorytm Decision trees polega na stworzeniu drzewa decyzyjnego, w którym korzeń i węzły
 są poszczególnymi cechami zbioru danych, a liście odpowiadają klasom, które tym danym 
-należy przypisać, ostatnim elementem są krawędzie, którymi reprezentuje się wartości cech. 
+należy przypisać. Ostatnim elementem są krawędzie, którymi reprezentuje się wartości cech. 
 Kroki algorytmu są następujące:
 \begin{enumerate}
     \item wybranie najlepszej cechy,
     \item dodanie gałęzi odpowiadających poszczególnym wartościom wybranej cechy,
     \item podział zbioru danych na podzbiory zgodnie z wartościami cechy,
     \item jeżeli wszystkie elementy podzbiorów należą do tej samej klasy 
-    zakończenie gałęzi liściem. W przeciwnym wypadku powtórzenie kroków 
+    zakończenie gałęzi liściem, w przeciwnym wypadku powtórzenie kroków 
     od 1 do 4 dla każdego podzbioru.
 \end{enumerate}
 Aby dokonać optymalnego podziału algorytm musi wybrać cechy powodujące jak najlepsze
@@ -330,7 +330,7 @@ które są budowane w następujący sposób:
     liczba między 64 a 128 drzewami. 
 \end{itemize}
 Po stworzeniu wielu drzew decyzyjnych model jest gotowy aby wykonywać predykcje.
-Predykcja w algorytmie RF jest wykonywana na podstawie głosowania przez każde stworzone drzewo na klasy, w głosowaniu 
+Predykcja w algorytmie RF jest wykonywana na podstawie głosowania przez każde stworzone drzewo na klasy. W głosowaniu 
 tym wybrana zostaje klasa, na którą głosowała większość drzew ~\cite{randomforest}.
 
 \begin{table}[H]
@@ -364,7 +364,7 @@ Naiwny klasyfikator Bayesowski (Naive Bayes) jest probabilistycznym klasyfikator
 zakłada wzajemną niezależność wszystkich cech, stąd naiwność algorytmu. Stworzony przez niego model
 opiera się na obliczeniu prawdopodobieństw wystąpienia poszczególnych cech pod warunkiem, że 
 występują one w danej klasie. Pozwala to przy użyciu twierdzenia Bayesa ~\ref{eq:bayes} obliczyć prawdopodobieństwa 
-warunkowe określające z jak dużą pewnością występująca kombinacja cech prowadzi do 
+warunkowe, określające z jak dużą pewnością występująca kombinacja cech prowadzi do 
 wystąpienia różnych klas, na podstawie czego algorytm wykonuje predykcję~\cite{MLAlgorithms}. 
 
 
@@ -410,7 +410,7 @@ wiele zastosowań w różnych dziedzinach życia codziennego. Powoduje to, że w
 na pozytywach związanych
 z tymi technologiami, jednakże niektórzy dostrzegają ogromne zagrożenia płynące z niewłaściwego 
 wykorzystania ich i katastrofalne skutki, do których mogą doprowadzić. 
-Wśród takich osób znajdują się naukowcy tacy jak jak Stephen Hawking, Elon Musk, Steve Wozniak i Bill Gates. 
+Wśród takich osób znajdują się naukowcy tacy jak Stephen Hawking, Elon Musk, Steve Wozniak i Bill Gates. 
 Według Elona Muska sztuczna inteligencja niesie ze sobą większe zagrożenie niż bomby atomowe ~\cite{dangers}. 
 
 Dwa główne sposoby w jaki sztuczna inteligencja może powodować zagrożenie to:
@@ -418,13 +418,13 @@ Dwa główne sposoby w jaki sztuczna inteligencja może powodować zagrożenie t
     \item AI zaprogramowane do czynienia krzywdy, czyli na przykład wykorzystanie uczenia maszynowego
     w takich narzędziach jak broń, która w niewłaściwych rękach stanowiłaby zagrożenie dla całej ludzkości,
     \item AI zaprogramowane w dobrych celach, jednak odnajdujące krzywdzący innych optymalny
-    sposób osiągnięcia sukcesu, może to być związane ze złym przekazaniem celu jaki maszyna ma osiągnąć przez 
-    programistę. Przykładowo mógłby to być samojezdny samochód, który podczas jazdy zwraca uwagę tylko i wyłącznie 
-    na to by jak najszybciej dojechać do celu podróży. Samochód taki nie przestrzegał by istniejących praw drogowych
+    sposób osiągnięcia sukcesu, może to być związane ze złym przekazaniem celu jaki maszyna ma osiągnąć, przez 
+    programistę. Przykładowo, mógłby to być samojezdny samochód, który podczas jazdy zwraca uwagę tylko i wyłącznie 
+    na to by jak najszybciej dojechać do celu podróży. Samochód taki nie przestrzegałby istniejących praw drogowych,
     ponieważ ograniczałyby one jego prędkość.
 \end{itemize}
-Przykłady te pokazują, że zagrożenie nie płynie z sytuacji gdzie maszyny odwracają się przeciwko ludzkości, a 
-z sytuacji w której maszyny wykonują poświęcone im zadania za dobrze i nie w sposób przewidziany przez 
+Przykłady te pokazują, że zagrożenie nie płynie z sytuacji gdzie maszyny odwracają się przeciwko ludzkości, lecz 
+z sytuacji, w której maszyny wykonują poświęcone im zadania za dobrze i nie w sposób przewidziany przez 
 stwórcę systemu.
 
 Istotnym problemem jest także bezrobocie będące skutkiem zastępowania ludzi maszynami,

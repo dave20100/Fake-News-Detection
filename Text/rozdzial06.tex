@@ -187,7 +187,7 @@ W opisanych poniżej wynikach, każdy z algorytmów został zbadany pod kątem t
     \begin{tabular}{ | l | c | c | c | c | c |}
         \hline
         Rozmiar ngramu & 1 & 2 & 3 & 4 & 5   \\ \hline
-        Poprawność & 79.8\% & 97.43\% & 98.6\% & 98.69\% & 98.09\%   \\ \hline
+        Poprawność & 80.21\% & 96.83\% & 98.11\% & 98.36\% & 98.02\%   \\ \hline
         Odchylenie standardowe & 4.54\% & 0.67\% & 0.62\% & 0.58\% & 0.7\%  \\ \hline
         Czas fazy uczenia & 16.176s & 22.159s & 111.424s & 520.082s & 1926.648s  \\ \hline
         Czas fazy predykcji & 0.034s & 0.113s & 0.38s & 0.911s & 2.133s  \\ \hline
@@ -217,7 +217,7 @@ Wyniki zostały przeanalizowane pod kątem trzech badanych cech:
         \item \textit{k}-NN -
         dla długości równej 1 algorytm osiąga wyniki większe od 70\%, jednak wraz 
         z podnoszeniem się jej zmniejsza się także poprawność. W przypadku obu metod 
-        wektoryzacji rozmiary 5 i 6 dają wyniki poniżej 50\%, co oznacza, że są one gorsze 
+        wektoryzacji rozmiary 5 daje w obu przypadkach wynik poniżej 50\%, co oznacza, że są one gorsze 
         od predykcji wykonanej na podstawie rzutu monetą. Jest to związane 
         z overfittingiem będącym skutkiem podnoszenia się ilości cech. Najlepszym wynikiem w 
         przypadku \textit{k}-NN jest 80.07\% przy wykorzystaniu metody wektoryzacji Bag of words i rozmiarze równym 2,
@@ -229,10 +229,11 @@ Wyniki zostały przeanalizowane pod kątem trzech badanych cech:
         długości ponad 4 prowadzi do powolnego spadku możliwości predykcyjnych, co może być 
         związane podobnie jak w przypadku algorytmu \textit{k}-NN z overfittingiem. Algorytmy te osiągają najlepsze 
         wyniki pod względem efektywności ze wszystkich badanych,
+
         \item Naive Bayes -
         Algorytm Naive Bayes zwiększa swoją poprawność w taki sposób jak RF, SVC oraz MLP 
-        jednak robi to dużo wolniej i osiąga swoją szczytową poprawność dla długości równej 8 przy której 
-        jest ona równa 96.56\%. Dalsze wydłużanie ngramów prowadzi do powolnego spadku możliwości predykcyjnych.
+        jednak robi to dużo wolniej i osiąga swoją szczytową poprawność dla długości równej 9 przy której 
+        jest ona równa 94.38\%. Dalsze wydłużanie ngramów prowadzi do powolnego spadku możliwości predykcyjnych.
         Algorytm Naive Bayes osiąga najniższe wyniki w przypadku podziału na ngramy o długości równej 1, gdzie 
         poprawnie klasyfikuje tylko 67.23\% danych testowych.
     \end{itemize}
@@ -316,7 +317,7 @@ musiałyby one analizować dużą ilość artykułów, dla których bardzo duże
 szybko pojawią się na docelowej stronie internetowej bądź mediach społecznościowych.
 
 Najlepszym z algorytmów okazał się RF, który dla ngramów o długości równej 4
-osiągnął poprawność równą 99.82\%. Pomimo iż poprawność ta została prawie osiągnięta przez algorytmy
+osiągnął poprawność równą 99.51\%. Pomimo iż poprawność ta została prawie osiągnięta przez algorytmy
 SVC oraz MLP to były one znacznie wolniejsze podczas fazy uczenia, a także podczas fazy 
 predykcji w przypadku SVC. Szybszy od RF algorytm Naive Bayes również osiągnął zadowalające wyniki poprawności,
 jednak wysokie wartości odchylenia standardowego pozwalają stwierdzić, że wynik jest mocno zależny od 

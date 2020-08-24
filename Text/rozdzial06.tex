@@ -14,6 +14,8 @@ Metoda ta polega na podzieleniu zbioru danych na wybraną liczbę podzbiorów, a
 z nich jako dane treningowe, a resztę jako testowe. Operację tą wykonuje się tyle razy ile wynosi liczba podzbiorów,
 końcowe wyniki tej metody to średnia poprawność badań oraz odchylenie standardowe. Wartość odchylenia standardowego
 pozwala określić jak bardzo poprawność danej metody jest zależna od danych treningowych. 
+
+
 W badaniach głównym sprawdzanym elementem było to, jak zmiana długości ngramów, na które podzielony
 został tekst przed wektoryzacją wpływa na wyniki algorytmów i odnalezienie takiego rozmiaru, który
 daje najlepsze wyniki. 
@@ -44,12 +46,15 @@ ze świata. Teksty zawarte w zbiorze zostały wstępnie przygotowane, jednak bł
 artykułach pozostały. Średnia długość artykułów ze zbioru wynosi 2469 znaków a najdłuższy z nich składa się z 51794.
 Ponieważ artykuł o takim rozmiarze niesie ze sobą zbyt dużą ilość informacji, przed wykonaniem badań zostają usunięte 
 artykuły posiadające ponad 5000 znaków. Zbiór został pobrany w dniu 16 czerwca 2020 z witryny znajdującej się 
-pod adresem \url{https://www.uvic.ca/}.~\cite{ISOT}
+pod adresem \url{https://www.uvic.ca/}~\cite{ISOT}.
 
 Algorytmy \textit{k}-NN, RF oraz Naive Bayes zostały zbadane na rozmiarach ngramów od 1 do 10, natomiast
 MLP i SVC od 1 do 5 z powodu dużej złożoności obliczeniowej przy większym rozmiarze. Podczas 
 wykonywania walidacji krzyżowej zbiór danych był dzielony na 5 podzbiorów na każdym z nich wykonywana była kolejno 
 wektoryzacja oraz redukcja wymiarowości obiektem StandardScaler z biblioteki scikit-learn.
+Wnioski wyciągnięte z wyników badań zostały poparte poprzez wykonanie parowych testów statystycznych 
+t Studenta z wartością alfa równą 0.05, ich
+wynikiem jest macierz różnic statystycznie znaczących.
 \section{Wyniki}
 W opisanych poniżej wynikach, każdy z algorytmów został zbadany pod kątem trzech cech. 
 \begin{table}[H]
@@ -316,12 +321,35 @@ do 3 godzin. Czas taki nie pozwala na wykorzystanie ich w systemach detekcji \te
 musiałyby one analizować dużą ilość artykułów, dla których bardzo duże znaczenie ma to jak 
 szybko pojawią się na docelowej stronie internetowej bądź mediach społecznościowych.
 
-Najlepszym z algorytmów okazał się RF, który dla ngramów o długości równej 4
-osiągnął poprawność równą 99.51\%. Pomimo, iż poprawność ta została prawie osiągnięta przez algorytmy
-SVC oraz MLP, to były one znacznie wolniejsze podczas fazy uczenia, a także podczas fazy 
-predykcji w przypadku SVC. Szybszy od RF algorytm Naive Bayes również osiągnął zadowalające wyniki poprawności,
-jednak wysokie wartości odchylenia standardowego pozwalają stwierdzić, że wynik jest mocno zależny od 
-danych, na których się on uczy, w przeciwieństwie do algorytmu RF.
+\begin{table}[H]
+    \centering
+    \caption{Suma macierzy różnic statystycznie znaczących}
+    \begin{tabular}{ | l | c | c | c | c | c |}
+        \hline
+        - & KNN & MLP & NB & RF & SVC   \\ \hline
+        KNN & 0 & 0 & 0 & 0 & 0   \\ \hline
+        MLP & 10 & 0 & 10 & 8 & 8  \\ \hline
+        NB & 7 & 0 & 0 & 3 & 0  \\ \hline
+        RF & 10 & 0 & 6 & 0 & 0  \\ \hline
+        SVC & 10 & 0 & 10 & 6 & 0  \\ \hline
+    \end{tabular}
+\end{table}
+Na powyższej tabeli przedstawiono wyniki analizy statystycznej wykonanej na pomiarach poprawności otrzymanych 
+metodą walizacji krzyżowej. Zawarte w niej dane pokazują jak wiele razy 
+każdy z badanych algorytmów był lepszy od innych. Analiza ta 
+pozwala stwierdzić, że najlepszymi algorytmami były MLP oraz SVC
+jednak, jak wcześniej wspomniano, czas potrzebny na nauczenie tych 
+algorytmów był zbyt długi i z tego powodu jako najlepszy wybrano algorytm RF, 
+który dla ngramów o długości równej 4 osiągnął poprawność równą 99.51\%.
+
+
+Szybszy od RF algorytm Naive Bayes również osiągnął zadowalające wyniki 
+poprawności, jednak na podstawie wysokich wartości odchylenia 
+standardowego  można stwierdzić, że wynik jest mocno zależny od danych, 
+na których się on uczy, w przeciwieństwie do algorytmu RF.  Można 
+także zauważyć, że algorytm 
+\textit{k}-NN jest w większości przypadków gorszy statystycznie od reszty
+algorytmów. 
 
 Zauważono także, że wybór metody wektoryzacji ma niewielki wpływ na to jak dobrze wykorzystany algorytm 
 sprawdzi się w wykonywaniu swojego zadania. Jeżeli chodzi o czas trwania poszczególnych faz, to 

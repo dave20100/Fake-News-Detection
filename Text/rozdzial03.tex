@@ -25,6 +25,36 @@ W dzisiejszych czasach implementacja takich systemów opiera się na wykonaniu n
 \end{itemize}
 Odpowiednie wykonanie etapu ekstrakcji cech jest kluczowym elementem do stworzenia poprawnego modelu, jest
 on opisany w kolejnym rozdziale pracy. 
+
+
+
+Ogromny rozwój uczenia maszynowego i sztucznej inteligencji spowodował, że znalazły one 
+wiele zastosowań w różnych dziedzinach życia codziennego. Powoduje to, że wiele osób skupia się 
+na pozytywach związanych
+z tymi technologiami, jednakże niektórzy dostrzegają ogromne zagrożenia płynące z niewłaściwego 
+wykorzystania ich i katastrofalne skutki, do których mogą doprowadzić. 
+Wśród takich osób znajdują się naukowcy tacy jak Stephen Hawking, Elon Musk, Steve Wozniak i Bill Gates. 
+Według Elona Muska sztuczna inteligencja niesie ze sobą większe zagrożenie niż bomby atomowe ~\cite{dangers}. 
+
+Dwa główne sposoby w jaki sztuczna inteligencja może powodować zagrożenie to:
+\begin{itemize}
+    \item AI zaprogramowane do czynienia krzywdy, czyli na przykład wykorzystanie uczenia maszynowego
+    w takich narzędziach jak broń, która w niewłaściwych rękach stanowiłaby zagrożenie dla całej ludzkości,
+    \item AI zaprogramowane w dobrych celach, jednak odnajdujące krzywdzący innych optymalny
+    sposób osiągnięcia sukcesu, może to być związane ze złym przekazaniem celu jaki maszyna ma osiągnąć, przez 
+    programistę. Przykładowo, mógłby to być samojezdny samochód, który podczas jazdy zwraca uwagę tylko i wyłącznie 
+    na to by jak najszybciej dojechać do celu podróży. Samochód taki nie przestrzegałby istniejących praw drogowych,
+    ponieważ ograniczałyby one jego prędkość.
+\end{itemize}
+Przykłady te pokazują, że zagrożenie nie płynie z sytuacji gdzie maszyny odwracają się przeciwko ludzkości, lecz 
+z sytuacji, w której maszyny wykonują poświęcone im zadania za dobrze i nie w sposób przewidziany przez 
+stwórcę systemu.
+
+Istotnym problemem jest także bezrobocie będące skutkiem zastępowania ludzi maszynami,
+ponieważ są one znacznie tańsze w utrzymaniu niż pracownicy, a z wykorzystaniem uczenia
+maszynowego mogą one opanować niektóre zadania lepiej od ludzi.
+Rozwiązaniem na takie problemy mogłyby być obowiązkowo przestrzegane zasady bezpiecznego korzystania
+ze sztucznej inteligencji, których złamanie wiązałoby się z odpowiedzialnością karną.
 \section{Rodzaje uczenia na podstawie przykładów}
 
 Algorytmy uczenia maszynowego uczące się na podstawie przykładów można podzielić na dwa główne rodzaje w zależności od problemów, które mają one rozwiązywać:
@@ -102,7 +132,7 @@ pod uwagę cztery czynniki:
     lepiej jest wykorzystać algorytm znany, a nie optymalny.
 \end{itemize}
 W dalszej części rodziału opisane zostały najpopularniejsze metody klasyfikacji.
-\subsection{\textit{k}-NN}
+\subsection{K najbliższych sąsiadów}
 
 Algorytm K najbliższych sąsiadów (K nearest neighbours) jest algorytmem
 stosowanym zarówno w problemach regresyjnych, jak i klasyfikacji. Kroki jego działania
@@ -152,7 +182,7 @@ predykcję wykonuje się na podstawie średniej wartości K najbliższych sąsia
     \caption{Graficzne przedstawienie algorytmu \textit{k}-NN Źródło: Własne}
 \end{figure}
 
-\subsection{SVM}
+\subsection{Maszyna wektorów nośnych}
 
 Klasyfikator SVM (Support vector machines) można wykorzystywać zarówno 
 w problemach regresyjnych i klasyfikacyjnych. Służą one do klasyfikacji binarnej, co 
@@ -201,7 +231,7 @@ całkowicie zmienia położenie płaszczyzny~\cite{MLAlgorithms}.
     \caption{Wizualizacja algorytmu SVM Źródło: Własne}
 \end{figure}
 
-\subsection{MLP}
+\subsection{Perceptron wielowarstwowy}
 
 Działanie algorytmu Perceptronu wielowarstwowego (Multi layered perceptron) 
 opiera się na wykorzystaniu modelu sztucznego neuronu, który na podstawie określonej
@@ -263,7 +293,7 @@ się skomplikowanych funkcji nieliniowych~\cite{MLAlgorithms}.
     \caption{Graficzne przedstawienie perceptronu wielowarstwowego Źródło: Własne}
 \end{figure}
 
-\subsection{Decision trees}
+\subsection{Drzewa decyzyjne}
 
 Algorytm Decision trees polega na stworzeniu drzewa decyzyjnego, w którym korzeń i węzły
 są poszczególnymi cechami zbioru danych, a liście odpowiadają klasom, które tym danym 
@@ -318,7 +348,7 @@ wybrania klasy \textit{x\textsubscript{i}}
     \caption{Przykładowe drzewo decyzyjne podejmujące decyzję czy wyjść na zewnątrz Źródło: Własne}
 \end{figure}
 
-\subsection{RF}
+\subsection{Las losowy}
 Algorytm lasów losowych (Random forest) w skrócie RF, polega na stworzeniu lasu składającego się z drzew decyzjnych, 
 które są budowane w następujący sposób:
 \begin{itemize}
@@ -358,7 +388,7 @@ tym wybrana zostaje klasa, na którą głosowała większość drzew ~\cite{rand
     \caption{Wady i zalety RF}
 \end{table}
 
-\subsection{Naive Bayes}
+\subsection{Naiwny klasyfikator Bayesowski}
 
 Naiwny klasyfikator Bayesowski (Naive Bayes) jest probabilistycznym klasyfikatorem, który
 zakłada wzajemną niezależność wszystkich cech, stąd naiwność algorytmu. Stworzony przez niego model
@@ -404,31 +434,3 @@ jego poprawność w porównaniu do bardziej skomplikowanych algorytmów jest mni
     \caption{Wady i zalety Naive Bayes}
 \end{table}
 
-\section{Zagrożenia}
-Ogromny rozwój uczenia maszynowego i sztucznej inteligencji spowodował, że znalazły one 
-wiele zastosowań w różnych dziedzinach życia codziennego. Powoduje to, że wiele osób skupia się 
-na pozytywach związanych
-z tymi technologiami, jednakże niektórzy dostrzegają ogromne zagrożenia płynące z niewłaściwego 
-wykorzystania ich i katastrofalne skutki, do których mogą doprowadzić. 
-Wśród takich osób znajdują się naukowcy tacy jak Stephen Hawking, Elon Musk, Steve Wozniak i Bill Gates. 
-Według Elona Muska sztuczna inteligencja niesie ze sobą większe zagrożenie niż bomby atomowe ~\cite{dangers}. 
-
-Dwa główne sposoby w jaki sztuczna inteligencja może powodować zagrożenie to:
-\begin{itemize}
-    \item AI zaprogramowane do czynienia krzywdy, czyli na przykład wykorzystanie uczenia maszynowego
-    w takich narzędziach jak broń, która w niewłaściwych rękach stanowiłaby zagrożenie dla całej ludzkości,
-    \item AI zaprogramowane w dobrych celach, jednak odnajdujące krzywdzący innych optymalny
-    sposób osiągnięcia sukcesu, może to być związane ze złym przekazaniem celu jaki maszyna ma osiągnąć, przez 
-    programistę. Przykładowo, mógłby to być samojezdny samochód, który podczas jazdy zwraca uwagę tylko i wyłącznie 
-    na to by jak najszybciej dojechać do celu podróży. Samochód taki nie przestrzegałby istniejących praw drogowych,
-    ponieważ ograniczałyby one jego prędkość.
-\end{itemize}
-Przykłady te pokazują, że zagrożenie nie płynie z sytuacji gdzie maszyny odwracają się przeciwko ludzkości, lecz 
-z sytuacji, w której maszyny wykonują poświęcone im zadania za dobrze i nie w sposób przewidziany przez 
-stwórcę systemu.
-
-Istotnym problemem jest także bezrobocie będące skutkiem zastępowania ludzi maszynami,
-ponieważ są one znacznie tańsze w utrzymaniu niż pracownicy, a z wykorzystaniem uczenia
-maszynowego mogą one opanować niektóre zadania lepiej od ludzi.
-Rozwiązaniem na takie problemy mogłyby być obowiązkowo przestrzegane zasady bezpiecznego korzystania
-ze sztucznej inteligencji, których złamanie wiązałoby się z odpowiedzialnością karną.

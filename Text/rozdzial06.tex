@@ -6,12 +6,12 @@ takie cechy jak:
 \begin{itemize}
     \item czas fazy uczenia,
     \item czas fazy predykcji,
-    \item poprawność modelu (\textit{accuracy})
+    \item poprawność modelu (\textit{accuracy}),
     \item odchylenie standardowe poprawności modelu.
 \end{itemize}
-Poprawność oraz odchylenie standardowe modelu została zbadana metodą K-krotnej walidacji krzyżowej. 
+Poprawność oraz odchylenie standardowe modelu zostały zbadane metodą K-krotnej walidacji krzyżowej. 
 Metoda ta polega na podzieleniu zbioru danych na wybraną liczbę podzbiorów, a następnie wykorzystanie jednego
-z nich jako dane treningowe a resztę jako testowe. Operację tą wykonuje się tyle razy ile wynosi liczba podzbiorów,
+z nich jako dane treningowe, a resztę jako testowe. Operację tą wykonuje się tyle razy ile wynosi liczba podzbiorów,
 końcowe wyniki tej metody to średnia poprawność badań oraz odchylenie standardowe. Wartość odchylenia standardowego
 pozwala określić jak bardzo poprawność danej metody jest zależna od danych treningowych. 
 W badaniach głównym sprawdzanym elementem było to, jak zmiana długości ngramów, na które podzielony
@@ -217,7 +217,7 @@ Wyniki zostały przeanalizowane pod kątem trzech badanych cech:
         \item \textit{k}-NN -
         dla długości równej 1 algorytm osiąga wyniki większe od 70\%, jednak wraz 
         z podnoszeniem się jej zmniejsza się także poprawność. W przypadku obu metod 
-        wektoryzacji rozmiary 5 daje w obu przypadkach wynik poniżej 50\%, co oznacza, że są one gorsze 
+        wektoryzacji rozmiar 5 daje w obu przypadkach wynik poniżej 50\%, co oznacza, że są one gorsze 
         od predykcji wykonanej na podstawie rzutu monetą. Jest to związane 
         z overfittingiem będącym skutkiem podnoszenia się ilości cech. Najlepszym wynikiem w 
         przypadku \textit{k}-NN jest 80.07\% przy wykorzystaniu metody wektoryzacji Bag of words i rozmiarze równym 2,
@@ -225,7 +225,7 @@ Wyniki zostały przeanalizowane pod kątem trzech badanych cech:
 
         \item RF, SVC, MLP -        
         algorytmy te zachowują się w bardzo podobny sposób. Zwiększanie długości ngramów 
-        do wartości 4 powoduje bardzo szybki wzrost efektywności do nawet 99.51\%, natomiast zmiana 
+        do wartości 4 powoduje bardzo szybki wzrost efektywności do 99.51\%, natomiast zmiana 
         długości ponad 4 prowadzi do powolnego spadku możliwości predykcyjnych, co może być 
         związane podobnie jak w przypadku algorytmu \textit{k}-NN z overfittingiem. Algorytmy te osiągają najlepsze 
         wyniki pod względem efektywności ze wszystkich badanych,
@@ -233,7 +233,7 @@ Wyniki zostały przeanalizowane pod kątem trzech badanych cech:
         \item Naive Bayes -
         Algorytm Naive Bayes zwiększa swoją poprawność w taki sposób jak RF, SVC oraz MLP 
         jednak robi to dużo wolniej i osiąga swoją szczytową poprawność dla długości równej 9 przy której 
-        jest ona równa 94.38\%. Dalsze wydłużanie ngramów prowadzi do powolnego spadku możliwości predykcyjnych.
+        wynosi ona 94.38\%. Dalsze wydłużanie ngramów prowadzi do powolnego spadku możliwości predykcyjnych.
         Algorytm Naive Bayes osiąga najniższe wyniki w przypadku podziału na ngramy o długości równej 1, gdzie 
         poprawnie klasyfikuje tylko 67.23\% danych testowych.
     \end{itemize}
@@ -305,26 +305,26 @@ Wyniki zostały przeanalizowane pod kątem trzech badanych cech:
 Przeprowadzone badania pozwoliły na odnalezienie odpowiedzi na pytanie 
 będące celem niniejszej pracy. Wykorzystanie algorytmów uczenia maszynowego 
 w rozpoznawaniu fałszywych informacji skutkuje osiągnięciem bardzo optymistycznych wyników.
-Z badanych w algorytmów jedynie algorytm \textit{k}-NN swoją efektywnością dla 
+Z badanych algorytmów jedynie algorytm \textit{k}-NN swoją efektywnością dla 
 każdej długości ngramów nie pozwoliłby na pewne podjęcie decyzji, czy dany artykuł jest prawdziwy, czy też nie.
 Może to być związane z bardzo dużą liczbą cech w tekście, co bardzo szybko prowadzi do tak zwanego 
 overfittingu. 
 
 Z powodu eksponencjalnego zwiększania się ilości cech wraz ze zwiększaniem długości ngramów, 
-algorytmy takie jak SVC oraz MLP osiągają już dla długości równej 5 zbyt długie czasy trwania faz uczenia sięgające 
+algorytmy takie jak SVC oraz MLP osiągają już dla długości równej 5 zbyt długie czasy trwania faz uczenia, sięgające 
 do 3 godzin. Czas taki nie pozwala na wykorzystanie ich w systemach detekcji \textit{fake newsów}, ponieważ
 musiałyby one analizować dużą ilość artykułów, dla których bardzo duże znaczenie ma to jak 
 szybko pojawią się na docelowej stronie internetowej bądź mediach społecznościowych.
 
 Najlepszym z algorytmów okazał się RF, który dla ngramów o długości równej 4
-osiągnął poprawność równą 99.51\%. Pomimo iż poprawność ta została prawie osiągnięta przez algorytmy
-SVC oraz MLP to były one znacznie wolniejsze podczas fazy uczenia, a także podczas fazy 
+osiągnął poprawność równą 99.51\%. Pomimo, iż poprawność ta została prawie osiągnięta przez algorytmy
+SVC oraz MLP, to były one znacznie wolniejsze podczas fazy uczenia, a także podczas fazy 
 predykcji w przypadku SVC. Szybszy od RF algorytm Naive Bayes również osiągnął zadowalające wyniki poprawności,
 jednak wysokie wartości odchylenia standardowego pozwalają stwierdzić, że wynik jest mocno zależny od 
 danych, na których się on uczy w przeciwieństwie do algorytmu RF.
 
 Zauważono także, że wybór metody wektoryzacji ma niewielki wpływ na to jak dobrze wykorzystany algorytm 
-sprawdzi się w wykonywaniu swojego zadania. Jeżeli chodzi o czas trwania poszczególnych faz to 
+sprawdzi się w wykonywaniu swojego zadania. Jeżeli chodzi o czas trwania poszczególnych faz, to 
 różnica w czasie wynosiła zazwyczaj poniżej paru sekund w przypadku dłuższych algorytmów lub poniżej 
 sekundy w przypadku krótszych. Pod względem efektywności można także zauważyć niewielkie różnice,
 które przeplatają się

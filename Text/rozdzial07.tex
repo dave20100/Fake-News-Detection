@@ -1,6 +1,6 @@
 \chapter{Podsumowanie}
 Celem pracy było sprawdzenie czy algorytmy uczenia maszynowego mogą zostać wykorzystane
-w detekcji tak zwanych \textit{fake newsów} i jak dobrze wykonają to zadanie. Cel pracy został osiągnięty
+w detekcji tak zwanych \textit{fake newsów} i jak dobrze wykonają to zadanie. Cel pracy został osiągnięty,
 a otrzymane wyniki jednoznacznie wskazują, że tego typu algorytmy bez większych problemów dobrze 
 radzą sobie z klasyfikacją nieprawdziwych informacji.
 
@@ -8,20 +8,20 @@ radzą sobie z klasyfikacją nieprawdziwych informacji.
 W baniach postanowiono sprawdzić metodę podziału tekstu na rożnej długości ngramy i zwrócić uwagę 
 jak zmiana ich długości wpływa na poszczególne cechy algorytmów.
 Wyniki badań wykonanych na algorytmach: \textit{k}-NN, RF, Naive Bayes,
-SVC oraz MLP pokazują, że algorytmy uczenia jak najbardziej mogą znaleźć swoje miejsce w systemach
-automatycznego rozpoznawania fałszywych informacji. Wiele z nich nie miało problemu z osiągnieciem 
+SVC oraz MLP pokazują, że algorytmy uczenia z całą pewnością mogą znaleźć swoje miejsce w systemach
+automatycznego rozpoznawania fałszywych informacji. Wiele z nich nie miało problemu z osiągnięciem 
 efektywności powyżej 90\%. Najlepszym z badanych algorytmów okazał się RF osiągając
 wynik 99.82\%. Najgorzej z zadaniem poradziła sobie metoda \textit{k}-NN, jej najwyższa 
 poprawność wynosiła 78.13\%.
 
-Jak przypuszczano ogromne znaczenie dla efektywności
+Jak przypuszczano, ogromne znaczenie dla efektywności
 miała zmiana długości ngramów, które nie mogą być ani za krótkie, ani za długie.
-Dla wszystkich badanych algorytmów poza \textit{k}-NN ngramy o długości 1 dały najgorsze wyniki, a wartości
+Dla wszystkich badanych algorytmów za wyjątkiem \textit{k}-NN, ngramy o długości 1 dały najgorsze wyniki, a wartości
 pośrednie najlepsze.
 
 Istotnym problemem z tego typu rozwiązaniami jest brak zbiorów treningowych posiadających 
 artykuły o zróżnicowanej tematyce. Większość istniejących danych zawiera głównie artykuły związane z 
-polityką, przez co z taką tematyką algorytmy poradziłyby sobie najlepiej. Mogłyby mieć one jednak problem 
+polityką, z uwagi na to właśnie z taką tematyką algorytmy poradziłyby sobie najlepiej. Mogłyby mieć one jednak problem 
 z artykułami naukowymi, sportowymi itp.
 
 Jednym ze sposobów na dalszy rozwój pracy mogłoby być opracowanie systemu rozpoznającego 
